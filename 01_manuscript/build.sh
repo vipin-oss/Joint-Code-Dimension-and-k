@@ -4,10 +4,10 @@
 set -e
 build () {
   name="$1"
-  pdflatex -interaction=nonstopmode "$name" >/dev/null || true
-  bibtex "$name"        >/dev/null || true
-  pdflatex -interaction=nonstopmode "$name" >/dev/null || true
-  pdflatex -interaction=nonstopmode "$name" >/dev/null || true
+  pdflatex -interaction=nonstopmode -halt-on-error "$name"
+  bibtex "$name"
+  pdflatex -interaction=nonstopmode -halt-on-error "$name"
+  pdflatex -interaction=nonstopmode -halt-on-error "$name"
   echo "built $name.pdf"
 }
 build main             # two-column journal version (camera-ready style)

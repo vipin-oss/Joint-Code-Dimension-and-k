@@ -220,8 +220,8 @@ def check(texfile, label, report, peerreview=False):
             full = os.path.join(MANUSCRIPT, "figures", g)
             if not os.path.exists(full):
                 problems.append(f"Fig. {i}: missing file {g}")
-            elif not g.lower().endswith(".pdf"):
-                problems.append(f"Fig. {i}: {g} is not vector PDF")
+            elif not g.lower().endswith((".pdf", ".png")):
+                problems.append(f"Fig. {i}: {g} is not a supported image (PDF/PNG)")
         if f.index("\\includegraphics") > f.index("\\caption") if "\\caption" in f else False:
             problems.append(f"Fig. {i}: caption above the graphic")
     tabs = re.findall(r"\\begin\{table\*?\}(.*?)\\end\{table\*?\}", body, re.S)
@@ -235,8 +235,12 @@ def check(texfile, label, report, peerreview=False):
     if problems:
         fail("R9  floats: " + "; ".join(problems))
     else:
-        info(f"R9  {len(figs)} vector figures (captions below), {len(tabs)} tables "
-             f"(captions above, booktabs rules)")
+        npdf = sum(1 for f in figs for g in re.findall(
+            r"\\includegraphics(?:\[[^\]]*\])?\{([^}]*)\}", f) if g.lower().endswith(".pdf"))
+        npng = sum(1 for f in figs for g in re.findall(
+            r"\\includegraphics(?:\[[^\]]*\])?\{([^}]*)\}", f) if g.lower().endswith(".png"))
+        info(f"R9  {len(figs)} figures ({npdf} vector PDF, {npng} PNG; captions below), "
+             f"{len(tabs)} tables (captions above, booktabs rules)")
 
     # R10 quantities -------------------------------------------------------
     def cnt(env):

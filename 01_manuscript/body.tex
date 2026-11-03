@@ -91,6 +91,7 @@ all twists $\lambda\in\A^\ast$ are allowed: components whose twist is
 incompatible with the $k$-Galois dual contribute hull dimension $0$ and are
 included with an explicit dimension-only factor. The main result
 (Theorem~\ref{thm:main}) is the exact joint enumerator
+{\small
 \begin{align*}
 \Epoly^{(M)}(U,Z)
 &= \sum_C U^{\kappa(C)} Z^{\eta_k(C)}\\
@@ -103,6 +104,7 @@ included with an explicit dimension-only factor. The main result
    \prod_{f\in\Fs}
    \bigl(1+U^{w_f}+\cdots+U^{Mw_f}\bigr).
 \end{align*}
+}
 where the $(M+1)\times(M+1)$ transfer matrix $T^{(M)}_w$ has entries
 $U^{w(M-\beta)}Z^{w\min\{\alpha,M-\beta\}}$. On the overlap with
 \cite{debnathAffine2026}, our hull-dimension formula agrees with theirs
@@ -503,10 +505,10 @@ coordinatewise.
 \end{proposition}
 
 \begin{proof}
-The defining condition for $y\in\Dk(C)$ is
-$\sum_i c_i\sigma_{s,k}(y_i)=0$ for all $c\in C$.  Putting
-$z=\sigma_{s,k}(y)$ coordinatewise, this says $z\in C^{\perpE}$, and applying
-the inverse map $\rho_{s,k}$ coordinatewise gives $y=\rho_{s,k}(z)$.
+The $k$-Galois dual $\Dk(C)$ is the set of vectors $y$ satisfying
+$\sum_i c_i\sigma_{s,k}(y_i)=0$ for all $c\in C$; with
+$z=\sigma_{s,k}(y)$ this says $z\in C^{\perpE}$, and applying
+$\rho_{s,k}$ coordinatewise gives $y=\rho_{s,k}(z)$.
 \end{proof}
 
 \begin{remark}\label{rem:euclidean-hermitian}
@@ -574,11 +576,13 @@ f^{\#_{s,k}}(x)=\rho(f_0)^{-1}x^r\sum_{i=0}^{r}\rho(f_i)x^{-i}.
 \]
 Put $\beta=\rho(\alpha^{-1})=\alpha^{-p^{d_s-k}}$, so
 $\beta^{-1}=\rho(\alpha)$.  Then
+{\small
 \[
 \sum_{i=0}^{r}\rho(f_i)\beta^{-i}
    =\sum_{i=0}^{r}\rho(f_i)\rho(\alpha)^i
    =\rho\Bigl(\sum_{i=0}^{r}f_i\alpha^i\Bigr)=\rho(f(\alpha))=0,
 \]
+}
 hence $f^{\#_{s,k}}(\beta)=0$.
 \end{proof}
 
@@ -762,9 +766,9 @@ code.
 \end{corollary}
 
 \begin{proof}
-The first statement is Proposition~\ref{prop:incompatible} combined with
-Lemma~\ref{lem:global-duality}.  If $C_s(\mathbf{e})$ is self-orthogonal then
-$C_s(\mathbf{e})=\Hull_k(C_s(\mathbf{e}))=\{0\}$.  If it is dual-containing then
+The first statement follows from Proposition~\ref{prop:incompatible} and
+Lemma~\ref{lem:global-duality}.  When $C_s(\mathbf{e})$ is self-orthogonal we have
+$C_s(\mathbf{e})=\Hull_k(C_s(\mathbf{e}))=\{0\}$.  When it is dual-containing,
 $\Dk(C_s(\mathbf{e}))=\Hull_k(C_s(\mathbf{e}))=\{0\}$, and by
 Proposition~\ref{prop:dual-translation}
 $\dim_{K_s}\Dk(C_s(\mathbf{e}))=n-\dim_{K_s}C_s(\mathbf{e})$, forcing
@@ -886,11 +890,13 @@ $\tau_{s,k}^{-1}(f_{O,i})=f_{O,i-1}$.
 
 \begin{proposition}\label{prop:min-edge}
 For every exponent selection $\mathbf{e}$,
+{\small
 \begin{equation}\label{eq:eta-min-edge}
 \eta_k(C(\mathbf{e}))
  =\sum_{s\ \mathrm{compatible}}\ \sum_{O\in\Os}
    w_O\sum_{i=1}^{a_O}\min\{e_{O,i},\,M-e_{O,i+1}\},
 \end{equation}
+}
 whereas
 \begin{equation}\label{eq:kappa-orbits}
 \begin{split}
@@ -909,10 +915,12 @@ In particular, if every component is compatible, the second sum in
 Let $s$ be compatible.  By Lemma~\ref{lem:hull-generator} and the dimension
 formula for a principal ideal, the contribution of the factor $f_{O,i}$ to
 $\dim_{K_s}\Hull_k(C_s(\mathbf{e}))$ is
+{\small
 \[
 d_O\Bigl(M-\max\{e_{O,i},M-e_{O,i-1}\}\Bigr)
    =d_O\min\{e_{O,i-1},M-e_{O,i}\}.
 \]
+}
 Re-indexing $i-1\mapsto i$ gives $d_O\min\{e_{O,i},M-e_{O,i+1}\}$.
 Multiplying by $m_s$, summing over $i$ and over all orbits of all compatible
 components, and using Proposition~\ref{prop:incompatible} for the remaining
@@ -1018,6 +1026,7 @@ diagonal entries is summing over all cyclic words $(e_1,\ldots,e_a)$, which is
 \end{proof}
 
 Let
+{\small
 \[
 \mathcal{S}_k^{\mathrm{comp}}
  =\{s:\lambda_s^{1+p^{d_s-k}}=1\},
@@ -1025,8 +1034,10 @@ Let
 \mathcal{S}_k^{\mathrm{inc}}=\{1,\ldots,N\}\setminus
                                \mathcal{S}_k^{\mathrm{comp}} .
 \]
+}
 \begin{theorem}\label{thm:main}
 For every $n\geq1$, every $\lambda\in\A^\ast$, and every $0\leq k<e$,
+{\small
 \begin{align}
 \Epoly^{(M)}(U,Z)
 &=\prod_{s\in\mathcal{S}_k^{\mathrm{comp}}}
@@ -1041,6 +1052,7 @@ For every $n\geq1$, every $\lambda\in\A^\ast$, and every $0\leq k<e$,
   +\cdots+U^{Mw_f}\Bigr).
 \label{eq:main}
 \end{align}
+}
 where an empty product is $1$.  In particular, if every component is
 compatible, then
 \[
@@ -1143,9 +1155,12 @@ by $w_f$.
 \end{proposition}
 
 \begin{proof}
-Put $M=1$ in the definition of $T^{(M)}_w$: the entry in row $\alpha$ and
-column $\beta$ is $U^{w(1-\beta)}Z^{w\min\{\alpha,1-\beta\}}$, which gives the
-four entries displayed. The edge term is
+Put $M=1$ in the definition of $T^{(M)}_w$. The entry in row $\alpha$ and
+column $\beta$ is
+\[
+U^{w(1-\beta)}Z^{w\min\{\alpha,1-\beta\}},
+\]
+which gives the four entries displayed. The edge term is
 $\min\{e_i,1-e_{i+1}\}$, which equals $1$ iff $e_i=1$ and $e_{i+1}=0$ and
 vanishes otherwise. A cyclic binary word has no descent iff it is constant, so
 on an orbit of length $a_O$ exactly $2$ of the $2^{a_O}$ words give trivial
@@ -1245,7 +1260,7 @@ compatible orbit,
 \sum_{i=1}^{a}(M-e_i^\vee)=\sum_{i=1}^{a}e_{i-1}
    =aM-\sum_{i=1}^{a}(M-e_i),
 \]
-while the edge sum for the transformed word is
+The edge sum of the transformed word is
 $\sum_i\min\{M-e_{i-1},e_i\}
  =\sum_i\min\{M-e_i,e_{i+1}\}$ after re-indexing.  By
 Lemma~\ref{lem:telescoping}, its difference from
@@ -1264,17 +1279,20 @@ For orbit lengths $1$ and $2$ the trace can be evaluated completely.
 For every $M\geq1$ and $w\geq1$:
 \begin{enumerate}
 \item[\textup{(i)}]
-$\displaystyle
+\[
 \Epoly_{1,w}^{(M)}(U,Z)
- =\sum_{r=0}^{M}U^{wr}Z^{w\min\{r,M-r\}}$.
+ =\sum_{r=0}^{M}U^{wr}Z^{w\min\{r,M-r\}}.
+\]
 In the hull polynomial $\Epoly_{1,w}^{(M)}(1,Z)$, the coefficient of $Z^{wh}$
 is $2$ for $0\leq h<M/2$, is $1$ for $h=M/2$ when $M$ is even, and is $0$ for
 $h>\lfloor M/2\rfloor$.
 \item[\textup{(ii)}]
-$\displaystyle
+{\small
+\[
 \Epoly_{2,w}^{(M)}(U,Z)
  =\sum_{R=0}^{2M}\bigl(M+1-|R-M|\bigr)\,
-    U^{wR}Z^{w\min\{R,2M-R\}}$.
+    U^{wR}Z^{w\min\{R,2M-R\}}.
+\]}
 \end{enumerate}
 \end{proposition}
 
@@ -1392,10 +1410,12 @@ in $\{-1,0,1\}$.
 \begin{theorem}\label{thm:support}
 For one orbit of length $a$, the attainable pairs $(R,H)$ are exactly the
 integer pairs with
+{\footnotesize
 \begin{equation}\label{eq:trapezoid}
 0\leq R\leq aM,\qquad
 \min\{R,M,aM-R\}\leq H\leq\min\{R,aM-R\}.
 \end{equation}
+}
 Equivalently the attainable contributions are $(wR,wH)$ for such pairs.
 \end{theorem}
 
@@ -1426,10 +1446,11 @@ a sum of integer intervals is an integer interval.
 \end{proof}
 
 \begin{corollary}\label{cor:global-support}
-A pair $(\kappa,\eta)$ occurs if and only if it is a sum, over compatible
-orbits, of pairs $(w_OR_O,w_OH_O)$ satisfying \eqref{eq:trapezoid}, plus an
-incompatible contribution $\bigl(\sum_{s\in\mathcal{S}_k^{\mathrm{inc}}}
-\sum_{f\in\Fs}w_fr_f,\,0\bigr)$ with $0\leq r_f\leq M$.  In particular the
+A pair $(\kappa,\eta)$ occurs iff, over the compatible orbits, one sums
+pairs $(w_OR_O,w_OH_O)$ from \eqref{eq:trapezoid}; to this one adds an
+incompatible contribution of the form
+$\bigl(\sum_{s\in\mathcal{S}_k^{\mathrm{inc}}}\sum_{f\in\Fs}w_fr_f,\,0\bigr)$,
+where $0\leq r_f\leq M$.  In particular the
 necessary bound $0\leq\eta\leq\min\{\kappa,W-\kappa\}$ from
 $\Hull_k(C)\subseteq C\cap\Dk(C)$ is generally not sufficient: for $M\geq2$,
 if a compatible orbit has $0<R_O<a_OM$, its hull contribution is at least
@@ -1594,10 +1615,9 @@ Theorem~\ref{thm:support} the conditional distribution of $\eta_k$ given
 $\kappa$ varies substantially with $\kappa$ (see Example~\ref{ex:F32}).
 
 \begin{proposition}\label{prop:conditional}
-For $j=0,1,2$ put
-$\Phi_j(\kappa)=[U^\kappa]\,
- \bigl(\partial^j\Epoly^{(M)}/\partial Z^j\bigr)(U,1)$.
-For every attainable $\kappa$ (i.e.\ $\Phi_0(\kappa)>0$),
+For $j=0,1,2$ define the coefficients
+$\Phi_j(\kappa)=[U^\kappa]\,\bigl(\partial^j\Epoly^{(M)}/\partial Z^j\bigr)(U,1)$;
+for every attainable $\kappa$ (that is, $\Phi_0(\kappa)>0$) we have
 \[
 \Pr(\eta_k=\eta\mid\kappa)=\frac{N_{\kappa,\eta}}{\Phi_0(\kappa)},\qquad
 \mathbb{E}[\eta_k\mid\kappa]=\frac{\Phi_1(\kappa)}{\Phi_0(\kappa)},
@@ -1753,11 +1773,13 @@ every pair (start state, current state) in $\{0,\ldots,M\}^2$, a sparse
 dictionary of accumulated $(\kappa,\eta)$ counts (multiplied into the running
 global polynomial), extends the walk edge by edge, and after $a_O$ steps keeps
 the diagonal start $=$ current.  The only mathematical line is the transition
+{\small
 \[
 (\kappa,\eta)\longmapsto
  \bigl(\kappa+w(M-\beta),\ \eta+w\min\{\alpha,M-\beta\}\bigr)
  \qquad(\alpha\to\beta),
 \]
+}
 which is \eqref{eq:transfer}.  An incompatible factor is convolved with
 $1+U^{w_f}+\dots+U^{Mw_f}$.  In the reference implementation each one-orbit polynomial is
 computed separately (caching repeated pairs $(a_O,w_O)$) and the orbit
@@ -1862,7 +1884,7 @@ consequence of Theorem~\ref{thm:support}.
 \includegraphics[width=0.82\linewidth]{fig2_joint_F8_n14.pdf}
 \caption{Joint distribution $N_{\kappa,\eta}$ for $\F_8$, $n=14$
 (Example~\ref{ex:F8}); color is $\log_{10}N_{\kappa,\eta}$ and white cells
-are zero.  Only $\kappa\in\{1,3,11,13\}$ occur at $\eta=1$   the
+are zero.  Only $\kappa\in\{1,3,11,13\}$ occur at $\eta=1$---the
 one-orbit trapezoid gaps of Theorem~\ref{thm:support}, invisible from the
 hull marginal alone.}
 \label{fig:F8-joint}
@@ -1872,7 +1894,7 @@ hull marginal alone.}
 Let $\A=\F_4\times\F_{16}$ over $\F_4$, $n=10$ ($n'=5$, $M=2$),
 $\lambda_0=\lambda=(1,1)$, $k=1$.  The $\F_4$ component contributes orbits
 $(1,1),(2,2)$ as in Example~\ref{ex:F4}; the $\F_{16}$ component has
-$m_s=[\F_{16}:\F_4]=2$ and contributes $(1,2),(4,2)$   the weight
+$m_s=[\F_{16}:\F_4]=2$ and contributes $(1,2),(4,2)$---the weight
 $w_O=m_sd_O$ doubling in action.  Here $W=30$, there are $3^8=6561$ codes,
 $123$ joint terms, $16$ LCD codes, $9$ self-dual codes, and
 $\mathbb{E}[\eta_1]=23/3$, $\operatorname{Var}(\eta_1)=458/81$.  This family
@@ -1888,7 +1910,7 @@ phenomena of Sections~\ref{sec:short-orbits} and
 \begin{enumerate}
 \item[\textup{(a)}] $K=\F_3$, $n=12$ ($n'=4$, $M=3$), $\lambda_0=\lambda=1$,
 $k=0$: orbits $(1,1),(1,1),(1,2)$; $64$ codes, $33$ joint terms, $8$ LCD
-codes, and \emph{no} self-dual code   every orbit has odd length and $M$
+codes, and \emph{no} self-dual code---every orbit has odd length and $M$
 is odd (Corollary~\ref{cor:self-dual}).
 \item[\textup{(b)}] $K=\F_9=\F_3(i)$, $n=12$ ($n'=4$, $M=3$),
 $\lambda_0=i$, $\lambda=-i$, $k=1$: a single orbit $(2,2)$, only $16$ codes
@@ -1898,7 +1920,7 @@ codes.
 \item[\textup{(c)}] $K=\F_{25}$, $n=30$ ($n'=6$, $M=5$),
 $\lambda_0=\lambda=1$, $k=1$: six fixed factors, orbits $(1,1)^6$; $46656$
 codes, and all hull contribution comes from length-$1$ orbits through
-$\min\{e,5-e\}$, with $\mathbb{E}[\eta_1]=6$   note the loop mean
+$\min\{e,5-e\}$, with $\mathbb{E}[\eta_1]=6$---note the loop mean
 $\nu_5=1$, not $\mu_5$ (Proposition~\ref{prop:moments}).
 \end{enumerate}
 \end{example}
@@ -1914,10 +1936,10 @@ nonzero joint coefficients, LCD $16$, self-orthogonal
 $70{,}639{,}674{,}082$, self-dual $27$, $\mathbb{E}[\eta_1]=17$,
 $\operatorname{Var}(\eta_1)=14/3$, and
 $\max_\kappa\mathbb{E}[\eta_1\mid\kappa]\approx17.392$ at $\kappa=31$.
-\item $M=4$, $n=124$ ($t=2$):
-$5^{31}=4{,}656{,}612{,}873{,}077{,}392{,}578{,}125$ codes, $3531$ joint
-coefficients, LCD still $16$, self-dual $125=5^3$,
-$\mathbb{E}[\eta_1]=184/5$, $\operatorname{Var}(\eta_1)=326/25$.
+\item For $M=4$ and $n=124$ (so $t=2$), there are
+$5^{31}=4{,}656{,}612{,}873{,}077{,}392{,}578{,}125$ codes and $3531$ joint
+coefficients; LCD is still $16$, self-dual codes number $125=5^3$,
+$\mathbb{E}[\eta_1]=184/5$ and $\operatorname{Var}(\eta_1)=326/25$.
 \end{itemize}
 In both cases the exact joint distribution over all $(M+1)^{31}$ codes is
 obtained from the four orbit traces, with no enumeration of codes.
@@ -1928,7 +1950,7 @@ Remark~\ref{rem:asymptotic-moments} (the skeleton limit is
 $\frac{1/4+30/3}{31}\approx0.331$).
 \end{example}
 
-\begin{figure*}[!t]
+\begin{figure*}[!b]
 \centering
 \includegraphics[width=0.82\linewidth]{fig3_joint_F32_n62.pdf}
 \caption{Exact joint distribution for $\F_{32}$, $n=62$, $M=2$
@@ -1967,7 +1989,7 @@ $\F_{32}$ & $(31,4,124)$ & 1 & $(1,1),(10,1)^3$ & $5^{31}$ & 3531 & 16 & 125 & $
 
 \subsection{Independent verification}\label{sec:verification}
 The computations are checked at two independent levels: 
-\paragraph{Level 1: internal combinatorics.}  The script
+\noindent\textbf{Level 1: internal combinatorics.}  The script
 \texttt{checks.py} compares the transfer-matrix trace with brute-force
 enumeration of all exponent words for every $(a,M,w)$ with $a\leq6$, $M\leq5$
 and $w\in\{1,2\}$ (60 cases); checks the closed forms of
@@ -1979,7 +2001,7 @@ skeletons; and recomputes every row of Table~\ref{tab:summary}, the joint table
 of Example~\ref{ex:F4}, the conditional mean of Example~\ref{ex:F8} and the
 maximal conditional mean of Example~\ref{ex:F32} from the enumerator alone.
 
-\paragraph{Level 2: direct finite-field linear algebra.}  For the families of
+\noindent\textbf{Level 2: direct finite-field linear algebra.}  For the families of
 Table~\ref{tab:verification} the script starts from the definitions, with no
 orbit input: it factors $x^{n'}-\lambda_{s,0}$ over $K_s$ into distinct
 irreducible factors, computes the reciprocal $f^{\#_{s,k}}$ from its definition
