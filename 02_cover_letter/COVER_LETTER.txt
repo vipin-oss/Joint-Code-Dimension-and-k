@@ -11,7 +11,7 @@ Dear Prof. [name],
 
 We submit the enclosed regular paper, "Joint Code-Dimension and k-Galois-Hull
 Enumerators for Repeated-Root Constacyclic Codes over Square-Free Affine
-Algebras", by Arun Kumar Yadav, Vipin Gupta, Pooja Soni and Manju Pruthi, for
+Algebras", by Arun Kumar Yadav, Vipin Gupta and Manju Pruthi, for
 consideration for publication in the IEEE Transactions on Information Theory.
 It has not been published elsewhere and is not under consideration by any other
 journal; all authors have approved the submission. This is a full regular paper
@@ -74,4 +74,4 @@ Yours sincerely,
 Arun Kumar Yadav (corresponding author)
 School of Basic and Applied Sciences, K.R. Mangalam University, Gurugram, India
 arunyadav0307@gmail.com - ORCID 0009-0009-1169-3264
-on behalf of Vipin Gupta, Pooja Soni and Manju Pruthi
+on behalf of Vipin Gupta and Manju Pruthi

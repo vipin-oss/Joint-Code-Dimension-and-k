@@ -4,7 +4,7 @@
 Constacyclic Codes over Square-Free Affine Algebras*
 **Type:** regular journal paper (not a letter / correspondence)
 **Target:** IEEE Transactions on Information Theory (regular paper track)
-**Authors:** Arun Kumar Yadav, Vipin Gupta, Pooja Soni, Manju Pruthi
+**Authors:** Arun Kumar Yadav, Vipin Gupta, Manju Pruthi
 
 This archive contains **only** what is needed to submit the paper. Nothing else.
 
@@ -62,7 +62,7 @@ Search for `XXXX` in the whole package. There are only a few:
 
 | where | what |
 |---|---|
-| `01_manuscript/main.tex`, `main_peerreview.tex` (`\thanks`) | manuscript received/revised/accepted dates, DOI line, e-mail addresses of V. Gupta, P. Soni, M. Pruthi |
+| `01_manuscript/main.tex`, `main_peerreview.tex` (`\thanks`) | manuscript received/revised/accepted dates, DOI line, e-mail addresses of V. Gupta and M. Pruthi |
 | `02_cover_letter/COVER_LETTER.md` and `.txt` | date, editor name, reviewer suggestions (3 names), page count |
 | `03_declarations/AUTHOR_DECLARATIONS.md` | the same e-mail addresses, signature date |
 
@@ -84,9 +84,9 @@ Search for `XXXX` in the whole package. There are only a few:
 `main.tex` (two-column journal layout) and `main_peerreview.tex` (single-column,
 double-spaced, what reviewers read) both `\input` the same `body.tex`, so the two
 PDFs can never differ in content. `references.bib` holds exactly the 31 cited
-references; `figures/` holds the three vector figures.
+references; `figures/` holds two vector PDF figures and one PNG workflow figure.
 
-**02_cover_letter/** — one-page cover letter: what the paper does, the four
+**02_cover_letter/** — one-page cover letter: what the paper does, the main
 contributions, relation to the closest literature, suggested reviewers. `.md` for
 editing, `.txt` for pasting into the web form.
 

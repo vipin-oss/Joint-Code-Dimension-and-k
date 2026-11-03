@@ -42,7 +42,7 @@ python3 compliance_check.py     # formal checks + budgets, no LaTeX needed
 | Abstract | ≤ **200 words**, no citations, no displayed math | **191 words** | ok |
 | Index Terms | 3–6, alphabetized, no period | **5**: Constacyclic codes, Galois hulls, LCD codes, repeated-root codes, transfer matrices | ok |
 | References | no cap; 25–45 typical for this journal | **31**, every one cited, no uncited bib entries | ok |
-| Figures | vector, captions **below** | **3** PDF figures | ok |
+| Figures | vector, captions **below** | **2 vector PDF figures and 1 PNG workflow figure** | ok |
 | Tables | captions **above**, booktabs rules | **2**, both full width (`table*`), `\scriptsize` | ok |
 | Displayed equations | numbered sequentially (1), (2), … | **93** | ok |
 | Numbered results | — | 3 theorems, 12 lemmas, 15 propositions, 6 corollaries, 2 definitions, 8 examples, 8 remarks; **34 proofs** | — |
@@ -62,7 +62,7 @@ the number of displays, figures, tables and references; read the true count off
   with `\maketitle` (single column, double spaced; about 40 pages). *Note: the class
   option `peerreview` alone only produces a one-column cover page and leaves the
   body two-column, so it is not used.*
-* IEEE `\author` block: seven `\thanks` footnotes in the IEEE order — dates and
+* IEEE `\author` block: six `\thanks` footnotes in the IEEE order — dates and
   funding and corresponding author, one affiliation per author, e-mail
   addresses, ORCID, DOI line, supplementary-material note.
 * `abstract` + `IEEEkeywords` ("Index Terms") exactly as IEEE sets them.
@@ -84,9 +84,9 @@ the number of displays, figures, tables and references; read the true count off
 ## 3. Fill these in before uploading (search for `XXXX`)
 
 1. `\thanks` #1 — manuscript received / revised / accepted / publication dates.
-2. `\thanks` #2–#5 — e-mail addresses of V. Gupta, P. Soni, M. Pruthi, and
+2. `\thanks` #2–#4 — e-mail addresses of V. Gupta and M. Pruthi, and
    confirm that A. K. Yadav is the corresponding author.
-3. `\thanks` #7 — DOI line (leave as `XXXXXXX` until the editorial office
+3. `\thanks` #6 — DOI line (leave as `XXXXXXX` until the editorial office
    assigns it; delete the line for the first submission if you prefer).
 4. `\thanks` #1 — if you have a grant, add "This work was supported by …" with
    the grant number (IEEE requires it when applicable).
