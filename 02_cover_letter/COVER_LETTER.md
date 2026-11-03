@@ -14,11 +14,11 @@ Dear Prof. [Name],
 
 We submit the enclosed **regular paper**, "Joint Code-Dimension and
 $k$-Galois-Hull Enumerators for Repeated-Root Constacyclic Codes over
-Square-Free Affine Algebras", by Arun Kumar Yadav, Vipin Gupta and
-Manju Pruthi, for consideration for publication in the *IEEE Transactions on
+Square-Free Affine Algebras", by Arun Kumar Yadav, Mohd Vasiulla and
+Vipin Gupta, for consideration for publication in the *IEEE Transactions on
 Information Theory*. It has not been published elsewhere and is not under
 consideration by any other journal; all authors have approved the submission.
-This is a full regular paper (a **42-page** double-spaced review manuscript),
+This is a full regular paper (a **40-page** double-spaced review manuscript),
 not a correspondence.
 
 **What the paper does.** For all $\mathcal A$-linear $\lambda$-constacyclic
@@ -68,11 +68,11 @@ We suggest the following reviewers, none of whom is at our institutions:
 
 Yours sincerely,
 
-Arun Kumar Yadav (corresponding author)
-School of Basic and Applied Sciences, K.R. Mangalam University, Gurugram, India
-arunyadav0307@gmail.com — ORCID 0009-0009-1169-3264
+Vipin Gupta (corresponding author)
+Department of Mathematics, Gurugram University, Gurugram, India
+vipin@gurugramuniversity.ac.in
 
-*on behalf of* Vipin Gupta and Manju Pruthi
+*on behalf of* Arun Kumar Yadav and Mohd Vasiulla
 
 ---
 
@@ -80,8 +80,8 @@ arunyadav0307@gmail.com — ORCID 0009-0009-1169-3264
 
 * Replace the editor name and the three reviewer suggestions with real names;
   IEEE requires that suggested reviewers have no conflict of interest with any
-  author. The date and the 42-page count are already filled in.
-* The real page count of the compiled `main_peerreview.pdf` is **42** and is
+  author. The date and the 40-page count are already filled in.
+* The real page count of the compiled `main_peerreview.pdf` is **40** and is
   already quoted in the cover letter; do not change it unless the PDF is
   rebuilt with a different length.
 * In the relation-to-literature paragraph the bracketed keys refer to the

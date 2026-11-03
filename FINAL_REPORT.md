@@ -67,8 +67,8 @@ These remain for the authors; the final report deliberately does not fabricate t
 
 1. Manuscript received, revised, accepted, publication and current-version dates in both `\thanks` #1 footnotes.
 2. DOI line `10.1109/TIT.2026.XXXXXXX` in both wrappers.
-3. E-mail addresses of V. Gupta and M. Pruthi in `\thanks` #3–#4 and in `AUTHOR_DECLARATIONS.md`.
-4. ORCID iDs of V. Gupta and M. Pruthi.
+3. Contribution statement of M. Vasiulla in `AUTHOR_DECLARATIONS.md`.
+4. ORCID iDs of M. Vasiulla and V. Gupta.
 5. Editor-in-Chief name in `COVER_LETTER.md` / `.txt`.
 6. Three suggested reviewers (name, affiliation, e-mail) and any requested exclusions.
 7. Signature date in `AUTHOR_DECLARATIONS.md`.

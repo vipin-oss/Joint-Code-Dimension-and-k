@@ -4,7 +4,7 @@
 Constacyclic Codes over Square-Free Affine Algebras*
 **Type:** regular journal paper (not a letter / correspondence)
 **Target:** IEEE Transactions on Information Theory (regular paper track)
-**Authors:** Arun Kumar Yadav, Vipin Gupta, Manju Pruthi
+**Authors:** Arun Kumar Yadav, Mohd Vasiulla, Vipin Gupta (corresponding)
 
 This archive is the corrected, fully verified submission package. It contains
 the final PDFs, the LaTeX sources, the cover letter, the declarations, the
@@ -30,7 +30,7 @@ MANIFEST_SHA256.txt            SHA-256 manifest of every shipped file
 
 `01_manuscript/main.pdf` is the two-column journal-layout version (**18
 pages**). `01_manuscript/main_peerreview.pdf` is the single-column review copy
-(**42 pages**, `\baselinestretch=1.4`). Both were rebuilt from the current
+(**40 pages**, `\baselinestretch=1.4`). Both were rebuilt from the current
 sources with `pdflatex` / `bibtex` (three `pdflatex` passes), with no undefined
 references or citations, no `??`, and zero overfull/underfull boxes. No
 `.aux`, `.log`, `.out`, `.bbl`, `.blg` or `__pycache__` files are shipped.
@@ -53,14 +53,14 @@ cover letter.
 ## Step 2 — fill the remaining author-only placeholders
 
 Search for `XXXX`. The cover-letter date (**3 November 2026**) and the real
-**42-page** review count are already filled in. The following still require
+**40-page** review count are already filled in. The following still require
 author input and were deliberately not invented:
 
 | where | what |
 |---|---|
-| `01_manuscript/main.tex`, `main_peerreview.tex` (`\thanks`) | manuscript received/revised/accepted/publication dates, DOI line, e-mail addresses of V. Gupta and M. Pruthi |
+| `01_manuscript/main.tex`, `main_peerreview.tex` (`\thanks`) | manuscript received/revised/accepted/publication dates, DOI line |
 | `02_cover_letter/COVER_LETTER.md` and `.txt` | Editor-in-Chief name, three suggested reviewers (name, affiliation, e-mail), requested exclusions |
-| `03_declarations/AUTHOR_DECLARATIONS.md` | the same co-author e-mail addresses, ORCID iDs of V. Gupta and M. Pruthi, signature date |
+| `03_declarations/AUTHOR_DECLARATIONS.md` | contribution statement of M. Vasiulla, ORCID iDs of M. Vasiulla and V. Gupta (optional), signature date |
 
 ## Step 3 — upload to the journal (exact list)
 

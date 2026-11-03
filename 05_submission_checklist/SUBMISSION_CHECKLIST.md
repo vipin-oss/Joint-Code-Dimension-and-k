@@ -12,7 +12,7 @@ paper track. There is no 5-page limit.
 | file | purpose |
 |---|---|
 | `../01_manuscript/main.tex` | two-column IEEEtran journal layout (18-page PDF) |
-| `../01_manuscript/main_peerreview.tex` | single-column review copy (42-page PDF) |
+| `../01_manuscript/main_peerreview.tex` | single-column review copy (40-page PDF) |
 | `../01_manuscript/body.tex` | shared manuscript body; both wrappers `\input` it |
 | `../01_manuscript/references.bib` | 31 entries — exactly the cited ones |
 | `../01_manuscript/figures/` | 2 vector PDF figures and 1 PNG workflow figure |
@@ -44,17 +44,17 @@ cd 01_manuscript && ./build.sh
 | Displayed equations | numbered sequentially | **114** | ok |
 | Numbered results | — | 3 theorems, 12 lemmas, 15 propositions, 6 corollaries, 2 definitions, 8 examples, 8 remarks; 34 proofs | — |
 | Section structure | Introduction first, Conclusion last, then Acknowledgment, References, Appendices | 7 numbered sections + 2 appendices + Acknowledgment + References | ok |
-| Length | no hard cap | **18** two-column pages; **42** single-column review pages | ok |
+| Length | no hard cap | **18** two-column pages; **40** single-column review pages | ok |
 
 The compliance checker still prints a prose-based *estimate* (16–21 / 37–50
-pages); the true counts above come from the final rebuilt PDFs. The 42-page
+pages); the true counts above come from the final rebuilt PDFs. The 40-page
 review count is already quoted in the cover letter.
 
 ## 2. Regular-paper setting already applied
 
 * `\documentclass[journal]{IEEEtran}` for the camera-ready style; review target
   `\documentclass[12pt,journal,draftclsnofoot,onecolumn]{IEEEtran}` with
-  `\baselinestretch=1.4` and `\maketitle` (single column, 42 pages). The class
+  `\baselinestretch=1.4` and `\maketitle` (single column, 40 pages). The class
   option `peerreview` alone only produces a one-column cover page and is not
   used.
 * IEEE `\author` block: six `\thanks` footnotes in IEEE order — dates/funding,
@@ -73,8 +73,9 @@ review count is already quoted in the cover letter.
 ## 3. Fill these in before uploading (author-only `XXXX`)
 
 1. `\thanks` #1 — manuscript received / revised / accepted / publication dates.
-2. `\thanks` #2–#4 — e-mail addresses of V. Gupta and M. Pruthi, and confirm
-   that A. K. Yadav is the corresponding author.
+2. `AUTHOR_DECLARATIONS.md` — contribution statement for M. Vasiulla and ORCID
+   iDs of M. Vasiulla and V. Gupta (optional); V. Gupta is the corresponding
+   author.
 3. `\thanks` #6 — DOI line (leave as `XXXXXXX` until assigned).
 4. `\thanks` #1 — add a grant sentence if a grant applies.
 5. Cover letter — Editor-in-Chief name, three suggested reviewers and requested
@@ -113,8 +114,8 @@ data moves.
       **ALL IEEE REGULAR-PAPER CHECKS PASSED**.
 - [x] `./build.sh` compiles both PDFs with no undefined references/citations,
       no `??`, no errors and zero overfull/underfull boxes.
-- [x] True page counts recorded: `main.pdf` 18, `main_peerreview.pdf` 42.
-- [x] Cover letter quotes the real 42-page count.
+- [x] True page counts recorded: `main.pdf` 18, `main_peerreview.pdf` 40.
+- [x] Cover letter quotes the real 40-page count.
 - [x] Every figure/table cited; captions in the IEEE position.
 - [x] Exact `python3 -I 04_supplementary/code/checks.py` prints
       `ALL CHECKS PASSED`.

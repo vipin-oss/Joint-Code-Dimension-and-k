@@ -3,22 +3,23 @@
 **Manuscript title:** Joint Code-Dimension and *k*-Galois-Hull Enumerators for
 Repeated-Root Constacyclic Codes over Square-Free Affine Algebras
 
-**Authors (in order):** Arun Kumar Yadav¹, Vipin Gupta², Manju Pruthi³
+**Authors (in order):** Arun Kumar Yadav¹, Mohd Vasiulla², Vipin Gupta³
 
-**Corresponding author:** Arun Kumar Yadav, arunyadav0307@gmail.com
-**ORCID:** 0009-0009-1169-3264
+**Corresponding author:** Vipin Gupta, vipin@gurugramuniversity.ac.in
+**ORCID of A. K. Yadav:** 0009-0009-1169-3264
 
 **Affiliations**
 
 1. School of Basic and Applied Sciences, K.R. Mangalam University, Sohna Road,
    Gurugram 122103, Haryana, India.
-2. Department of Mathematics, Gurugram University, Sector 51, Gurugram 122003,
-   Haryana, India.
-3. Department of Mathematics, Indira Gandhi University, Meerpur, Rewari 122502,
-   Haryana, India.
+2. Department of Mathematics, School of Computer Science & Artificial
+   Intelligence, SR University, Warangal, Telangana 506371, India.
+3. Department of Mathematics, Gurugram University, Gurugram 122505, Haryana,
+   India.
 
-*(e-mail addresses of the co-authors: to be filled in — V. Gupta: `XXXX`,
-M. Pruthi: `XXXX`; ORCID iDs of V. Gupta and M. Pruthi: `XXXX`)*
+*(e-mail addresses: A. K. Yadav arunyadav0307@gmail.com; M. Vasiulla
+mohd.vasiulla@sru.edu.in; V. Gupta vipin@gurugramuniversity.ac.in. ORCID iDs of
+M. Vasiulla and V. Gupta: `XXXX`)*
 
 ---
 
@@ -45,9 +46,8 @@ The contributions, in the order of authorship, are:
 
 * **Arun Kumar Yadav** — conceptualization, methodology, formal analysis,
   software, validation, data curation, visualization, writing (original draft).
+* **Mohd Vasiulla** — `XXXX` (to be filled in by the authors).
 * **Vipin Gupta** — formal analysis, validation, writing (review and editing).
-* **Manju Pruthi** — conceptualization, supervision, project administration,
-  writing (review and editing).
 
 No other person qualifies for authorship. No person has been omitted who
 qualifies.
@@ -127,8 +127,8 @@ signed by the corresponding author at acceptance.
 
 Signed on behalf of all three authors,
 
-**Arun Kumar Yadav** (corresponding author)
-School of Basic and Applied Sciences, K.R. Mangalam University, Gurugram, India
-arunyadav0307@gmail.com
+**Vipin Gupta** (corresponding author)
+Department of Mathematics, Gurugram University, Gurugram, India
+vipin@gurugramuniversity.ac.in
 
 Date: `____________________`
