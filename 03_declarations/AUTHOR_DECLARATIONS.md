@@ -18,8 +18,8 @@ Repeated-Root Constacyclic Codes over Square-Free Affine Algebras
    India.
 
 *(e-mail addresses: A. K. Yadav arunyadav0307@gmail.com; M. Vasiulla
-mohd.vasiulla@sru.edu.in; V. Gupta vipin@gurugramuniversity.ac.in. ORCID iDs of
-M. Vasiulla and V. Gupta: `XXXX`)*
+mohd.vasiulla@sru.edu.in; V. Gupta vipin@gurugramuniversity.ac.in. ORCID iDs
+can be entered in the submission form.)*
 
 ---
 
@@ -45,9 +45,14 @@ approved the submitted version, and agree to its submission to this journal.
 The contributions, in the order of authorship, are:
 
 * **Arun Kumar Yadav** — conceptualization, methodology, formal analysis,
-  software, validation, data curation, visualization, writing (original draft).
-* **Mohd Vasiulla** — `XXXX` (to be filled in by the authors).
-* **Vipin Gupta** — formal analysis, validation, writing (review and editing).
+  software (Python implementation and verification code), validation, data
+  curation, visualization, writing (original draft), writing (review and
+  editing).
+* **Mohd Vasiulla** — validation, writing (drafting, review and editing).
+* **Vipin Gupta** — conceptualization, methodology, formal analysis, software
+  (testing and independent checks of the code), validation, investigation,
+  writing (original draft, review and editing), project administration
+  (corresponding author).
 
 No other person qualifies for authorship. No person has been omitted who
 qualifies.

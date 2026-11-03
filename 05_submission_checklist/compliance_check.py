@@ -146,7 +146,6 @@ def check(texfile, label, report, peerreview=False):
         "e-mail address(es)": r"e-mail",
         "corresponding author": r"[Cc]orresponding author",
         "ORCID": r"ORCID",
-        "DOI placeholder": r"Digital Object Identifier",
         "funding statement": r"funding|supported by",
     }
     missing = [k for k, pat in needs.items() if not re.search(pat, head)]

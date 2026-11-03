@@ -70,18 +70,13 @@ review count is already quoted in the cover letter.
   Table I are written as `3^{31}` and `5^{31}`; the widest displays are set in
   `\small`.
 
-## 3. Fill these in before uploading (author-only `XXXX`)
+## 3. Fill these in before uploading (author-only)
 
-1. `\thanks` #1 — manuscript received / revised / accepted / publication dates.
-2. `AUTHOR_DECLARATIONS.md` — contribution statement for M. Vasiulla and ORCID
-   iDs of M. Vasiulla and V. Gupta (optional); V. Gupta is the corresponding
-   author.
-3. `\thanks` #6 — DOI line (leave as `XXXXXXX` until assigned).
-4. `\thanks` #1 — add a grant sentence if a grant applies.
-5. Cover letter — Editor-in-Chief name, three suggested reviewers and requested
-   exclusions.
-6. Declarations — co-author e-mail addresses, ORCID iDs, signature date.
-7. Final accepted version only — IEEE author biographies and photographs if
+1. Cover letter — Editor-in-Chief name, three suggested reviewers and requested
+   exclusions (a prompt for finding verified reviewers is provided separately).
+2. Declarations — signature date; ORCID iDs can be added in the submission form.
+3. Add a grant sentence to `\thanks` #1 only if a grant applies.
+4. Final accepted version only — IEEE author biographies and photographs if
    requested.
 
 ## 4. Upload list

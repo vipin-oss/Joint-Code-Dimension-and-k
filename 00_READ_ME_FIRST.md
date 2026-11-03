@@ -58,9 +58,8 @@ author input and were deliberately not invented:
 
 | where | what |
 |---|---|
-| `01_manuscript/main.tex`, `main_peerreview.tex` (`\thanks`) | manuscript received/revised/accepted/publication dates, DOI line |
 | `02_cover_letter/COVER_LETTER.md` and `.txt` | Editor-in-Chief name, three suggested reviewers (name, affiliation, e-mail), requested exclusions |
-| `03_declarations/AUTHOR_DECLARATIONS.md` | contribution statement of M. Vasiulla, ORCID iDs of M. Vasiulla and V. Gupta (optional), signature date |
+| `03_declarations/AUTHOR_DECLARATIONS.md` | signature date (ORCID iDs optional, can be entered in the submission form) |
 
 ## Step 3 — upload to the journal (exact list)
 
