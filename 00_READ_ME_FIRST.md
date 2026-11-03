@@ -12,7 +12,7 @@ Repeated-Root Constacyclic Codes over Square-Free Affine Algebras*
 01_manuscript/                 elsarticle sources, figures, highlights, main.pdf
 02_cover_letter/               cover letter (plain text)
 03_declarations/               originality, CRediT, funding, competing interest, data, AI use
-04_supplementary/              Python code, generated tables, verification log
+04_supplementary/              Python code, tables, log (NOT uploaded; kept for you, shared on request)
 05_submission_checklist/       compliance_check.py and the checklist
 ```
 
@@ -58,7 +58,6 @@ journal requirements.
 | Figures (separate files) | `01_manuscript/figures/` |
 | Highlights (optional) | `01_manuscript/highlights.txt` |
 | Cover letter | `02_cover_letter/COVER_LETTER.txt` |
-| Supplementary material | `04_supplementary/` as one zip |
 
 `05_submission_checklist/` is for you, not for the journal.
 

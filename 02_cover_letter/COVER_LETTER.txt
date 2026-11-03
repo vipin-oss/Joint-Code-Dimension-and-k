@@ -46,12 +46,10 @@ average hull dimensions have been computed. The contribution here is the full
 joint law over a family together with its enumerative consequences. The paper
 states explicitly where it agrees with, and where it goes beyond, that work.
 
-The supplementary material contains the complete Python implementation, the
-verification log, the symbolic moment/covariance/complexity report and the
-regenerated CSV tables. Every table and worked example in the paper is
-reproduced by this code. The manuscript includes the required declarations
-(CRediT statement, competing interests, funding, use of AI-assisted tools, data
-availability).
+The computational results were obtained with the authors' own Python
+implementation, which is available from the corresponding author on reasonable
+request. The manuscript includes the required declarations (CRediT statement,
+competing interests, funding, use of AI-assisted tools, data availability).
 
 We suggest the following reviewers, none of whom is at our institutions:
 [Name, affiliation, e-mail], [Name, affiliation, e-mail],
