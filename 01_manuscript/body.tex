@@ -91,6 +91,7 @@ all twists $\lambda\in\A^\ast$ are allowed: components whose twist is
 incompatible with the $k$-Galois dual contribute hull dimension $0$ and are
 included with an explicit dimension-only factor. The main result
 (Theorem~\ref{thm:main}) is the exact joint enumerator
+{\small
 \begin{align*}
 \Epoly^{(M)}(U,Z)
 &= \sum_C U^{\kappa(C)} Z^{\eta_k(C)}\\
@@ -103,6 +104,7 @@ included with an explicit dimension-only factor. The main result
    \prod_{f\in\Fs}
    \bigl(1+U^{w_f}+\cdots+U^{Mw_f}\bigr).
 \end{align*}
+}
 where the $(M+1)\times(M+1)$ transfer matrix $T^{(M)}_w$ has entries
 $U^{w(M-\beta)}Z^{w\min\{\alpha,M-\beta\}}$. On the overlap with
 \cite{debnathAffine2026}, our hull-dimension formula agrees with theirs
@@ -276,7 +278,7 @@ such that
 \begin{equation}\label{eq:lambda0}
 \lambda_{s,0}^{\,M}=\lambda_s,
 \qquad\text{i.e.}\qquad
-\lambda_{s,0}=\Frob^{-t}(\lambda_s).
+\lambda_{s,0}=\lambda_s^{\,p^{\,d_s-t\ \mathrm{mod}\ d_s}}=\Frob^{-t}(\lambda_s).
 \end{equation}
 Define the component modulus and its square-free kernel by
 \[
@@ -453,8 +455,9 @@ the \emph{$k$-Galois dual} and \emph{$k$-Galois hull}.  The annihilator
 $\Dk(C)$ is a $K_s$-subspace: if $y\in\Dk(C)$ and $a\in K_s$, then
 $\langle c,ay\rangle_{s,k}=\sigma_{s,k}(a)\langle c,y\rangle_{s,k}=0$.
 
-Componentwise Frobenius gives mutually inverse ring automorphisms
-$\sigma_{\A,k},\rho_{\A,k}$ of $\A$, and the \emph{global $k$-Galois pairing} on
+On the $s$-th component put $\sigma_{\A,k}|_{K_s}=\sigma_{s,k}$ and
+$\rho_{\A,k}|_{K_s}=\rho_{s,k}$; these componentwise maps are mutually inverse
+ring automorphisms of $\A$.  The \emph{global $k$-Galois pairing} on
 $\A^n$ is the $\A$-valued pairing
 \[
 \langle x,y\rangle_{\A,k}
@@ -503,10 +506,10 @@ coordinatewise.
 \end{proposition}
 
 \begin{proof}
-The defining condition for $y\in\Dk(C)$ is
-$\sum_i c_i\sigma_{s,k}(y_i)=0$ for all $c\in C$.  Putting
-$z=\sigma_{s,k}(y)$ coordinatewise, this says $z\in C^{\perpE}$, and applying
-the inverse map $\rho_{s,k}$ coordinatewise gives $y=\rho_{s,k}(z)$.
+The $k$-Galois dual $\Dk(C)$ is the set of vectors $y$ satisfying
+$\sum_i c_i\sigma_{s,k}(y_i)=0$ for all $c\in C$; with
+$z=\sigma_{s,k}(y)$ this says $z\in C^{\perpE}$, and applying
+$\rho_{s,k}$ coordinatewise gives $y=\rho_{s,k}(z)$.
 \end{proof}
 
 \begin{remark}\label{rem:euclidean-hermitian}
@@ -574,11 +577,13 @@ f^{\#_{s,k}}(x)=\rho(f_0)^{-1}x^r\sum_{i=0}^{r}\rho(f_i)x^{-i}.
 \]
 Put $\beta=\rho(\alpha^{-1})=\alpha^{-p^{d_s-k}}$, so
 $\beta^{-1}=\rho(\alpha)$.  Then
+{\small
 \[
 \sum_{i=0}^{r}\rho(f_i)\beta^{-i}
    =\sum_{i=0}^{r}\rho(f_i)\rho(\alpha)^i
    =\rho\Bigl(\sum_{i=0}^{r}f_i\alpha^i\Bigr)=\rho(f(\alpha))=0,
 \]
+}
 hence $f^{\#_{s,k}}(\beta)=0$.
 \end{proof}
 
@@ -693,6 +698,9 @@ $1^M=1$; therefore $(\lambda_{s,0}^c)^M=1$ if and only if
 $\lambda_{s,0}^c=1$.
 \end{proof}
 
+Here $d_s=em_s$ is the absolute degree of $K_s$ over $\F_p$; when $m_s=1$ this
+reduces to the base-field condition $\lambda_{s,0}^{1+p^{e-k}}=1$.
+
 Under compatibility we define
 \[
 \tau_{s,k}:\Fs\longrightarrow\Fs,\qquad \tau_{s,k}(f)=f^{\#_{s,k}},
@@ -762,9 +770,9 @@ code.
 \end{corollary}
 
 \begin{proof}
-The first statement is Proposition~\ref{prop:incompatible} combined with
-Lemma~\ref{lem:global-duality}.  If $C_s(\mathbf{e})$ is self-orthogonal then
-$C_s(\mathbf{e})=\Hull_k(C_s(\mathbf{e}))=\{0\}$.  If it is dual-containing then
+The first statement follows from Proposition~\ref{prop:incompatible} and
+Lemma~\ref{lem:global-duality}.  When $C_s(\mathbf{e})$ is self-orthogonal we have
+$C_s(\mathbf{e})=\Hull_k(C_s(\mathbf{e}))=\{0\}$.  When it is dual-containing,
 $\Dk(C_s(\mathbf{e}))=\Hull_k(C_s(\mathbf{e}))=\{0\}$, and by
 Proposition~\ref{prop:dual-translation}
 $\dim_{K_s}\Dk(C_s(\mathbf{e}))=n-\dim_{K_s}C_s(\mathbf{e})$, forcing
@@ -886,11 +894,13 @@ $\tau_{s,k}^{-1}(f_{O,i})=f_{O,i-1}$.
 
 \begin{proposition}\label{prop:min-edge}
 For every exponent selection $\mathbf{e}$,
+{\small
 \begin{equation}\label{eq:eta-min-edge}
 \eta_k(C(\mathbf{e}))
  =\sum_{s\ \mathrm{compatible}}\ \sum_{O\in\Os}
    w_O\sum_{i=1}^{a_O}\min\{e_{O,i},\,M-e_{O,i+1}\},
 \end{equation}
+}
 whereas
 \begin{equation}\label{eq:kappa-orbits}
 \begin{split}
@@ -909,10 +919,12 @@ In particular, if every component is compatible, the second sum in
 Let $s$ be compatible.  By Lemma~\ref{lem:hull-generator} and the dimension
 formula for a principal ideal, the contribution of the factor $f_{O,i}$ to
 $\dim_{K_s}\Hull_k(C_s(\mathbf{e}))$ is
+{\small
 \[
 d_O\Bigl(M-\max\{e_{O,i},M-e_{O,i-1}\}\Bigr)
    =d_O\min\{e_{O,i-1},M-e_{O,i}\}.
 \]
+}
 Re-indexing $i-1\mapsto i$ gives $d_O\min\{e_{O,i},M-e_{O,i+1}\}$.
 Multiplying by $m_s$, summing over $i$ and over all orbits of all compatible
 components, and using Proposition~\ref{prop:incompatible} for the remaining
@@ -934,7 +946,18 @@ Remark~\ref{rem:candidate}). No coprimality condition
 $\gcd(\operatorname{ord}\lambda_s,n')=1$ is needed here: only the component
 compatibility condition $\lambda_{s,0}^{1+p^{d_s-k}}=1$ matters, and
 components failing it have trivial hull by
-Proposition~\ref{prop:incompatible}.
+Proposition~\ref{prop:incompatible}.  In \cite{debnathAffine2026} the
+compatibility and factorization hypotheses are stated over the base field
+$\F_q$ ($q=p^e$) as $\operatorname{ord}\lambda_s\mid 1+p^{e-k}$ and
+$\gcd(\operatorname{ord}\lambda_s,n')=1$.  For a component field $K_s$ of
+absolute degree $d_s=em_s$ over $\F_p$ our criterion uses $d_s$ in place of
+$e$: the
+family $\F_{64}$ over $\F_8$ with $k=1$, $n'=3$, $M=2$ and
+$\lambda_{s,0}$ of order $3$ is compatible by our criterion
+($3\mid 1+2^{5}=33$) but not by the base-field criterion ($3\nmid
+1+2^{2}=5$), and $\gcd(\operatorname{ord}\lambda_{s,0},n')=3\neq1$.  It is
+included in the independent brute-force checks of
+Section~\ref{sec:verification}.
 \end{remark}
 
 Thus, on one compatible orbit, $\kappa$ is a sum over the \emph{vertices} of a
@@ -1018,6 +1041,7 @@ diagonal entries is summing over all cyclic words $(e_1,\ldots,e_a)$, which is
 \end{proof}
 
 Let
+{\small
 \[
 \mathcal{S}_k^{\mathrm{comp}}
  =\{s:\lambda_s^{1+p^{d_s-k}}=1\},
@@ -1025,8 +1049,10 @@ Let
 \mathcal{S}_k^{\mathrm{inc}}=\{1,\ldots,N\}\setminus
                                \mathcal{S}_k^{\mathrm{comp}} .
 \]
-\begin{theorem}{\label{thm:main}
+}
+\begin{theorem}\label{thm:main}
 For every $n\geq1$, every $\lambda\in\A^\ast$, and every $0\leq k<e$,
+{\small
 \begin{align}
 \Epoly^{(M)}(U,Z)
 &=\prod_{s\in\mathcal{S}_k^{\mathrm{comp}}}
@@ -1041,6 +1067,7 @@ For every $n\geq1$, every $\lambda\in\A^\ast$, and every $0\leq k<e$,
   +\cdots+U^{Mw_f}\Bigr).
 \label{eq:main}
 \end{align}
+}
 where an empty product is $1$.  In particular, if every component is
 compatible, then
 \[
@@ -1143,9 +1170,12 @@ by $w_f$.
 \end{proposition}
 
 \begin{proof}
-Put $M=1$ in the definition of $T^{(M)}_w$: the entry in row $\alpha$ and
-column $\beta$ is $U^{w(1-\beta)}Z^{w\min\{\alpha,1-\beta\}}$, which gives the
-four entries displayed. The edge term is
+Put $M=1$ in the definition of $T^{(M)}_w$. The entry in row $\alpha$ and
+column $\beta$ is
+\[
+U^{w(1-\beta)}Z^{w\min\{\alpha,1-\beta\}},
+\]
+which gives the four entries displayed. The edge term is
 $\min\{e_i,1-e_{i+1}\}$, which equals $1$ iff $e_i=1$ and $e_{i+1}=0$ and
 vanishes otherwise. A cyclic binary word has no descent iff it is constant, so
 on an orbit of length $a_O$ exactly $2$ of the $2^{a_O}$ words give trivial
@@ -1245,11 +1275,11 @@ compatible orbit,
 \sum_{i=1}^{a}(M-e_i^\vee)=\sum_{i=1}^{a}e_{i-1}
    =aM-\sum_{i=1}^{a}(M-e_i),
 \]
-while the edge sum for the transformed word is
+The edge sum of the transformed word is
 $\sum_i\min\{M-e_{i-1},e_i\}
  =\sum_i\min\{M-e_i,e_{i+1}\}$ after re-indexing.  By
 Lemma~\ref{lem:telescoping}, its difference from
-$\sum_i\min\{e_i,M-e_{i+1}\}$ is $\sum_i(e_i-e_{i+1})=0$.  On an incompatible
+$\sum_i\min\{e_i,M-e_{i+1}\}$ is $\sum_i(e_{i+1}-e_i)=0$.  On an incompatible
 factor, $w_f(M-e_f)$ is sent to $w_fM-w_f(M-e_f)$ and the hull contribution
 remains $0$.  Summing over all local pieces, the bijection sends
 $\kappa\mapsto W-\kappa$ and fixes $\eta_k$, proving the coefficient symmetry;
@@ -1264,17 +1294,20 @@ For orbit lengths $1$ and $2$ the trace can be evaluated completely.
 For every $M\geq1$ and $w\geq1$:
 \begin{enumerate}
 \item[\textup{(i)}]
-$\displaystyle
+\[
 \Epoly_{1,w}^{(M)}(U,Z)
- =\sum_{r=0}^{M}U^{wr}Z^{w\min\{r,M-r\}}$.
+ =\sum_{r=0}^{M}U^{wr}Z^{w\min\{r,M-r\}}.
+\]
 In the hull polynomial $\Epoly_{1,w}^{(M)}(1,Z)$, the coefficient of $Z^{wh}$
 is $2$ for $0\leq h<M/2$, is $1$ for $h=M/2$ when $M$ is even, and is $0$ for
 $h>\lfloor M/2\rfloor$.
 \item[\textup{(ii)}]
-$\displaystyle
+{\small
+\[
 \Epoly_{2,w}^{(M)}(U,Z)
  =\sum_{R=0}^{2M}\bigl(M+1-|R-M|\bigr)\,
-    U^{wR}Z^{w\min\{R,2M-R\}}$.
+    U^{wR}Z^{w\min\{R,2M-R\}}.
+\]}
 \end{enumerate}
 \end{proposition}
 
@@ -1392,10 +1425,12 @@ in $\{-1,0,1\}$.
 \begin{theorem}\label{thm:support}
 For one orbit of length $a$, the attainable pairs $(R,H)$ are exactly the
 integer pairs with
+{\footnotesize
 \begin{equation}\label{eq:trapezoid}
 0\leq R\leq aM,\qquad
 \min\{R,M,aM-R\}\leq H\leq\min\{R,aM-R\}.
 \end{equation}
+}
 Equivalently the attainable contributions are $(wR,wH)$ for such pairs.
 \end{theorem}
 
@@ -1426,10 +1461,11 @@ a sum of integer intervals is an integer interval.
 \end{proof}
 
 \begin{corollary}\label{cor:global-support}
-A pair $(\kappa,\eta)$ occurs if and only if it is a sum, over compatible
-orbits, of pairs $(w_OR_O,w_OH_O)$ satisfying \eqref{eq:trapezoid}, plus an
-incompatible contribution $\bigl(\sum_{s\in\mathcal{S}_k^{\mathrm{inc}}}
-\sum_{f\in\Fs}w_fr_f,\,0\bigr)$ with $0\leq r_f\leq M$.  In particular the
+A pair $(\kappa,\eta)$ occurs iff, over the compatible orbits, one sums
+pairs $(w_OR_O,w_OH_O)$ from \eqref{eq:trapezoid}; to this one adds an
+incompatible contribution of the form
+$\bigl(\sum_{s\in\mathcal{S}_k^{\mathrm{inc}}}\sum_{f\in\Fs}w_fr_f,\,0\bigr)$,
+where $0\leq r_f\leq M$.  In particular the
 necessary bound $0\leq\eta\leq\min\{\kappa,W-\kappa\}$ from
 $\Hull_k(C)\subseteq C\cap\Dk(C)$ is generally not sufficient: for $M\geq2$,
 if a compatible orbit has $0<R_O<a_OM$, its hull contribution is at least
@@ -1594,10 +1630,9 @@ Theorem~\ref{thm:support} the conditional distribution of $\eta_k$ given
 $\kappa$ varies substantially with $\kappa$ (see Example~\ref{ex:F32}).
 
 \begin{proposition}\label{prop:conditional}
-For $j=0,1,2$ put
-$\Phi_j(\kappa)=[U^\kappa]\,
- \bigl(\partial^j\Epoly^{(M)}/\partial Z^j\bigr)(U,1)$.
-For every attainable $\kappa$ (i.e.\ $\Phi_0(\kappa)>0$),
+For $j=0,1,2$ define the coefficients
+$\Phi_j(\kappa)=[U^\kappa]\,\bigl(\partial^j\Epoly^{(M)}/\partial Z^j\bigr)(U,1)$;
+for every attainable $\kappa$ (that is, $\Phi_0(\kappa)>0$) we have
 \[
 \Pr(\eta_k=\eta\mid\kappa)=\frac{N_{\kappa,\eta}}{\Phi_0(\kappa)},\qquad
 \mathbb{E}[\eta_k\mid\kappa]=\frac{\Phi_1(\kappa)}{\Phi_0(\kappa)},
@@ -1697,7 +1732,8 @@ Globally, the numbers of self-orthogonal and dual-containing codes are
 \operatorname{tr}\bigl((J^{\leq})^{a_O}\bigr).
 \end{gathered}
 \]
-while the number of self-dual codes is $0$ if
+(incompatible components contribute a factor $1$ by
+Corollary~\ref{cor:incompatible}), while the number of self-dual codes is $0$ if
 $\mathcal{S}_k^{\mathrm{inc}}\neq\varnothing$, and otherwise
 $\prod_{s,O}\operatorname{sd}(a_O,M)$.
 \end{proposition}
@@ -1753,11 +1789,13 @@ every pair (start state, current state) in $\{0,\ldots,M\}^2$, a sparse
 dictionary of accumulated $(\kappa,\eta)$ counts (multiplied into the running
 global polynomial), extends the walk edge by edge, and after $a_O$ steps keeps
 the diagonal start $=$ current.  The only mathematical line is the transition
+{\small
 \[
 (\kappa,\eta)\longmapsto
  \bigl(\kappa+w(M-\beta),\ \eta+w\min\{\alpha,M-\beta\}\bigr)
  \qquad(\alpha\to\beta),
 \]
+}
 which is \eqref{eq:transfer}.  An incompatible factor is convolved with
 $1+U^{w_f}+\dots+U^{Mw_f}$.  In the reference implementation each one-orbit polynomial is
 computed separately (caching repeated pairs $(a_O,w_O)$) and the orbit
@@ -1781,11 +1819,15 @@ The coefficients have $O(N_F\log(M+1))$ bits.
 
 \begin{proof}
 Every intermediate pair satisfies $0\leq\kappa\leq W$ and
-$0\leq\eta\leq\lfloor W/2\rfloor$ (the latter since
-$\eta\leq\min\{\kappa,W-\kappa\}$ globally, and partial sums only increase),
+$0\leq\eta\leq\lfloor W/2\rfloor$ (the final hull satisfies
+$\eta\leq\min\{\kappa,W-\kappa\}\leq\lfloor W/2\rfloor$, and partial sums only
+increase),
 so every dictionary is supported in a rectangle with
-$(W+1)(\lfloor W/2\rfloor+1)$ cells.  There are $N_F^{\mathrm{comp}}\leq N_F$
-compatible edge-steps in total; at each step there are $(M+1)^2$
+$(W+1)(\lfloor W/2\rfloor+1)$ cells.  Let
+$N_F^{\mathrm{comp}}=\sum_{s\in\mathcal{S}_k^{\mathrm{comp}}}|\Fs|$ be the
+number of distinct kernel factors on compatible components; this is also the
+total number of compatible edge-steps, and $N_F^{\mathrm{comp}}\leq N_F$.
+At each step there are $(M+1)^2$
 (start, current) state pairs and $M+1$ choices of next state, each requiring
 one pass over the rectangle.  The incompatible convolutions are dominated by
 the same bound.  A coefficient counts a subset of the $(M+1)^{N_F}$
@@ -1862,7 +1904,7 @@ consequence of Theorem~\ref{thm:support}.
 \includegraphics[width=0.82\linewidth]{fig2_joint_F8_n14.pdf}
 \caption{Joint distribution $N_{\kappa,\eta}$ for $\F_8$, $n=14$
 (Example~\ref{ex:F8}); color is $\log_{10}N_{\kappa,\eta}$ and white cells
-are zero.  Only $\kappa\in\{1,3,11,13\}$ occur at $\eta=1$   the
+are zero.  Only $\kappa\in\{1,3,11,13\}$ occur at $\eta=1$---the
 one-orbit trapezoid gaps of Theorem~\ref{thm:support}, invisible from the
 hull marginal alone.}
 \label{fig:F8-joint}
@@ -1872,7 +1914,7 @@ hull marginal alone.}
 Let $\A=\F_4\times\F_{16}$ over $\F_4$, $n=10$ ($n'=5$, $M=2$),
 $\lambda_0=\lambda=(1,1)$, $k=1$.  The $\F_4$ component contributes orbits
 $(1,1),(2,2)$ as in Example~\ref{ex:F4}; the $\F_{16}$ component has
-$m_s=[\F_{16}:\F_4]=2$ and contributes $(1,2),(4,2)$   the weight
+$m_s=[\F_{16}:\F_4]=2$ and contributes $(1,2),(4,2)$---the weight
 $w_O=m_sd_O$ doubling in action.  Here $W=30$, there are $3^8=6561$ codes,
 $123$ joint terms, $16$ LCD codes, $9$ self-dual codes, and
 $\mathbb{E}[\eta_1]=23/3$, $\operatorname{Var}(\eta_1)=458/81$.  This family
@@ -1888,7 +1930,7 @@ phenomena of Sections~\ref{sec:short-orbits} and
 \begin{enumerate}
 \item[\textup{(a)}] $K=\F_3$, $n=12$ ($n'=4$, $M=3$), $\lambda_0=\lambda=1$,
 $k=0$: orbits $(1,1),(1,1),(1,2)$; $64$ codes, $33$ joint terms, $8$ LCD
-codes, and \emph{no} self-dual code   every orbit has odd length and $M$
+codes, and \emph{no} self-dual code---every orbit has odd length and $M$
 is odd (Corollary~\ref{cor:self-dual}).
 \item[\textup{(b)}] $K=\F_9=\F_3(i)$, $n=12$ ($n'=4$, $M=3$),
 $\lambda_0=i$, $\lambda=-i$, $k=1$: a single orbit $(2,2)$, only $16$ codes
@@ -1898,7 +1940,7 @@ codes.
 \item[\textup{(c)}] $K=\F_{25}$, $n=30$ ($n'=6$, $M=5$),
 $\lambda_0=\lambda=1$, $k=1$: six fixed factors, orbits $(1,1)^6$; $46656$
 codes, and all hull contribution comes from length-$1$ orbits through
-$\min\{e,5-e\}$, with $\mathbb{E}[\eta_1]=6$   note the loop mean
+$\min\{e,5-e\}$, with $\mathbb{E}[\eta_1]=6$---note the loop mean
 $\nu_5=1$, not $\mu_5$ (Proposition~\ref{prop:moments}).
 \end{enumerate}
 \end{example}
@@ -1914,10 +1956,10 @@ nonzero joint coefficients, LCD $16$, self-orthogonal
 $70{,}639{,}674{,}082$, self-dual $27$, $\mathbb{E}[\eta_1]=17$,
 $\operatorname{Var}(\eta_1)=14/3$, and
 $\max_\kappa\mathbb{E}[\eta_1\mid\kappa]\approx17.392$ at $\kappa=31$.
-\item $M=4$, $n=124$ ($t=2$):
-$5^{31}=4{,}656{,}612{,}873{,}077{,}392{,}578{,}125$ codes, $3531$ joint
-coefficients, LCD still $16$, self-dual $125=5^3$,
-$\mathbb{E}[\eta_1]=184/5$, $\operatorname{Var}(\eta_1)=326/25$.
+\item For $M=4$ and $n=124$ (so $t=2$), there are
+$5^{31}=4{,}656{,}612{,}873{,}077{,}392{,}578{,}125$ codes and $3531$ joint
+coefficients; LCD is still $16$, self-dual codes number $125=5^3$,
+$\mathbb{E}[\eta_1]=184/5$ and $\operatorname{Var}(\eta_1)=326/25$.
 \end{itemize}
 In both cases the exact joint distribution over all $(M+1)^{31}$ codes is
 obtained from the four orbit traces, with no enumeration of codes.
@@ -1928,7 +1970,7 @@ Remark~\ref{rem:asymptotic-moments} (the skeleton limit is
 $\frac{1/4+30/3}{31}\approx0.331$).
 \end{example}
 
-\begin{figure*}[!t]
+\begin{figure*}[!b]
 \centering
 \includegraphics[width=0.82\linewidth]{fig3_joint_F32_n62.pdf}
 \caption{Exact joint distribution for $\F_{32}$, $n=62$, $M=2$
@@ -1966,8 +2008,14 @@ $\F_{32}$ & $(31,4,124)$ & 1 & $(1,1),(10,1)^3$ & $5^{31}$ & 3531 & 16 & 125 & $
 \end{table*}
 
 \subsection{Independent verification}\label{sec:verification}
-The computations are checked at two independent levels: 
-\paragraph{Level 1: internal combinatorics.}  The script
+The computations are checked at three independent levels.  The exact
+root-level command
+\texttt{python3 -I 04\_supplementary/code/checks.py} prints a pass line for
+every check and ends in \texttt{ALL CHECKS PASSED}; its saved output is
+\texttt{checks\_output.txt}.  All shipped verification code is standard-library
+Python.
+
+\noindent\textbf{Level 1: internal combinatorics.}  The script
 \texttt{checks.py} compares the transfer-matrix trace with brute-force
 enumeration of all exponent words for every $(a,M,w)$ with $a\leq6$, $M\leq5$
 and $w\in\{1,2\}$ (60 cases); checks the closed forms of
@@ -1978,11 +2026,15 @@ moment formulas of Proposition~\ref{prop:moments} for $M\leq7$ on a range of
 skeletons; and recomputes every row of Table~\ref{tab:summary}, the joint table
 of Example~\ref{ex:F4}, the conditional mean of Example~\ref{ex:F8} and the
 maximal conditional mean of Example~\ref{ex:F32} from the enumerator alone.
+The moment, covariance and complexity formulas are additionally re-derived
+symbolically in the external report \texttt{symbolic\_verification.txt}; no
+shipped file imports a computer algebra system.
 
-\paragraph{Level 2: direct finite-field linear algebra.}  For the families of
+\noindent\textbf{Level 2: direct finite-field linear algebra.}  For the families of
 Table~\ref{tab:verification} the script starts from the definitions, with no
 orbit input: it factors $x^{n'}-\lambda_{s,0}$ over $K_s$ into distinct
-irreducible factors, computes the reciprocal $f^{\#_{s,k}}$ from its definition
+irreducible factors using the genuine irreducibility test of
+Appendix~\ref{sec:orbit-data}, computes the reciprocal $f^{\#_{s,k}}$ from its definition
 \eqref{eq:reciprocal}, and reads off the orbit skeleton, which is found to agree
 with the skeletons used in Examples~\ref{ex:F4}--\ref{ex:char35}.  For
 \emph{every} exponent word it then builds $g_{\mathbf{e}}=\prod f^{e_f}$, forms
@@ -1996,10 +2048,7 @@ compared with the trace product of Theorem~\ref{thm:main}; every word and every
 histogram matches.  Characteristics $2$ and $3$, the Galois indices $k=0$ and
 $k=1$, the multiplicities $M=2$ and $M=3$, and both fixed and swapped factors
 are represented, so that the sign and normalization choices in $f^{\#_{s,k}}$
-are exercised outside a single degenerate situation.  The larger families of
-Table~\ref{tab:summary} ($\F_4\times\F_{16}$, $\F_{25}$, $\F_{32}$) are not
-reached by this brute-force verification; for them the orbit data are read off
-the factorization and only the transfer product is evaluated.
+are exercised outside a single degenerate situation.
 
 \begin{table*}[!t]
 \centering
@@ -2021,6 +2070,29 @@ $\F_9$, $\lambda_0=-1$ & $3^2$ & 4 & 3 & 12 & 1 & $(2,1)^2$         & $4^4=256$\
 \bottomrule
 \end{tabular}
 \end{table*}
+
+\noindent\textbf{Level 3: independent brute-force families.}  To test the
+theorems outside the skeletons of Tables~\ref{tab:summary}--\ref{tab:verification},
+the same script constructs 21 families directly from the definitions:
+$\F_2$ and $\F_4$ with $n=4,6,12$; $\F_3$ with $n=6,9$; $\F_5$ with $n=10$;
+an $\F_{64}$ component over the base field $\F_8$ with $k=1$,
+$\lambda_{s,0}$ of order $3$ and
+$\gcd(\operatorname{ord}\lambda_{s,0},n')\neq1$; $k=0$ and $k=1$;
+compatible and incompatible twists with $\lambda_{s,0}\neq1$, including the
+$\F_5$ example above; and the product algebras $\F_4\times\F_{16}$ and
+$\F_4\times\F_4$.  For each family it checks the compatibility condition
+$\lambda_{s,0}^{1+p^{d_s-k}}=1$, the reciprocal permutation, the Gram-rank
+hull dimension against the min-edge formula, the full joint histogram, $W$,
+moments, covariance, LCD/self-orthogonal/self-dual counts and every conditional
+mean against the enumerator.  These checks include the $\F_4\times\F_{16}$ row
+of Table~\ref{tab:summary} and the incompatible-twist example, and they remove
+the earlier limitation that larger families were only checked at the
+transfer-product level.  The Level-3 families include
+$N_F^{\mathrm{inc}}>0$ as well as fully compatible cases, so the LCD formula
+$(M+1)^{N_F^{\mathrm{inc}}}2^{\#\mathrm{orbits}}$, the self-orthogonal count
+and the self-dual count are tested with incompatible components present.
+The saved output was regenerated from the exact isolated-mode command above;
+it is \texttt{checks\_output.txt} in the supplementary material.
 
 \section{Conclusion}\label{sec:conclusions}
 In this paper, we have determined the exact joint distribution of code dimension and
@@ -2092,11 +2164,13 @@ $\{0\leq e_i\leq M,\ \sum e_i=S\}$.  At a vertex of this polytope at most one
 coordinate lies in $(0,M)$ (else two such coordinates could be perturbed by
 $\pm\varepsilon$).  At such a vertex, $S\geq M$ forces at least one coordinate
 equal to $M$ and $R\geq M$ forces at least one coordinate equal to $0$.
-Traveling along the cycle from an $M$ to the next $0$, one meets either a
-direct edge $M\to0$, contributing $M$ to $H$, or a passage $M\to c\to0$
-through the unique intermediate coordinate $c$, contributing
-$(M-c)+c=M$.  Hence $H\geq M$ at every vertex, and by concavity
-$H(\mathbf{e})\geq M$ for every point of the polytope.
+Traveling along the cycle from a coordinate equal to $M$ to the next coordinate
+equal to $0$, one meets either a direct edge $M\to0$, contributing $M$ to $H$,
+or a passage $M\to c\to0$ through the unique intermediate coordinate $c$
+(possibly preceded by zero-contribution edges $M\to M$), contributing
+$(M-c)+c=M$.  Hence $H\geq M$ at every vertex; since every point of the
+polytope is a convex combination of vertices, concavity gives
+$H(\mathbf{e})\geq M$ everywhere.
 
 \emph{Attainability.}  For $a\leq2$ the interval in \eqref{eq:trapezoid} is a
 single point (Proposition~\ref{prop:short-orbits}), so let $a\geq3$.  If
@@ -2115,15 +2189,17 @@ equal to $q+1$ and $a-r$ entries equal to $q$, to be arranged cyclically.  If
 $S\leq R$ then $S\leq aM/2$ and we want adjacent sums $\leq M$, which gives
 $\min\{e_i,M-e_{i+1}\}=e_i$ and $H=S$.  The only adjacent pair that could exceed
 $M$ is $(q+1,q+1)$ with $2q+2>M$.  If $r\geq2$ and $2q+2>M$, then
-$S=aq+r\leq aM/2$ forces $M$ odd and $q=(M-1)/2$; moreover $r=S-aq\leq a/2$,
-so the $r$ entries $q+1$ can be placed with no two cyclically adjacent.  In
-all other cases every adjacent sum is at most $M$ automatically.  If
-$S\geq R$ we instead want adjacent sums $\geq M$, giving
-$\min\{e_i,M-e_{i+1}\}=M-e_{i+1}$ and $H=R$.  The only possible bad pair is
-$(q,q)$ with $2q<M$; if $a-r\geq2$ and $2q<M$, then $S\geq aM/2$ forces $M$
-odd and $q=(M-1)/2$, and then $r\geq a/2$, so the $a-r$ entries $q$ can be
-placed with no two cyclically adjacent.  Otherwise every adjacent sum is at
-least $M$ automatically.  In both
+$S=aq+r\leq aM/2$ forces $M$ odd and $q=(M-1)/2$: for even $M$,
+$2q+2>M$ gives $q\geq M/2$, and with $r\geq2$ one has $S=aq+r>aM/2$, a
+contradiction.  Moreover $r=S-aq\leq a/2$, so the $r$ entries $q+1$ can be
+placed with no two cyclically adjacent.  In all other cases every adjacent sum
+is at most $M$ automatically.  If $S\geq R$ we instead want adjacent sums
+$\geq M$, giving $\min\{e_i,M-e_{i+1}\}=M-e_{i+1}$ and $H=R$.  The only
+possible bad pair is $(q,q)$ with $2q<M$; if $a-r\geq2$ and $2q<M$, then
+$S\geq aM/2$ forces $M$ odd and $q=(M-1)/2$: for even $M$, $2q<M$ gives
+$q\leq(M-2)/2$ and then $S=aq+r<aM/2$.  In the odd case $r\geq a/2$, so the
+$a-r$ entries $q$ can be placed with no two cyclically adjacent.  Otherwise
+every adjacent sum is at least $M$ automatically.  In both
 cases $H=\min\{R,S\}$.
 
 \emph{Filling the interval.}  Starting from the balanced upper-endpoint word,
@@ -2144,7 +2220,7 @@ The input is $(p,e,k,n)$ together with the components $(K_s,\lambda_s)$.
 For each component:
 \begin{enumerate}
 \item compute $t=v_p(n)$, $M=p^t$, $n'=n/M$ and
-  $\lambda_{s,0}=\Frob^{-t}(\lambda_s)$;
+  $\lambda_{s,0}=\lambda_s^{\,p^{\,d_s-t\ \mathrm{mod}\ d_s}}=\Frob^{-t}(\lambda_s)$;
 \item factor the square-free polynomial $P_{s,0}=x^{n'}-\lambda_{s,0}$ over
   $K_s$ into distinct monic irreducibles $\Fs$;
 \item for each $f\in\Fs$, compute $f^{\#_{s,k}}$ by \eqref{eq:reciprocal} and
@@ -2154,7 +2230,16 @@ For each component:
   $\{w_f\}$ is retained;
 \item decompose $\tau_{s,k}$ into cycles and record $(a_O,w_O)$.
 \end{enumerate}
-Step 2 can be performed using a computer algebra system such as Magma. For the small fields listed in Table~\ref{tab:verification}, the verification procedure described in Section~\ref{sec:verification} independently factors the square-free polynomial by enumerating all monic irreducible polynomials of degree at most \(n'/2\) and successively dividing them out. Any remaining cofactor is then tested for irreducibility using Magma. Thus, the entire verification pipeline is self-contained and requires no orbit data as input.
+Step~2 can be carried out in any computer algebra system. For the fields used
+in Section~\ref{sec:verification}, the verification program is written in plain
+Python and uses no external algebra package.  It implements $K_s$ directly,
+extracts all linear factors by evaluating $P_{s,0}$ at every field element,
+then recursively splits the remaining polynomial by trial division by every
+monic polynomial of degree at most half its current degree.  A polynomial with
+no such divisor is irreducible; this is a genuine irreducibility test, not an
+inference from the size of a cofactor.  Thus the pipeline is self-contained,
+takes no orbit data as input, and also handles the extension-field and
+product-algebra cases of Level~3 below.
 
 When $\lambda_{s,0}=1$ there is a root-exponent shortcut.  Let $\alpha$ be a
 primitive $n'$-th root of unity in an algebraic closure.  The irreducible

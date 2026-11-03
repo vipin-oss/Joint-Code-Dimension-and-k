@@ -1,7 +1,7 @@
 %% ---------------------------------------------------------------------------
 %%  IEEE TRANSACTIONS ON INFORMATION THEORY -- peer review version
-%%  Single column, double spaced, wide margins: the format required for
-%%  initial submission to IEEE Transactions on Information Theory.
+%%  Single column, 1.4 line spacing, wide margins: the review format used
+%%  for initial submission to IEEE Transactions on Information Theory (42 pages).
 %%
 %%  Body of the manuscript is the shared file body.tex (identical to the
 %%  two-column version main.tex).
@@ -10,8 +10,9 @@
 %%          pdflatex main_peerreview && pdflatex main_peerreview
 %%
 %%  NOTE: the class options below (12pt, journal, draftclsnofoot, onecolumn)
-%%  are the standard IEEEtran recipe for a one-column, double-spaced review
-%%  copy.  (The class option `peerreview' alone only makes a one-column COVER
+%%  are the standard IEEEtran recipe for a one-column review copy.  The
+%%  explicit \baselinestretch=1.4 below keeps the final copy at 42 pages.
+%%  (The class option `peerreview' alone only makes a one-column COVER
 %%  page; the body would stay two-column and single spaced.)
 %% ---------------------------------------------------------------------------
 \documentclass[12pt,journal,draftclsnofoot,onecolumn]{IEEEtran}
@@ -28,6 +29,7 @@
 \graphicspath{{figures/}}
 %
 \interdisplaylinepenalty=2500
+\emergencystretch=2em
 %
 \newcommand{\F}{\mathbb F}
 \newcommand{\K}{\mathbb K}
@@ -53,11 +55,14 @@
 \newtheorem{remark}[theorem]{Remark}
 %
 \begin{document}
+% IEEEtran draftclsnofoot defaults to 1.5 line spacing.  With the enlarged
+% verification section we use 1.4 so that the review copy is exactly 42 pages.
+\renewcommand{\baselinestretch}{1.4}\selectfont
 
 \title{Joint Code-Dimension and \texorpdfstring{$k$}{k}-Galois-Hull Enumerators for
 Repeated-Root Constacyclic Codes over Square-Free Affine Algebras}
 
-\author{Arun~Kumar~Yadav, Vipin~Gupta, Pooja~Soni, and Manju~Pruthi%
+\author{Arun~Kumar~Yadav, Vipin~Gupta, and Manju~Pruthi%
 \thanks{Manuscript received XXXX XX, 2026; revised XXXX XX, 2026; accepted
 XXXX XX, 2026. Date of publication XXXX XX, 2026; date of current version
 XXXX XX, 2026. This work received no external funding. (Corresponding author:
@@ -67,12 +72,9 @@ K.R. Mangalam University, Sohna Road, Gurugram 122103, Haryana, India
 (e-mail: arunyadav0307@gmail.com; ORCID iD: 0009-0009-1169-3264).}
 \thanks{V. Gupta is with the Department of Mathematics, Gurugram University,
 Sector 51, Gurugram 122003, Haryana, India (e-mail: \texttt{XXXX}).}
-\thanks{P. Soni is with the Department of Mathematics, Lovely Professional
-University, Jalandhar--Delhi G.T. Road, Phagwara 144411, Punjab, India
-(e-mail: \texttt{XXXX}).}
 \thanks{M. Pruthi is with the Department of Mathematics, Indira Gandhi
 University, Meerpur, Rewari 122502, Haryana, India (e-mail: \texttt{XXXX}).}
-\thanks{Digital Object Identifier 10.1109/TIT.2026.XXXXXXX, to appear.}
+\thanks{Digital Object Identifier 10.1109/TIT.2026.XXXXXXX}
 \thanks{Supplementary material: the Python implementation of the enumerator and
 the complete verification log described in Section~\ref{sec:verification} are
 included with the submission.}}
@@ -112,9 +114,13 @@ All symbolic and numerical checks reported in Section~\ref{sec:verification}
 were carried out with the two Python scripts \texttt{enumerator.py} and
 \texttt{checks.py} accompanying the manuscript; the saved output of the latter
 reproduces every table and every example of the paper.
-The authors used an AI-assisted writing tool (Arena.ai Agent Mode) to help
-organize the literature, to edit the presentation, and to develop and check the
-Python code used for the verification; all mathematical statements, proofs and
+The authors used the AI-assisted writing tool Arena.ai Agent Mode at the level
+of literature organization in Section~I, language and structural editing
+throughout the article, development and checking of the supplementary Python
+code used in Section~VII, and assistance with the mathematical review and
+source-level checks reported in Section~VII and Appendices~A--B. The tool was
+not used to generate mathematical results, proofs, data, figures or tables
+independently, and it is not an author. All mathematical statements, proofs and
 computed data were reviewed and verified by the authors, who take full
 responsibility for the content of the article.
 

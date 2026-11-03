@@ -1,7 +1,7 @@
 COVER LETTER
 ============
 
-[Date: ____________________]
+3 November 2026
 
 Prof. [Editor-in-Chief name]
 Editor-in-Chief
@@ -11,11 +11,11 @@ Dear Prof. [name],
 
 We submit the enclosed regular paper, "Joint Code-Dimension and k-Galois-Hull
 Enumerators for Repeated-Root Constacyclic Codes over Square-Free Affine
-Algebras", by Arun Kumar Yadav, Vipin Gupta, Pooja Soni and Manju Pruthi, for
+Algebras", by Arun Kumar Yadav, Vipin Gupta and Manju Pruthi, for
 consideration for publication in the IEEE Transactions on Information Theory.
 It has not been published elsewhere and is not under consideration by any other
 journal; all authors have approved the submission. This is a full regular paper
-(a [XX]-page double-spaced manuscript), not a correspondence.
+(a 42-page double-spaced review manuscript), not a correspondence.
 
 WHAT THE PAPER DOES. For all A-linear lambda-constacyclic codes of a fixed
 repeated-root length over a square-free affine algebra over a finite field, we
@@ -63,15 +63,18 @@ none has co-authored with any of the authors:
   [Name], [affiliation], [e-mail]
 We request the exclusion of [names, if any].
 
-DECLARATIONS. The authors declare no competing interests and no funding. An
-AI-assisted writing tool was used for literature organization, language editing
-and for developing/checking the verification code; all mathematical content and
-all data were verified by the authors. The full declarations accompany the
-submission.
+DECLARATIONS. The authors declare no competing interests and no funding. The
+AI-assisted writing tool Arena.ai Agent Mode was used at the level of
+literature organization in Section I, language/structural editing throughout,
+development and checking of the supplementary Python code used in Section VII,
+and assistance with the mathematical review and source-level checks; it
+generated no mathematical results, proofs, data, figures or tables
+independently and is not an author. All content was verified by the authors.
+The full declarations accompany the submission.
 
 Yours sincerely,
 
 Arun Kumar Yadav (corresponding author)
 School of Basic and Applied Sciences, K.R. Mangalam University, Gurugram, India
 arunyadav0307@gmail.com - ORCID 0009-0009-1169-3264
-on behalf of Vipin Gupta, Pooja Soni and Manju Pruthi
+on behalf of Vipin Gupta and Manju Pruthi

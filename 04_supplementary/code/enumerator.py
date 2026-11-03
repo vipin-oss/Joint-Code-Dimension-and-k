@@ -160,15 +160,18 @@ class Family:
         # number of distinct kernel factors: orbits contribute a_O each
         n_orb = sum(a for a, _ in self.orbits)
         self.N_F = n_orb + len(self.incompatible_weights) if N_F is None else N_F
+        self._E = None                       # cached global enumerator
 
     # ---- global enumerator ------------------------------------------------
     def enumerator(self):
-        E = monomial(0, 0)
-        for a, w in self.orbits:
-            E = pmul(E, orbit_enumerator_trace(a, self.M, w))
-        for w in self.incompatible_weights:
-            E = pmul(E, {(w * r, 0): 1 for r in range(self.M + 1)})
-        return E
+        if self._E is None:
+            E = monomial(0, 0)
+            for a, w in self.orbits:
+                E = pmul(E, orbit_enumerator_trace(a, self.M, w))
+            for w in self.incompatible_weights:
+                E = pmul(E, {(w * r, 0): 1 for r in range(self.M + 1)})
+            self._E = E
+        return self._E
 
     # ---- the statistics quoted in the tables ------------------------------
     def total_codes(self):
@@ -182,7 +185,10 @@ class Family:
         return sum(c for (K, H), c in self.enumerator().items() if H == 0)
 
     def self_orthogonal_count(self):
-        c = (self.M + 1) ** len(self.incompatible_weights)
+        # On an incompatible component the only self-orthogonal component code
+        # is the zero code (all exponents equal to M), so all such components
+        # together contribute exactly one selection, not (M+1)^#factors.
+        c = 1
         for a, _w in self.orbits:
             c *= restricted_orbit_count(a, self.M, "so")
         return c
@@ -223,7 +229,10 @@ class Family:
         return mKH - mK * mH
 
     def W(self):
-        return self.n * 1  # single field component of degree 1 over F_q
+        # W = n * sum_s m_s = M * sum_f w_f.  The skeleton already carries the
+        # component degrees in w_f, so this also works for product algebras.
+        return self.M * (sum(a * w for a, w in self.orbits)
+                         + sum(self.incompatible_weights))
 
     def conditional_mean(self, K):
         """E[eta_k | kappa = K]."""
@@ -233,9 +242,14 @@ class Family:
         return Fraction(num, den) if den else None
 
     def max_conditional_mean(self):
+        # One pass over the cached enumerator: recomputing E for every kappa
+        # would be quadratic in the number of distinct kappa values.
         E = self.enumerator()
-        ks = sorted({k for (k, _h) in E})
-        return max((self.conditional_mean(k), k) for k in ks)
+        num, den = {}, {}
+        for (k, h), c in E.items():
+            num[k] = num.get(k, 0) + h * c
+            den[k] = den.get(k, 0) + c
+        return max((Fraction(num[k], den[k]), k) for k in sorted(num))
 
     def summary(self):
         mH, vH = self.mean_var_hull()
