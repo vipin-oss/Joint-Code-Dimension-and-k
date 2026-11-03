@@ -1,0 +1,117 @@
+%% ---------------------------------------------------------------------------
+%%  IEEE TRANSACTIONS ON INFORMATION THEORY -- journal (two-column) version
+%%
+%%  Submission versions:
+%%     main.tex              this file: two-column, camera-ready style
+%%     main_peerreview.tex   single-column, double-spaced (peer review mode)
+%%  Shared manuscript body:  body.tex   (identical in both versions)
+%%
+%%  Build:  ./build.sh            (both versions)
+%%          pdflatex main && bibtex main && pdflatex main && pdflatex main
+%% ---------------------------------------------------------------------------
+\documentclass[journal]{IEEEtran}
+%
+\usepackage[T1]{fontenc}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{mathrsfs}
+\usepackage{graphicx}
+\usepackage{booktabs,array,tabularx}
+\usepackage{url}
+\usepackage{microtype}
+\usepackage[hidelinks]{hyperref}
+%
+\graphicspath{{figures/}}
+%
+\interdisplaylinepenalty=2500
+%
+% --- macros (identical to the shared body conventions) ---------------------
+\newcommand{\F}{\mathbb F}
+\newcommand{\K}{\mathbb K}
+\newcommand{\A}{\mathcal A}
+\newcommand{\Fs}{\mathcal F_s}
+\newcommand{\Os}{\mathcal O_s}
+\newcommand{\Epoly}{\mathscr E}
+\newcommand{\Hull}{\operatorname{Hull}}
+\newcommand{\rank}{\operatorname{rank}}
+\newcommand{\Dk}{D_k}
+\newcommand{\perpE}{\perp_{E}}
+\newcommand{\Frob}{\operatorname{Frob}}
+\newcommand{\lcm}{\operatorname{lcm}}
+%
+\newtheorem{theorem}{Theorem}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+%
+\begin{document}
+
+%% IEEE regular-paper running head and copyright line.  For the final,
+%% accepted version the volume/number/year are supplied by the editorial
+%% office; for submission the running head below is enough.
+\markboth{IEEE TRANSACTIONS ON INFORMATION THEORY}%
+         {Yadav \textit{et al.}: JOINT CODE-DIMENSION AND $k$-GALOIS-HULL ENUMERATORS}
+% \IEEEpubid{0018-9448 \copyright\ 2026 IEEE.  Personal use is permitted, but
+% republication/redistribution requires IEEE permission.}
+
+\title{Joint Code-Dimension and \texorpdfstring{$k$}{k}-Galois-Hull Enumerators for
+Repeated-Root Constacyclic Codes over Square-Free Affine Algebras}
+
+\author{Arun~Kumar~Yadav, Vipin~Gupta, Pooja~Soni, and Manju~Pruthi%
+\thanks{Manuscript received XXXX XX, 2026; revised XXXX XX, 2026; accepted
+XXXX XX, 2026. Date of publication XXXX XX, 2026; date of current version
+XXXX XX, 2026. This work received no external funding. (Corresponding author:
+Arun Kumar Yadav.)}%
+\thanks{A. K. Yadav is with the School of Basic and Applied Sciences,
+K.R. Mangalam University, Sohna Road, Gurugram 122103, Haryana, India
+(e-mail: arunyadav0307@gmail.com; ORCID iD: 0009-0009-1169-3264).}
+\thanks{V. Gupta is with the Department of Mathematics, Gurugram University,
+Sector 51, Gurugram 122003, Haryana, India (e-mail: \texttt{XXXX}).}
+\thanks{P. Soni is with the Department of Mathematics, Lovely Professional
+University, Jalandhar--Delhi G.T. Road, Phagwara 144411, Punjab, India
+(e-mail: \texttt{XXXX}).}
+\thanks{M. Pruthi is with the Department of Mathematics, Indira Gandhi
+University, Meerpur, Rewari 122502, Haryana, India (e-mail: \texttt{XXXX}).}
+\thanks{Digital Object Identifier 10.1109/TIT.2026.XXXXXXX}
+\thanks{Supplementary material: the Python implementation of the enumerator and
+the complete verification log described in Section~\ref{sec:verification} are
+included with the submission.}}
+
+\maketitle
+
+\begin{abstract}
+We determine the exact joint distribution of the code dimension and the
+$k$-Galois hull dimension over all repeated-root constacyclic codes of a fixed
+length over a square-free affine algebra over a finite field. With length
+$n=n'p^{t}$ and component moduli that are $p^{t}$-th powers of square-free
+kernels, a code is encoded by one exponent at each distinct kernel factor, and
+the $k$-Galois dual acts on those factors through a Frobenius-twisted
+reciprocal permutation. On each orbit of this permutation the hull dimension is
+a cyclic sum of pairwise minima of consecutive exponents, so its bivariate law
+is the trace of a power of an explicit weighted transfer matrix with
+$p^{t}+1$ states; multiplying over orbits, with a dimension-only factor for
+components whose twist is incompatible, gives a bivariate polynomial whose
+coefficients are the exact multiplicities of the pairs (code dimension, hull
+dimension). We obtain the marginal laws, the attainable pairs, closed
+means and variances, conditional laws, and the numbers of LCD,
+self-orthogonal, dual-containing and self-dual codes, and we give an algorithm
+that is polynomial in the length, the multiplicity and the number of kernel
+factors, checked against finite-field computations in characteristics
+$2$ and $3$.
+\end{abstract}
+
+\begin{IEEEkeywords}
+Constacyclic codes, Galois hulls, LCD codes, repeated-root codes, transfer
+matrices.
+\end{IEEEkeywords}
+
+\input{body}
+
+\bibliographystyle{IEEEtran}
+\bibliography{references}
+
+\end{document}

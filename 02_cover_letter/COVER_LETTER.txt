@@ -1,0 +1,77 @@
+COVER LETTER
+============
+
+[Date: ____________________]
+
+Prof. [Editor-in-Chief name]
+Editor-in-Chief
+IEEE Transactions on Information Theory
+
+Dear Prof. [name],
+
+We submit the enclosed regular paper, "Joint Code-Dimension and k-Galois-Hull
+Enumerators for Repeated-Root Constacyclic Codes over Square-Free Affine
+Algebras", by Arun Kumar Yadav, Vipin Gupta, Pooja Soni and Manju Pruthi, for
+consideration for publication in the IEEE Transactions on Information Theory.
+It has not been published elsewhere and is not under consideration by any other
+journal; all authors have approved the submission. This is a full regular paper
+(a [XX]-page double-spaced manuscript), not a correspondence.
+
+WHAT THE PAPER DOES. For all A-linear lambda-constacyclic codes of a fixed
+repeated-root length over a square-free affine algebra over a finite field, we
+determine the exact joint distribution of the code dimension and the k-Galois
+hull dimension. The Frobenius identity writes every component modulus as a
+p^t-th power of a square-free kernel, so a code is an exponent selection on the
+distinct kernel factors; the k-Galois dual then acts through a
+Frobenius-twisted reciprocal permutation of those factors, and on each of its
+orbits the hull dimension is a cyclic sum of pairwise minima of consecutive
+exponents. The bivariate law of one orbit is the trace of a power of an explicit
+weighted transfer matrix with p^t + 1 states, and multiplying over orbits - with
+a dimension-only factor for the components whose twist is incompatible - gives a
+bivariate enumerator whose coefficients are the exact multiplicities.
+
+MAIN CONTRIBUTIONS.
+(1) The exact joint enumerator, valid for every twist including incompatible
+    components, with the known per-code hull formula recovered as a special case.
+(2) The exact support of the attainable (code dimension, hull dimension) pairs
+    on one orbit: a trapezoid, including a lower bound that is invisible from
+    dimension considerations alone (Appendix A).
+(3) Closed means and variances, conditional laws, and the exact numbers of LCD,
+    self-orthogonal, dual-containing and self-dual codes; in the fully compatible
+    case the LCD count is independent of the multiplicity.
+(4) An algorithm polynomial in the length, the multiplicity and the number of
+    kernel factors, verified exhaustively against finite-field linear algebra in
+    characteristics 2 and 3, and evaluated for all 3^31 codes of length 62
+    over F_32.
+
+RELATION TO THE LITERATURE. For a single code, the Galois hull dimension of
+constacyclic codes is known, over a field (Debnath, Prakash and Islam, 2023) and
+over an affine algebra (Debnath, Islam, Martinez-Moro and Prakash, 2026), and
+the average hull dimension has been computed (Debnath and Prakash, 2025). The
+contribution of this paper is the full joint law over a family of codes together
+with its enumerative consequences; the manuscript states explicitly where it
+agrees with that work and what it adds beyond it.
+
+SUPPLEMENTARY MATERIAL. The complete implementation and the verification log are
+supplied. Every table and every worked example in the paper is reproduced by
+that code; the saved log records all checks passing.
+
+SUGGESTED REVIEWERS. None of the following is at the authors' institutions and
+none has co-authored with any of the authors:
+  [Name], [affiliation], [e-mail]
+  [Name], [affiliation], [e-mail]
+  [Name], [affiliation], [e-mail]
+We request the exclusion of [names, if any].
+
+DECLARATIONS. The authors declare no competing interests and no funding. An
+AI-assisted writing tool was used for literature organization, language editing
+and for developing/checking the verification code; all mathematical content and
+all data were verified by the authors. The full declarations accompany the
+submission.
+
+Yours sincerely,
+
+Arun Kumar Yadav (corresponding author)
+School of Basic and Applied Sciences, K.R. Mangalam University, Gurugram, India
+arunyadav0307@gmail.com - ORCID 0009-0009-1169-3264
+on behalf of Vipin Gupta, Pooja Soni and Manju Pruthi
