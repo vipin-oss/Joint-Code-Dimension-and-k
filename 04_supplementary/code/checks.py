@@ -2,7 +2,10 @@
 """
 checks.py -- self-contained verification for the paper's statements.
 
-Run:  python3 checks.py          (prints a pass/fail line per check and a summary)
+Run from the repository root:
+    python3 -I 04_supplementary/code/checks.py
+(prints a pass/fail line per check and a summary; only the standard library is
+used, and no Magma/Sage or other CAS is required.)
 
 Level A (combinatorial, no field arithmetic)
   A1  transfer-matrix trace  ==  brute-force word enumeration
@@ -20,14 +23,28 @@ Level A (combinatorial, no field arithmetic)
 Level B (finite-field linear algebra, small cases)
   B1  hull dimension from the Gram-matrix rank equals the min-edge formula
       for every exponent word of the families in Table 1 (F_4, F_8 ...)
+
+Level C (independent brute-force verification, added for this submission)
+  C1  direct Gram-matrix hull dimensions over real finite fields for F_2/F_4
+      with n=4,6,12, F_3 with n=6,9, F_5 with n=10, k=0,1, lambda_0 != 1
+      (including incompatible twists), and product algebras F_4 x F_16 and
+      F_4 x F_4; every printed number is recomputed from the brute-force
+      histogram and compared with Family output.
+  C2  all displayed example/table values, LCD/SO/SD counts, W, moments,
+      covariance, conditional means and complexity-related counts.
 """
 
 from fractions import Fraction
 from itertools import product
+from pathlib import Path
 import sys
 
+# `python3 -I checks.py` does not put the script directory on sys.path.
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+
 from enumerator import (Family, orbit_enumerator_trace, orbit_enumerator_bruteforce,
-                        orbit_enumerator_small, transfer_matrix, pmul, monomial)
+                        orbit_enumerator_small, transfer_matrix, pmul, monomial,
+                        restricted_orbit_count)
 
 
 # ---------------------------------------------------------------- GF(p^m)
@@ -94,73 +111,114 @@ class GF:
         return [tuple(t) for t in product(range(self.p), repeat=self.m)]
 
 
-def factor_distinct(field, poly):
+def poly_deg(F, f):
+    """Degree of a polynomial (list of field elements), -1 for the zero poly."""
+    d = len(f) - 1
+    while d >= 0 and f[d] == F.zero():
+        d -= 1
+    return d
+
+
+def _poly_inv(F, a):
+    return F.pow(a, F.q - 2)
+
+
+def poly_monic(F, f):
+    d = poly_deg(F, f)
+    if d < 0:
+        return []
+    inv = _poly_inv(F, f[d])
+    return [F.mul(c, inv) for c in f[:d + 1]]
+
+
+def poly_equal(F, f, g):
+    df, dg = poly_deg(F, f), poly_deg(F, g)
+    if df != dg:
+        return False
+    return all(f[i] == g[i] for i in range(df + 1))
+
+
+def poly_divmod(F, f, g):
+    """Quotient and trimmed remainder of f / g; g must be monic and nonzero."""
+    f = list(f)
+    dg = poly_deg(F, g)
+    if dg < 0:
+        raise ValueError("division by the zero polynomial")
+    inv = _poly_inv(F, g[dg])
+    df = poly_deg(F, f)
+    if df < dg:
+        return [F.zero()], f[:max(0, df + 1)]
+    q = [F.zero()] * (df - dg + 1)
+    while True:
+        df = poly_deg(F, f)
+        if df < dg or df < 0:
+            break
+        c = F.mul(f[df], inv)
+        q[df - dg] = F.add(q[df - dg], c)
+        for i in range(dg + 1):
+            f[df - dg + i] = F.sub(f[df - dg + i], F.mul(c, g[i]))
+    dr = poly_deg(F, f)
+    return q, (f[:dr + 1] if dr >= 0 else [])
+
+
+def monic_polys(F, d):
+    for coeffs in product(F.elements(), repeat=d):
+        yield list(coeffs) + [F.one()]
+
+
+def is_irreducible(F, f):
+    """Trial division by every monic polynomial of degree <= deg(f)/2."""
+    d = poly_deg(F, f)
+    if d <= 0:
+        return False
+    if d == 1:
+        return True
+    for e in range(1, d // 2 + 1):
+        for g in monic_polys(F, e):
+            _, r = poly_divmod(F, f, g)
+            if poly_deg(F, r) < 0:
+                return False
+    return True
+
+
+def factor_distinct(F, poly):
     """
-    Distinct monic irreducible factors of `poly` (list of coefficients, monic)
-    by brute-force root/divisibility search -- sufficient for the tiny cases.
-    Returns a list of polynomials (lists, monic).
+    Distinct monic irreducible factors of the square-free polynomial `poly`.
+    Linear factors are found by root evaluation; the remaining part is split
+    by trial division by all monic polynomials of degree at most half its
+    degree, recursively.  This is a genuine irreducibility test and uses only
+    the Python standard library.
     """
-    zero = field.zero()
-
-    def deg(f):
-        d = len(f) - 1
-        while d > 0 and f[d] == zero:
-            d -= 1
-        return d
-
-    def divmod_(f, g):
-        f = list(f)
-        dg = deg(g)
-        inv = field_inv_lead(field, g[dg])
-        q = [field.zero()] * max(1, len(f) - dg)
-        while deg(f) >= dg and any(x != field.zero() for x in f):
-            d = deg(f)
-            c = field.mul(f[d], inv)
-            q[d - dg] = field.add(q[d - dg], c)
-            for i in range(dg + 1):
-                f[d - dg + i] = field.sub(f[d - dg + i], field.mul(c, g[i]))
-        return q, f[:dg]
-
-    def monic(f):
-        d = deg(f)
-        inv = field_inv_lead(field, f[d])
-        return [field.mul(c, inv) for c in f[:d + 1]]
-
-    # candidates: all monic polynomials of degree 1..deg(poly)/2
-    n = deg(poly)
-    cands = []
-    for d in range(1, n // 2 + 1):
-        for tail in product(field.elements(), repeat=d):
-            f = monic(list(tail) + [field.one()])
-            cands.append(f)
-    # keep only irreducible ones, ascending degree
-    irr = []
-    for f in cands:
-        d = deg(f)
-        if d == 0:
-            continue
-        reducible = False
-        for g in irr:
-            if deg(g) <= d // 2 and deg(g) > 0:
-                _, r = divmod_(f, g)
-                if all(x == field.zero() for x in r):
-                    reducible = True
-                    break
-        if not reducible:
-            irr.append(f)
-    # divide out
-    rest = monic(list(poly))
+    rest = poly_monic(F, poly)
     out = []
-    for f in irr:
-        _, r = divmod_(rest, f)
-        if all(x == field.zero() for x in r):
-            q, r2 = divmod_(rest, f)
-            assert all(x == field.zero() for x in r2)
-            out.append(f)
-            rest = monic(q)
-    # a remaining factor must have degree > n/2, hence is irreducible
-    if deg(rest) > 0:
-        out.append(rest)
+    for x in F.elements():
+        lin = [F.neg(x), F.one()]
+        while True:
+            q, r = poly_divmod(F, rest, lin)
+            if poly_deg(F, r) < 0:
+                out.append(lin)
+                rest = poly_monic(F, q)
+            else:
+                break
+    while True:
+        r = poly_deg(F, rest)
+        if r <= 0:
+            break
+        found = None
+        q_found = None
+        for d in range(1, r // 2 + 1):
+            for f in monic_polys(F, d):
+                q, r2 = poly_divmod(F, rest, f)
+                if poly_deg(F, r2) < 0:
+                    found, q_found = f, q
+                    break
+            if found is not None:
+                break
+        if found is None:
+            out.append(rest)
+            break
+        out.extend(factor_distinct(F, found))
+        rest = poly_monic(F, q_found)
     return out
 
 
@@ -305,12 +363,13 @@ def hull_dim_formula(e, M, w):
     return w * sum(min(e[i], M - e[(i + 1) % len(e)]) for i in range(len(e)))
 
 
-def gram_hull_dim(field, g_poly, n, modulus_poly, k, lam0, M):
+def gram_hull_dim(field, g_poly, n, k):
     """
     Dimension of the k-Galois hull of the constacyclic code with generator
-    g_poly in F[x]/(x^n - lambda), computed as dim C - rank(B sigma^k(B)^T).
-    The ambient space is F^n; shifts of the generator that do not wrap give a
-    basis, since deg g = n - dim C.
+    g_poly, computed as dim C - rank(B sigma^k(B)^T).  The ambient space is
+    F^n; shifts of the generator that do not wrap give a basis, since
+    deg g = n - dim C.  The twist lambda, the modulus and M are therefore not
+    needed here (only the generator and sigma^k are).
     """
     d = len(g_poly) - 1               # degree of the generator
     dimC = n - d
@@ -407,10 +466,33 @@ def _element(F, code):
         return tuple([0, 1] + [0] * (F.m - 2))
     if code == "minus1":
         return F.from_int(F.p - 1)
+    if code == "omega2":
+        w = _element(F, "omega")
+        return F.mul(w, w)
+    if code == "gen":
+        for a in F.elements():
+            if a == F.zero():
+                continue
+            if all(F.pow(a, r) != F.one() for r in range(1, F.q - 1)):
+                return a
+        raise ValueError("no generator found")
+    if isinstance(code, str) and code.startswith("int:"):
+        return F.from_int(int(code[4:]))
     raise ValueError(code)
 
 
 def _verify_family(F, label, n_prime, M, k, lam0, expect, out):
+    # The compatibility criterion of the paper is stated for the *absolute*
+    # degree d_s = F.m of the component field, not for the base-field exponent e.
+    lam = F.pow(lam0, M)
+    compat0 = (F.pow(lam0, 1 + F.p ** (F.m - k)) == F.one())
+    compat = (F.pow(lam, 1 + F.p ** (F.m - k)) == F.one())
+    mu_twist = F.pow(F.pow(lam, F.q - 2), F.p ** (F.m - k))
+    if not (compat0 and compat and mu_twist == lam):
+        out.append(f"FAIL B  {label}: compatibility condition "
+                   f"lambda_0^{{1+p^(d_s-k)}} = lambda^{{1+p^(d_s-k)}} = 1 "
+                   f"and mu = lambda fails")
+        return False
     kernel = [F.neg(lam0)] + [F.zero()] * (n_prime - 1) + [F.one()]
     factors = factor_distinct(F, kernel)
     degs = [len(f) - 1 for f in factors]
@@ -444,7 +526,7 @@ def _verify_family(F, label, n_prime, M, k, lam0, expect, out):
             for _ in range(ex):
                 g = _polymul(F, g, f)
         kappa = n - (len(g) - 1)
-        eta = gram_hull_dim(F, g, n, kernel, k, lam0, M)
+        eta = gram_hull_dim(F, g, n, k)
         want = 0
         for cyc in cycles:
             w = degs[cyc[0]]
@@ -570,19 +652,339 @@ def paper_tables(out):
     return ok
 
 
+
+# ---------------------------------------------------------------------------
+# Level C: independent brute-force finite-field verification
+# ---------------------------------------------------------------------------
+def C(p, m, mod, e, k, n_prime, M, lam0):
+    return dict(p=p, m=m, mod=mod, e=e, k=k,
+                n_prime=n_prime, M=M, lam0=lam0)
+
+
+INDEPENDENT_FAMILIES = [
+    ("F2-n4",        [C(2, 1, [0, 1], 1, 0, 1, 4, "int:1")]),
+    ("F2-n6",        [C(2, 1, [0, 1], 1, 0, 3, 2, "int:1")]),
+    ("F2-n12",       [C(2, 1, [0, 1], 1, 0, 3, 4, "int:1")]),
+    ("F4-n4",        [C(2, 2, [1, 1, 1], 2, 0, 1, 4, "int:1")]),
+    ("F4-n6-k1-l1",  [C(2, 2, [1, 1, 1], 2, 1, 3, 2, "int:1")]),
+    ("F4-n6-k0-w",   [C(2, 2, [1, 1, 1], 2, 0, 3, 2, "omega")]),
+    ("F4-n6-k1-w",   [C(2, 2, [1, 1, 1], 2, 1, 3, 2, "omega")]),
+    ("F4-n12-k1-l1", [C(2, 2, [1, 1, 1], 2, 1, 3, 4, "int:1")]),
+    ("F4-n12-k0-w",  [C(2, 2, [1, 1, 1], 2, 0, 3, 4, "omega")]),
+    ("F3-n6-l1",     [C(3, 1, [0, 1], 1, 0, 2, 3, "int:1")]),
+    ("F3-n6-l2",     [C(3, 1, [0, 1], 1, 0, 2, 3, "int:2")]),
+    ("F3-n9",        [C(3, 1, [0, 1], 1, 0, 1, 9, "int:1")]),
+    ("F5-n10-l2",    [C(5, 1, [0, 1], 1, 0, 2, 5, "int:2")]),
+    ("F5-n10-l4",    [C(5, 1, [0, 1], 1, 0, 2, 5, "int:4")]),
+    ("F9-n6-k0-i",   [C(3, 2, [1, 0, 1], 2, 0, 2, 3, "i")]),
+    ("F9-n6-k1-i",   [C(3, 2, [1, 0, 1], 2, 1, 2, 3, "i")]),
+    ("F9-n6-k0-gen", [C(3, 2, [1, 0, 1], 2, 0, 2, 3, "gen")]),
+    ("F9-n9-k1-l1",  [C(3, 2, [1, 0, 1], 2, 1, 1, 9, "int:1")]),
+    ("F4xF16",       [C(2, 2, [1, 1, 1], 2, 1, 5, 2, "int:1"),
+                      C(2, 4, [1, 1, 0, 0, 1], 2, 1, 5, 2, "int:1")]),
+    ("F4xF4-inc",    [C(2, 2, [1, 1, 1], 2, 0, 3, 2, "int:1"),
+                      C(2, 2, [1, 1, 1], 2, 0, 3, 2, "omega")]),
+]
+
+
+def _check_independent_family(label, comps, out):
+    """Brute-force all codes of one (possibly multi-component) family from the
+    definitions and compare every printed quantity with Family."""
+    p = comps[0]["p"]
+    e = comps[0]["e"]
+    k = comps[0]["k"]
+    n_prime = comps[0]["n_prime"]
+    M = comps[0]["M"]
+    for c in comps:
+        assert (c["p"], c["e"], c["k"], c["n_prime"], c["M"]) == (p, e, k, n_prime, M)
+    assert 0 <= k < e
+    assert n_prime % p != 0
+    t, mm = 0, 1
+    while mm < M:
+        mm *= p
+        t += 1
+    assert mm == M and t >= 1
+    n = n_prime * M
+
+    comp_infos = []
+    w_f_list = []
+    orbits = []
+    inc_weights = []
+    start = 0
+    sum_ms = 0
+    for c in comps:
+        F = GF(p, c["m"], c["mod"])
+        assert c["m"] % e == 0
+        m_s = c["m"] // e
+        sum_ms += m_s
+        lam0 = _element(F, c["lam0"])
+        assert lam0 != F.zero()
+        kernel = [F.neg(lam0)] + [F.zero()] * (n_prime - 1) + [F.one()]
+        assert poly_deg(F, kernel) == n_prime
+        factors = factor_distinct(F, kernel)
+        degs = [poly_deg(F, f) for f in factors]
+        assert sum(degs) == n_prime
+        assert len(set(tuple(f) for f in factors)) == len(factors)
+        assert all(f[-1] == F.one() for f in factors)
+        lam = F.pow(lam0, M)
+        mu_twist = F.pow(F.pow(lam, F.q - 2), F.p ** (F.m - k))
+        compat = (F.pow(lam0, 1 + F.p ** (F.m - k)) == F.one())
+        assert (F.pow(lam, 1 + F.p ** (F.m - k)) == F.one()) == compat
+        if compat:
+            assert mu_twist == lam
+            perm = {}
+            for i, f in enumerate(factors):
+                fh = reciprocal(F, f, k, F.m)
+                assert poly_deg(F, fh) == degs[i]
+                matches = [j for j, g in enumerate(factors) if poly_equal(F, g, fh)]
+                assert len(matches) == 1
+                perm[i] = matches[0]
+            assert sorted(perm.values()) == list(range(len(factors)))
+            used = [False] * len(factors)
+            cycles = []
+            for i in range(len(factors)):
+                if used[i]:
+                    continue
+                cyc, j = [], i
+                while not used[j]:
+                    used[j] = True
+                    cyc.append(j)
+                    j = perm[j]
+                cycles.append(cyc)
+            for cyc in cycles:
+                assert len(set(degs[j] for j in cyc)) == 1
+            comp_orbits = [(len(cyc), m_s * degs[cyc[0]]) for cyc in cycles]
+            orbits.extend(comp_orbits)
+            comp_cycles = cycles
+        else:
+            assert mu_twist != lam
+            comp_orbits = []
+            comp_cycles = []
+            inc_weights.extend(m_s * d for d in degs)
+        comp_infos.append(dict(F=F, m_s=m_s, lam0=lam0, lam=lam, mu=mu_twist,
+                               compatible=compat, factors=factors, degs=degs,
+                               cycles=comp_cycles, start=start,
+                               n=n, M=M, k=k))
+        w_f_list.extend(m_s * d for d in degs)
+        start += len(factors)
+
+    N_F = len(w_f_list)
+    assert sum(a for a, _ in orbits) + len(inc_weights) == N_F
+    W = M * sum(w_f_list)
+    assert W == n * sum_ms
+    assert sum(w_f_list) == n_prime * sum_ms
+    fam = Family(label, n=n, M=M, orbits=orbits,
+                 incompatible_weights=inc_weights, N_F=N_F)
+    assert fam.W() == W
+
+    hist = {}
+    for ev in product(range(M + 1), repeat=N_F):
+        kappa = 0
+        eta = 0
+        expected_kappa = sum(w * (M - ex) for w, ex in zip(w_f_list, ev))
+        want_eta = 0
+        for ci in comp_infos:
+            F = ci["F"]
+            m_s = ci["m_s"]
+            degs = ci["degs"]
+            factors = ci["factors"]
+            st = ci["start"]
+            exps = ev[st:st + len(factors)]
+            g = [F.one()]
+            for f, ex in zip(factors, exps):
+                for _ in range(ex):
+                    g = _polymul(F, g, f)
+            assert g[-1] == F.one()
+            deg_g = poly_deg(F, g)
+            assert deg_g == sum(d * ex for d, ex in zip(degs, exps))
+            dim_K = n - deg_g
+            kappa += m_s * dim_K
+            hull_K = gram_hull_dim(F, g, n, k)
+            comp_eta = m_s * hull_K
+            if ci["compatible"]:
+                comp_want = 0
+                for cyc in ci["cycles"]:
+                    w = m_s * degs[cyc[0]]
+                    comp_want += w * sum(
+                        min(exps[cyc[j]], M - exps[cyc[(j + 1) % len(cyc)]])
+                        for j in range(len(cyc)))
+            else:
+                comp_want = 0
+            assert comp_eta == comp_want, (label, ev, comp_eta, comp_want)
+            eta += comp_eta
+            want_eta += comp_want
+        assert kappa == expected_kappa, (label, ev, kappa, expected_kappa)
+        assert eta == want_eta
+        hist[(kappa, eta)] = hist.get((kappa, eta), 0) + 1
+
+    tot = sum(hist.values())
+    codes = (M + 1) ** N_F
+    terms = len(hist)
+    LCD = sum(c for (K, H), c in hist.items() if H == 0)
+    SO = sum(c for (K, H), c in hist.items() if H == K)
+    SD = sum(c for (K, H), c in hist.items() if H == K and 2 * K == W)
+    E_eta = Fraction(sum(H * c for (K, H), c in hist.items()), tot)
+    Var_eta = Fraction(sum(H * H * c for (K, H), c in hist.items()), tot) - E_eta * E_eta
+    E_kappa = Fraction(sum(K * c for (K, H), c in hist.items()), tot)
+    Var_kappa = Fraction(sum(K * K * c for (K, H), c in hist.items()), tot) - E_kappa * E_kappa
+    Cov = Fraction(sum(K * H * c for (K, H), c in hist.items()), tot) - E_kappa * E_eta
+
+    E_eta_f = sum(w * (nu(M) if a == 1 else a * mu(M)) for a, w in orbits)
+    Var_eta_f = sum(w * w * v(a, M) for a, w in orbits)
+    Var_kappa_f = Fraction(M * (M + 2), 12) * sum(w * w for w in w_f_list)
+    LCD_f = (M + 1) ** len(inc_weights) * 2 ** len(orbits)
+    SO_f = 1
+    for a, _w in orbits:
+        SO_f *= restricted_orbit_count(a, M, "so")
+    SD_f = 0 if inc_weights else 1
+    for a, _w in orbits:
+        SD_f *= restricted_orbit_count(a, M, "sd")
+
+    ks = sorted({K for (K, _H) in hist})
+    def cond(K):
+        num = sum(H * c for (k, H), c in hist.items() if k == K)
+        den = sum(c for (k, _H), c in hist.items() if k == K)
+        return Fraction(num, den) if den else None
+    max_cond_f = max((cond(K), K) for K in ks)
+
+    expected_summary = dict(codes=codes, terms=terms, LCD=LCD, SO=SO, SD=SD,
+                            E_eta=E_eta, Var_eta=Var_eta,
+                            E_kappa=E_kappa, Var_kappa=Var_kappa, Cov=Cov)
+    checks = [
+        ("codes", tot == codes == fam.total_codes()),
+        ("terms", terms == fam.joint_terms()),
+        ("enumerator", fam.enumerator() == hist),
+        ("W", fam.W() == W),
+        ("symmetry", all(hist[(K, H)] == hist.get((W - K, H), 0)
+                         for (K, H) in hist)),
+        ("LCD", fam.lcd_count() == LCD == LCD_f),
+        ("SO", fam.self_orthogonal_count() == SO == SO_f),
+        ("SD", fam.self_dual_count() == SD == SD_f),
+        ("mean_var_hull", fam.mean_var_hull() == (E_eta, Var_eta)
+                          == (E_eta_f, Var_eta_f)),
+        ("mean_var_dim", fam.mean_var_dim() == (E_kappa, Var_kappa)),
+        ("Var_kappa formula", Var_kappa == Var_kappa_f),
+        ("E_kappa", E_kappa == Fraction(W, 2)),
+        ("Cov", fam.covariance() == Cov == 0),
+        ("conditional means", all(fam.conditional_mean(K) == cond(K) for K in ks)),
+        ("max conditional", fam.max_conditional_mean() == max_cond_f),
+        ("summary", all(fam.summary()[key] == val
+                        for key, val in expected_summary.items())),
+    ]
+    bad = [name for name, ok in checks if not ok]
+    if bad:
+        out.append(f"FAIL C  {label}: {', '.join(bad)} "
+                   f"(N_F={N_F}, W={W}, orbits={orbits}, inc={inc_weights})")
+        return False
+    out.append(f"PASS C  {label}: {(M+1)**N_F} brute-force codes, "
+               f"N_F={N_F}, W={W}, orbits={orbits}, "
+               f"incompatible_weights={inc_weights}")
+    return True
+
+
+def check_C(out):
+    ok = True
+    for label, comps in INDEPENDENT_FAMILIES:
+        ok &= _check_independent_family(label, comps, out)
+    out.append(f"{'PASS' if ok else 'FAIL'} C  independent brute-force finite-field checks "
+               f"({len(INDEPENDENT_FAMILIES)} families)")
+    return ok
+
+
+# ---------------------------------------------------------------------------
+# Every printed number in the examples / captions
+# ---------------------------------------------------------------------------
+def paper_extras(out):
+    ok = True
+    # Example 8.1 self-orthogonal count and conditional-mean peaks
+    f2 = Family("F32", n=62, M=2, orbits=[(1, 1)] + [(10, 1)] * 3)
+    f4 = Family("F32", n=124, M=4, orbits=[(1, 1)] + [(10, 1)] * 3)
+    so2 = f2.self_orthogonal_count()
+    ok_so = (so2 == 70639674082)
+    out.append(f"{'PASS' if ok_so else 'FAIL'} Example 8.1 self-orthogonal count "
+               f"= 70639674082 (got {so2})")
+    ok &= ok_so
+    W2, W4 = f2.W(), f4.W()
+    okW = (W2 == 62 and W4 == 124)
+    out.append(f"{'PASS' if okW else 'FAIL'} Example 8.1 W = 62, 124 (got {W2}, {W4})")
+    ok &= okW
+    mx2, kx2 = f2.max_conditional_mean()
+    mx4, kx4 = f4.max_conditional_mean()
+    r2, r4 = float(mx2) / W2, float(mx4) / W4
+    okpeak = (kx2 == 31 and abs(r2 - 0.281) < 0.001
+              and abs(r4 - 0.302) < 0.001)
+    out.append(f"{'PASS' if okpeak else 'FAIL'} Example 8.1 conditional peaks "
+               f"~0.281W, 0.302W (got {r2:.4f} at k={kx2}, {r4:.4f} at k={kx4})")
+    ok &= okpeak
+    skel = float((Fraction(1, 4) + Fraction(30, 3)) / 31)
+    oks = abs(skel - 0.331) < 0.001
+    out.append(f"{'PASS' if oks else 'FAIL'} Example 8.1 skeleton limit "
+               f"(1/4+30/3)/31 ~ 0.331 (got {skel:.4f})")
+    ok &= oks
+
+    # Figure 2 caption: only kappa in {1,3,11,13} occur at eta = 1
+    f8 = Family("F8", n=14, M=2, orbits=[(1, 1), (6, 1)])
+    at1 = sorted(K for (K, H), c in f8.enumerator().items() if H == 1 and c)
+    okf8 = (at1 == [1, 3, 11, 13])
+    out.append(f"{'PASS' if okf8 else 'FAIL'} Figure 2 caption: eta=1 only at "
+               f"kappa in {{1,3,11,13}} (got {at1})")
+    ok &= okf8
+
+    # Example 7.3(b): eta = min(kappa, 12-kappa) is forced
+    f9i = Family("F9-i", n=12, M=3, orbits=[(2, 2)])
+    okforced = all(2 * H == 2 * min(K, 12 - K)
+                   for (K, H), c in f9i.enumerator().items() if c)
+    out.append(f"{'PASS' if okforced else 'FAIL'} Example 7.3(b) forced "
+               f"eta = min(kappa,12-kappa)")
+    ok &= okforced
+
+    # Example 7.3(c): loop mean nu_5 = 1
+    oknu = (nu(5) == 1)
+    out.append(f"{'PASS' if oknu else 'FAIL'} Example 7.3(c) nu_5 = 1 (got {nu(5)})")
+    ok &= oknu
+
+    # Example 4.5 (incompatible twist): six codes (kappa,eta)=(10-2e,0)
+    f5 = Family("F5-inc", n=10, M=5, orbits=[], incompatible_weights=[2])
+    want5 = {(10 - 2 * e, 0): 1 for e in range(6)}
+    ok5 = (f5.enumerator() == want5 and f5.lcd_count() == 6
+           and f5.self_orthogonal_count() == 1 and f5.self_dual_count() == 0
+           and f5.W() == 10)
+    out.append(f"{'PASS' if ok5 else 'FAIL'} Example 4.5 incompatible F_5 twist: "
+               f"six codes (10-2e,0), LCD=6, SO=1, SD=0, W=10")
+    ok &= ok5
+
+    # Example 7.4 (mixed product algebra): W = 30
+    fmix = Family("F4xF16", n=10, M=2,
+                  orbits=[(1, 1), (2, 2), (1, 2), (4, 2)])
+    okmix = (fmix.W() == 30)
+    out.append(f"{'PASS' if okmix else 'FAIL'} Example 7.4 W = 30 (got {fmix.W()})")
+    ok &= okmix
+
+    # Example 5.9 (M=1) and Table I counts already covered in paper_tables;
+    # check the explicit LCD subset-sums of Example 7.1.
+    f4ex = Family("F4", n=10, M=2, orbits=[(1, 1), (2, 2)])
+    lcdk = sorted(K for (K, H), c in f4ex.enumerator().items() if H == 0 and c)
+    oklcd = (lcdk == [0, 2, 8, 10])
+    out.append(f"{'PASS' if oklcd else 'FAIL'} Example 7.1 LCD kappa subset-sums "
+               f"{{0,2,8,10}} (got {lcdk})")
+    ok &= oklcd
+
+    out.append(f"{'PASS' if ok else 'FAIL'} all printed example/caption numbers")
+    return ok
+
+
 def main():
     out = []
     okA = check_A(out)
     okT = paper_tables(out)
-    try:
-        okB = check_B(out)
-    except Exception as exc:                      # pragma: no cover
-        out.append(f"SKIP B1 (finite-field check unavailable: {exc})")
-        okB = True
+    okB = check_B(out)          # no silent skip: a failure must fail the run
+    okC = check_C(out)
+    okE = paper_extras(out)
     print("\n".join(out))
     print()
-    print("ALL CHECKS PASSED" if (okA and okT and okB) else "SOME CHECKS FAILED")
-    return 0 if (okA and okT and okB) else 1
+    print("ALL CHECKS PASSED" if (okA and okT and okB and okC and okE)
+          else "SOME CHECKS FAILED")
+    return 0 if (okA and okT and okB and okC and okE) else 1
 
 
 if __name__ == "__main__":

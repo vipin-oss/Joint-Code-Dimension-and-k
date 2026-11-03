@@ -1,0 +1,45 @@
+SYMBOLIC RE-DERIVATION REPORT
+=============================
+
+Command actually run (scratch script, outside the repository):
+    python3 /tmp/symbolic_check.py
+Tool: SymPy 1.14.0 (installed in the sandbox for verification only; no shipped
+file imports SymPy). The shipped Python code uses only the standard library.
+
+The script symbolically re-derives and compares:
+  * Lemma "edge-moments": E[Y], E[Y^2], Var(Y), E[Y_i Y_{i+1}] for a>=3,
+    Cov(Y_i,Y_{i+1}), E[Y_1 Y_2] for a=2, nu_M for M=2m and M=2m+1,
+    v_1(M) for M even and odd, v(2,M) and v(a,M)/a for a>=3;
+  * Proposition "moments": Var(M-e_f)=M(M+2)/12 and Cov(kappa,eta)=0
+    from the symmetry N(k,h)=N(W-k,h);
+  * Proposition "complexity": the dense-DP operation count
+    N_F (M+1)^3 (W+1)(floor(W/2)+1), the stored-coefficient count
+    (M+1)^2 (W+1)(floor(W/2)+1), and the O(N_F log(M+1)) coefficient-bit bound.
+
+Full output:
+sympy 1.14.0
+E[Y] = mu_M: MATCH  got=M*(2*M + 1)/(6*(M + 1))  want=M*(2*M + 1)/(6*(M + 1))
+E[Y^2]: MATCH  got=M*(M**2 + M + 1)/(6*(M + 1))  want=M*(M**2 + M + 1)/(6*(M + 1))
+Var(Y): MATCH  got=M*(M + 2)*(2*M**2 + 4*M + 3)/(36*(M + 1)**2)  want=M*(M + 2)*(2*M**2 + 4*M + 3)/(36*(M + 1)**2)
+A(t) closed form: -t*(-2*M + t - 1)/2  element-split: -t*(-2*M + t - 1)/2  equal: True
+E[Y_i Y_{i+1}] (a>=3): MATCH  got=M*(M - 1)*(11*M**2 + 15*M + 6)/(120*(M + 1)**2)  want=M*(M - 1)*(11*M**2 + 15*M + 6)/(120*(M + 1)**2)
+Cov(Y_i,Y_{i+1}): MATCH  got=-M*(M + 2)*(7*M**2 + 14*M + 9)/(360*(M + 1)**2)  want=-M*(M + 2)*(7*M**2 + 14*M + 9)/(360*(M + 1)**2)
+E[Y_1 Y_2] (a=2): MATCH  got=M**2*(M - 1)/(12*(M + 1))  want=M**2*(M - 1)/(12*(M + 1))
+nu_{2m}: MATCH  got=m**2/(2*m + 1)  want=m**2/(2*m + 1)
+v_1(2m): MATCH  got=m*(m + 1)*(m**2 + m + 1)/(3*(2*m + 1)**2)  want=m*(m + 1)*(m**2 + m + 1)/(3*(2*m + 1)**2)
+nu_{2m+1}: MATCH  got=m/2  want=m/2
+v_1(2m+1): MATCH  got=m*(m + 2)/12  want=m*(m + 2)/12
+v(2,M): MATCH  got=M*(M + 2)*(M**2 + 2*M + 3)/(18*(M + 1)**2)  want=M*(M + 2)*(M**2 + 2*M + 3)/(18*(M + 1)**2)
+v(a,M)/a for a>=3: MATCH  got=M*(M + 2)*(M**2 + 2*M + 2)/(60*(M + 1)**2)  want=M*(M + 2)*(M**2 + 2*M + 2)/(60*(M + 1)**2)
+Var(M-e_f) = M(M+2)/12: MATCH  got=M*(M + 2)/12  want=M*(M + 2)/12
+Cov(kappa,eta) from N(k,h)=N(W-k,h): 0
+complexity W=2w   ops = 2*M**3*N_F*w**2 + 3*M**3*N_F*w + M**3*N_F + 6*M**2*N_F*w**2 + 9*M**2*N_F*w + 3*M**2*N_F + 6*M*N_F*w**2 + 9*M*N_F*w + 3*M*N_F + 2*N_F*w**2 + 3*N_F*w + N_F  stored = 2*M**2*w**2 + 3*M**2*w + M**2 + 4*M*w**2 + 6*M*w + 2*M + 2*w**2 + 3*w + 1
+complexity W=2w+1 ops = 2*M**3*N_F*w**2 + 4*M**3*N_F*w + 2*M**3*N_F + 6*M**2*N_F*w**2 + 12*M**2*N_F*w + 6*M**2*N_F + 6*M*N_F*w**2 + 12*M*N_F*w + 6*M*N_F + 2*N_F*w**2 + 4*N_F*w + 2*N_F  stored = 2*M**2*w**2 + 4*M**2*w + 2*M**2 + 4*M*w**2 + 8*M*w + 4*M + 2*w**2 + 4*w + 2
+coefficient bits = N_F*log(M + 1)/log(2)  = N_F * log2(M+1)
+rect(W=2w)   = 2*w**2 + 3*w + 1  = (W+1)(floor(W/2)+1)
+rect(W=2w+1) = 2*w**2 + 4*w + 2  = (W+1)(floor(W/2)+1)
+
+All MATCH lines above confirm the formulas as printed in Lemma "edge-moments"
+and Proposition "moments"; the complexity expressions expand to
+N_F (M+1)^3 (W+1)(floor(W/2)+1) and (M+1)^2 (W+1)(floor(W/2)+1) for both
+parities of W, with coefficient bits N_F log2(M+1).
