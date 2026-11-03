@@ -5,7 +5,7 @@ Repeated-Root Constacyclic Codes over Square-Free Affine Algebras*
 **Type:** research article
 **Target:** Finite Fields and Their Applications (Elsevier), submission system
 `submit.elsevier.com/FFA`
-**Authors:** Arun Kumar Yadav, Mohd Vasiulla, Vipin Gupta (corresponding)
+**Authors:** Arun Kumar Yadav, Mina Kumari, Mohd Vasiulla, Vipin Gupta (corresponding)
 
 ```
 00_READ_ME_FIRST.md            this file
@@ -44,6 +44,8 @@ journal requirements.
 
 ## What is still left for you
 
+0. Mina Kumari's e-mail address: add `\ead{...}` after her `\author[krmu]{Mina Kumari}` line in
+   `01_manuscript/main.tex` and in `03_declarations/AUTHOR_DECLARATIONS.md`, then rebuild.
 1. `02_cover_letter/COVER_LETTER.txt` — fill the three suggested reviewers (name,
    affiliation, e-mail) and any excluded reviewers, or delete that paragraph.
 2. In the Elsevier system, complete the competing-interest declaration (text in

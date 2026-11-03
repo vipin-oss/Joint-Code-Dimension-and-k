@@ -63,7 +63,8 @@ for needle in ("CRediT authorship contribution statement",
                "Data availability"):
     check(needle in main, f"section present: {needle}")
 check("\\cortext" in main and "\\corref" in main, "corresponding author marked")
-check(len(re.findall(r"\\ead\{", main)) == 3, "three author e-mail addresses")
+check(len(re.findall(r"\\author\[", main)) == 4, "four authors")
+check(len(re.findall(r"\\ead\{", main)) >= 3, "corresponding author e-mail present (" + str(len(re.findall(r"\\ead\{", main))) + " of 4 e-mails entered)")
 check(len(re.findall(r"\\address\[", main)) == 3, "three affiliations with postal addresses")
 check("elsarticle-num" in main, "numbered reference style (elsarticle-num)")
 

@@ -6,10 +6,10 @@
 %%  Build:  ./build.sh
 %%          (pdflatex main && bibtex main && pdflatex main && pdflatex main)
 %% ---------------------------------------------------------------------------
-\documentclass[preprint,12pt]{elsarticle}
+\documentclass[preprint,12pt,a4paper]{elsarticle}
 %
 \usepackage[T1]{fontenc}
-\usepackage{lmodern}
+\usepackage{mathptmx}% Times-compatible text and math font
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{mathrsfs}
 \usepackage{graphicx}
@@ -17,6 +17,7 @@
 \usepackage{url}
 \usepackage{microtype}
 \usepackage[hidelinks]{hyperref}
+\usepackage[a4paper,margin=1in]{geometry}% A4, normal (2.54 cm) margins
 %
 \graphicspath{{figures/}}
 %
@@ -47,6 +48,7 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 %
+\renewcommand{\sfdefault}{ptm}% title and headings in Times as well
 \journal{Finite Fields and Their Applications}
 \renewcommand{\today}{}
 
@@ -59,6 +61,8 @@ Repeated-Root Constacyclic Codes over Square-Free Affine Algebras}
 
 \author[krmu]{Arun Kumar Yadav}
 \ead{arunyadav0307@gmail.com}
+
+\author[krmu]{Mina Kumari}
 
 \author[sru]{Mohd Vasiulla}
 \ead{mohd.vasiulla@sru.edu.in}
@@ -109,6 +113,7 @@ constacyclic codes \sep Galois hull \sep LCD codes \sep repeated-root codes
 \textbf{Arun Kumar Yadav:} Conceptualization, Methodology, Formal analysis,
 Software, Validation, Data curation, Visualization, Writing -- original draft,
 Writing -- review \& editing.
+\textbf{Mina Kumari:} Validation, Writing -- review \& editing.
 \textbf{Mohd Vasiulla:} Validation, Writing -- original draft, Writing --
 review \& editing.
 \textbf{Vipin Gupta:} Conceptualization, Methodology, Formal analysis,

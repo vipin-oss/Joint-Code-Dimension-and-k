@@ -3,7 +3,7 @@
 **Manuscript title:** Joint Code-Dimension and *k*-Galois-Hull Enumerators for
 Repeated-Root Constacyclic Codes over Square-Free Affine Algebras
 
-**Authors (in order):** Arun Kumar Yadav¹, Mohd Vasiulla², Vipin Gupta³
+**Authors (in order):** Arun Kumar Yadav¹, Mina Kumari¹, Mohd Vasiulla², Vipin Gupta³
 
 **Corresponding author:** Vipin Gupta, vipin@gurugramuniversity.ac.in
 
@@ -17,7 +17,7 @@ Repeated-Root Constacyclic Codes over Square-Free Affine Algebras
    India.
 
 E-mail addresses: A. K. Yadav arunyadav0307@gmail.com (ORCID
-0009-0009-1169-3264); M. Vasiulla mohd.vasiulla@sru.edu.in; V. Gupta
+0009-0009-1169-3264); M. Kumari: to be added; M. Vasiulla mohd.vasiulla@sru.edu.in; V. Gupta
 vipin@gurugramuniversity.ac.in.
 
 *Elsevier asks for the competing-interest declaration through its declarations
@@ -34,12 +34,13 @@ has not appeared in any conference proceedings.
 
 ## 2. CRediT authorship contribution statement
 
-All three authors have read and approved the submitted version and agree to its
+All four authors have read and approved the submitted version and agree to its
 submission to this journal.
 
 * **Arun Kumar Yadav** — Conceptualization, Methodology, Formal analysis,
   Software, Validation, Data curation, Visualization, Writing – original draft,
   Writing – review & editing.
+* **Mina Kumari** — Validation, Writing – review & editing.
 * **Mohd Vasiulla** — Validation, Writing – original draft, Writing – review &
   editing.
 * **Vipin Gupta** — Conceptualization, Methodology, Formal analysis, Software,
@@ -104,7 +105,7 @@ manuscript.
 
 ---
 
-Signed on behalf of all three authors,
+Signed on behalf of all four authors,
 
 **Vipin Gupta** (corresponding author)
 Department of Mathematics, Gurugram University, Gurugram, India
