@@ -37,7 +37,7 @@ Main contributions.
    independent of the multiplicity in the fully compatible case.
 4. An algorithm polynomial in the length, the multiplicity and the number of
    kernel factors, verified against finite-field linear algebra in
-   characteristics 2 and 3 and evaluated for all 3^31 codes of length 62 over
+   characteristics 2, 3 and 5 and evaluated for all 3^31 codes of length 62 over
    F_32.
 
 Relation to the literature. For a single code, Galois hull dimensions of
@@ -46,14 +46,16 @@ average hull dimensions have been computed. The contribution here is the full
 joint law over a family together with its enumerative consequences. The paper
 states explicitly where it agrees with, and where it goes beyond, that work.
 
-The computational results were obtained with the authors' own Python
-implementation, which is available from the corresponding author on reasonable
-request. The manuscript includes the required declarations (CRediT statement,
-competing interests, funding, use of AI-assisted tools, data availability).
+The computational results were obtained with the authors' own implementation,
+which is available from the corresponding author on reasonable request. The
+manuscript includes the required declarations (CRediT statement, competing
+interests, funding, use of AI-assisted tools, data availability).
 
-We suggest the following reviewers, none of whom is at our institutions:
+[OPTIONAL — author decision; delete this block if no suggestions are made.
+Suggested reviewers, none of whom is at our institutions:
 [Name, affiliation, e-mail], [Name, affiliation, e-mail],
 [Name, affiliation, e-mail]. We request the exclusion of [name(s)], if any.
+END OPTIONAL BLOCK]
 
 Yours sincerely,
 

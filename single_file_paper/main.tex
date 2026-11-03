@@ -89,7 +89,7 @@ marginal laws, the attainable pairs, closed means and variances, conditional
 laws, and the numbers of LCD, self-orthogonal, dual-containing and self-dual
 codes. An algorithm that is polynomial in the length, the multiplicity and the
 number of kernel factors is also given and checked against finite-field
-computations in characteristics $2$ and $3$.
+computations in characteristics $2$, $3$ and $5$.
 \end{abstract}
 
 \begin{keyword}
@@ -148,9 +148,9 @@ $\operatorname{ord}\lambda\mid 1+p^{e-k}$, and give an LCD criterion and
 quantum-code applications. In the repeated-root regime $p\mid n$ the
 per-code hull-dimension formula is also known for constacyclic codes over a
 single field \cite{debnathConstacyclic2023}, and we use it as a check rather
-than a claim (Remark~\ref{rem:debnath-agreement}). None of these works
-records how the pairs (code dimension, hull dimension) are distributed over
-a whole family.
+than a claim (Remark~\ref{rem:debnath-agreement}). To our knowledge, none of
+these works records how the pairs (code dimension, hull dimension) are
+distributed over a whole family.
 
 The present paper is concerned with \emph{repeated-root} lengths, that is,
 with $p\mid n$ in characteristic $p$, where the modulus $x^n-\lambda$ is a
@@ -521,7 +521,7 @@ with the $M+1$ possible values $0,1,\ldots,M$.
 
 This section develops $k$-Galois duality directly for the exponent
 selections of Proposition~\ref{prop:global-selection}.  The Euclidean dual
-generator is verified for arbitrary length in
+generator is proved for arbitrary length in
 Lemma~\ref{lem:euclidean-dual}.  The outcome is an explicit compatibility
 condition for each component; under compatibility, the reciprocal permutes
 the distinct kernel factors, and multiplicities enter the dual generator
@@ -548,10 +548,9 @@ Remark~\ref{rem:candidate}.  For a $K_s$-linear code $C\subseteq K_s^n$ define
 \begin{gathered}
 \Dk(C)=\{y\in K_s^n:\langle c,y\rangle_{s,k}=0
 \text{ for every }c\in C\},\\
-\Hull_k(C)=C\cap\Dk(C).
+\Hull_k(C)=C\cap\Dk(C)
 \end{gathered}
 \]
-
 the \emph{$k$-Galois dual} and \emph{$k$-Galois hull}.  The annihilator
 $\Dk(C)$ is a $K_s$-subspace: if $y\in\Dk(C)$ and $a\in K_s$, then
 $\langle c,ay\rangle_{s,k}=\sigma_{s,k}(a)\langle c,y\rangle_{s,k}=0$.
@@ -691,7 +690,7 @@ hence $f^{\#_{s,k}}(\beta)=0$.
 \subsection{Euclidean and \texorpdfstring{$k$}{k}-Galois dual
 generators}\label{sec:dual-generators}
 
-We first verify the Euclidean dual generator for arbitrary length $n$.
+We first prove the Euclidean dual generator for arbitrary length $n$.
 
 \begin{lemma}\label{lem:euclidean-dual}
 Let $K$ be a finite field, $a\in K^\ast$ and $n\geq1$ arbitrary.  Let
@@ -1094,7 +1093,7 @@ U^{w\sum_{i=1}^{a}(M-e_i)}\\
 Z^{w\sum_{i=1}^{a}\min\{e_i,M-e_{i+1}\}}.
 \end{split}
 \end{equation}
-indices modulo $a$.  Define the $(M+1)\times(M+1)$ transfer matrix, with rows
+with indices modulo $a$.  Define the $(M+1)\times(M+1)$ transfer matrix, with rows
 and columns indexed by states $0,\ldots,M$, by
 \begin{equation}\label{eq:transfer}
 \begin{aligned}
@@ -1133,7 +1132,7 @@ The product of the edge weights along the walk is
 U^{w(M-e_{i+1})}
 Z^{w\min\{e_i,M-e_{i+1}\}}\\
 &=U^{w\sum_{i=1}^{a}(M-e_i)}
-Z^{w\sum_{i=1}^{a}\min\{e_i,M-e_{i+1}\}}.
+Z^{w\sum_{i=1}^{a}\min\{e_i,M-e_{i+1}\}},
 \end{aligned}
 \]
 because each vertex occurs exactly once as a destination.  Summing over all
@@ -1169,7 +1168,7 @@ For every $n\geq1$, every $\lambda\in\A^\ast$, and every $0\leq k<e$,
 \label{eq:main}
 \end{align}
 }
-where an empty product is $1$.  In particular, if every component is
+Here an empty product is $1$.  In particular, if every component is
 compatible, then
 \[
 \Epoly^{(M)}(U,Z)
@@ -1361,7 +1360,7 @@ N_{\kappa,\eta}=N_{W-\kappa,\eta},\\[5pt]
 =U^W\Epoly^{(M)}(U^{-1},Z).
 \end{gathered}
 \]
-as a Laurent polynomial identity in $U$.
+This is a Laurent polynomial identity in $U$.
 \end{corollary}
 
 \begin{proof}
@@ -1374,7 +1373,7 @@ it twice shifts the indices by two).  On a
 compatible orbit,
 \[
 \sum_{i=1}^{a}(M-e_i^\vee)=\sum_{i=1}^{a}e_{i-1}
-   =aM-\sum_{i=1}^{a}(M-e_i),
+   =aM-\sum_{i=1}^{a}(M-e_i).
 \]
 The edge sum of the transformed word is
 $\sum_i\min\{M-e_{i-1},e_i\}
@@ -1622,7 +1621,7 @@ third $\leq M-s$, and the shared variable in $[s,M-r]$; hence
 \Pr(Y_i\geq r,\,Y_{i+1}\geq s)
 &=\frac{(M-r+1)(M-s+1)}
 {(M+1)^3}\\
-&\quad\times (M-r-s+1)_+.
+&\quad\times (M-r-s+1)_+
 \end{aligned}
 \]
 where $(t)_+=\max\{t,0\}$.  Summing over $r,s\geq1$ (a finite power-sum
@@ -2187,13 +2186,11 @@ $\lambda_{s,0}^{1+p^{d_s-k}}=1$, the reciprocal permutation, the Gram-rank
 hull dimension against the min-edge formula, the full joint histogram, $W$,
 moments, covariance, LCD/self-orthogonal/self-dual counts and every conditional
 mean against the enumerator.  These checks include the $\F_4\times\F_{16}$ row
-of Table~\ref{tab:summary} and the incompatible-twist example, and they remove
-the earlier limitation that larger families were only checked at the
-transfer-product level.  The Level-3 families include
-$N_F^{\mathrm{inc}}>0$ as well as fully compatible cases, so the LCD formula
-$(M+1)^{N_F^{\mathrm{inc}}}2^{\#\mathrm{orbits}}$, the self-orthogonal count
-and the self-dual count are confirmed with incompatible components present.
-All of these checks agree with the enumerator.
+of Table~\ref{tab:summary} and the incompatible-twist example.  The Level-3
+families include $N_F^{\mathrm{inc}}>0$ as well as fully compatible cases, so
+the LCD formula $(M+1)^{N_F^{\mathrm{inc}}}2^{\#\mathrm{orbits}}$, the
+self-orthogonal count and the self-dual count are confirmed with incompatible
+components present.
 
 \section{Conclusion}\label{sec:conclusions}
 In this paper, we have determined the exact joint distribution of code dimension and
@@ -2337,10 +2334,10 @@ and uses no external algebra package.  It implements $K_s$ directly,
 extracts all linear factors by evaluating $P_{s,0}$ at every field element,
 then recursively splits the remaining polynomial by trial division by every
 monic polynomial of degree at most half its current degree.  A polynomial with
-no such divisor is irreducible; this is a genuine irreducibility test, not an
-inference from the size of a cofactor.  Thus the pipeline is self-contained,
-takes no orbit data as input, and also handles the extension-field and
-product-algebra cases of Level~3 below.
+no such divisor is irreducible, so the test is complete.  Thus the pipeline
+is self-contained, takes no orbit data as input, and also handles the
+extension-field and product-algebra cases of Level~3 in
+Section~\ref{sec:verification}.
 
 When $\lambda_{s,0}=1$ there is a root-exponent shortcut.  Let $\alpha$ be a
 primitive $n'$-th root of unity in an algebraic closure.  The irreducible
