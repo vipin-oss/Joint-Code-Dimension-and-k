@@ -379,7 +379,7 @@ such that
 \begin{equation}\label{eq:lambda0}
 \lambda_{s,0}^{\,M}=\lambda_s,
 \qquad\text{i.e.}\qquad
-\lambda_{s,0}=\lambda_s^{\,p^{\,d_s-t\ \mathrm{mod}\ d_s}}=\Frob^{-t}(\lambda_s).
+\lambda_{s,0}=\lambda_s^{\,p^{\,(d_s-t)\bmod d_s}}=\Frob^{-t}(\lambda_s).
 \end{equation}
 Define the component modulus and its square-free kernel by
 \[
@@ -1758,7 +1758,7 @@ is Corollary~\ref{cor:symmetry}.
 \end{proof}
 
 \begin{remark}\label{rem:asymptotic-moments}
-Fix a finite compatible orbit skeleton and let the integer $M$ grow in the
+Fix a finite orbit skeleton in which every component is compatible, and let the integer $M$ grow in the
 moment formulas.  Since
 $\mu_M/M\to1/3$, $\nu_M/M\to1/4$ and $v(a,M)/M^2\to1/48$, $1/18$, $a/60$ in the
 three regimes, with $S_1=\sum_{a_O=1}w_O$ and
@@ -2088,7 +2088,7 @@ the superposition of the three length-$10$ orbit trapezoids.}
 \centering
 \scriptsize
 \setlength{\tabcolsep}{2.5pt}
-\caption{Computational results for the constructed Code Families and their orbit structures, with corresponding LCD and SD counts and statistical properties of the \(k\)-Galois hull dimension.}
+\caption{Computational results for the constructed Code Families and their orbit structures, with corresponding LCD and self-dual (SD) counts and statistical properties of the \(k\)-Galois hull dimension.}
 \label{tab:summary}
 \begin{tabular}{lcclrrrrcc}
 \toprule
@@ -2318,7 +2318,7 @@ The input is $(p,e,k,n)$ together with the components $(K_s,\lambda_s)$.
 For each component:
 \begin{enumerate}
 \item compute $t=v_p(n)$, $M=p^t$, $n'=n/M$ and
-  $\lambda_{s,0}=\lambda_s^{\,p^{\,d_s-t\ \mathrm{mod}\ d_s}}=\Frob^{-t}(\lambda_s)$;
+  $\lambda_{s,0}=\lambda_s^{\,p^{\,(d_s-t)\bmod d_s}}=\Frob^{-t}(\lambda_s)$;
 \item factor the square-free polynomial $P_{s,0}=x^{n'}-\lambda_{s,0}$ over
   $K_s$ into distinct monic irreducibles $\Fs$;
 \item for each $f\in\Fs$, compute $f^{\#_{s,k}}$ by \eqref{eq:reciprocal} and
