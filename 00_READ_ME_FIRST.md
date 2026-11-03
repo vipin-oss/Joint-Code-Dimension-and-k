@@ -6,113 +6,121 @@ Constacyclic Codes over Square-Free Affine Algebras*
 **Target:** IEEE Transactions on Information Theory (regular paper track)
 **Authors:** Arun Kumar Yadav, Vipin Gupta, Manju Pruthi
 
-This archive contains **only** what is needed to submit the paper. Nothing else.
+This archive is the corrected, fully verified submission package. It contains
+the final PDFs, the LaTeX sources, the cover letter, the declarations, the
+supplementary code and data, the compliance report, the skeptical mathematics
+review, the reference/attribution verification report and the final report.
 
 ```
 00_READ_ME_FIRST.md            this file
-01_manuscript/                 LaTeX sources + figures (compile this)
+01_manuscript/                 LaTeX sources, figures and both final PDFs
 02_cover_letter/               cover letter (markdown + plain-text version)
 03_declarations/               originality / authorship / funding / COI / data / AI-use
-04_supplementary/              Python code, generated tables, verification log
+04_supplementary/              Python code, generated tables, verification logs
 05_submission_checklist/       format compliance report + checklist
+MATH_REVIEW.md                 skeptical mathematics review, gap list and fixes
+REFERENCES_VERIFICATION.md     bibliography, attribution and IEEE-policy checks
+FINAL_REPORT.md                change log, PR link, tests and unresolved items
+MANIFEST_SHA256.txt            SHA-256 manifest of every shipped file
 ```
 
 ---
 
-## Step 1 — build the two PDFs (5 minutes)
+## Step 1 — the two final PDFs (already included)
 
-LaTeX could not be run when this package was assembled (no TeX installation in
-the build environment), so **the PDFs are not included**. Build them yourself in
-any of these three ways.
+`01_manuscript/main.pdf` is the two-column journal-layout version (**18
+pages**). `01_manuscript/main_peerreview.pdf` is the single-column review copy
+(**42 pages**, `\baselinestretch=1.4`). Both were rebuilt from the current
+sources with `pdflatex` / `bibtex` (three `pdflatex` passes), with no undefined
+references or citations, no `??`, and zero overfull/underfull boxes. No
+`.aux`, `.log`, `.out`, `.bbl`, `.blg` or `__pycache__` files are shipped.
 
-**a) Overleaf (easiest, nothing to install)**
-
-1. Upload `01_manuscript/` as a new project (drag the whole folder, or the zip of
-   it).
-2. Set the main file to `main_peerreview.tex` and press *Recompile* →
-   `main_peerreview.pdf`. This is the file you upload for review.
-3. Switch the main file to `main.tex` and recompile → `main.pdf`. This is the
-   journal-layout version (keep it for yourself / final version).
-
-**b) Local TeX Live / MiKTeX**
+To rebuild if you change a source file:
 
 ```bash
 cd 01_manuscript
 ./build.sh                      # builds main.pdf and main_peerreview.pdf
-# or explicitly:
-pdflatex main_peerreview && bibtex main_peerreview && pdflatex main_peerreview && pdflatex main_peerreview
 ```
 
-`IEEEtran.cls` is required (Debian/Ubuntu: `texlive-publishers`; MiKTeX installs
-it on demand).
+`IEEEtran.cls`, `mathtools`, `booktabs`, `microtype`, `mathrsfs` and the IEEE
+bibliography style are required (a full TeX Live installation supplies them).
+Overleaf also works: set the main file to `main_peerreview.tex` for the review
+copy, or `main.tex` for the two-column version. Both wrappers `\input` the same
+`body.tex`, so the PDFs cannot differ in content. After any rebuild, re-run the
+compliance checker and re-read the true page count before quoting it in the
+cover letter.
 
-**c) About the review copy:** `main_peerreview.tex` uses the standard IEEE review
-options (`12pt, journal, draftclsnofoot, onecolumn`) with `\maketitle`
-(single column, double spaced, about 40 pages). The class option `peerreview`
-alone would only make a one-column cover page and keep the body two-column.
+## Step 2 — fill the remaining author-only placeholders
 
-After compiling, check the console for `??` (undefined references) and
-`There were undefined citations` — there must be none. Then note the page count
-of `main_peerreview.pdf` and write it into the cover letter
-(`02_cover_letter/COVER_LETTER.md`, paragraph 2).
-
-## Step 2 — fill the placeholders (10 minutes)
-
-Search for `XXXX` in the whole package. There are only a few:
+Search for `XXXX`. The cover-letter date (**3 November 2026**) and the real
+**42-page** review count are already filled in. The following still require
+author input and were deliberately not invented:
 
 | where | what |
 |---|---|
-| `01_manuscript/main.tex`, `main_peerreview.tex` (`\thanks`) | manuscript received/revised/accepted dates, DOI line, e-mail addresses of V. Gupta and M. Pruthi |
-| `02_cover_letter/COVER_LETTER.md` and `.txt` | date, editor name, reviewer suggestions (3 names), page count |
-| `03_declarations/AUTHOR_DECLARATIONS.md` | the same e-mail addresses, signature date |
+| `01_manuscript/main.tex`, `main_peerreview.tex` (`\thanks`) | manuscript received/revised/accepted/publication dates, DOI line, e-mail addresses of V. Gupta and M. Pruthi |
+| `02_cover_letter/COVER_LETTER.md` and `.txt` | Editor-in-Chief name, three suggested reviewers (name, affiliation, e-mail), requested exclusions |
+| `03_declarations/AUTHOR_DECLARATIONS.md` | the same co-author e-mail addresses, ORCID iDs of V. Gupta and M. Pruthi, signature date |
 
 ## Step 3 — upload to the journal (exact list)
 
 | upload slot | file |
 |---|---|
-| Manuscript (PDF) | `main_peerreview.pdf` — after you compile it |
+| Manuscript (PDF) | `01_manuscript/main_peerreview.pdf` |
 | Source files (if requested) | `01_manuscript/` (the `.tex` files, `references.bib`, `figures/`) |
 | Cover letter | `02_cover_letter/COVER_LETTER.txt` (or export the `.md` to PDF) |
-| Declarations / author information | `03_declarations/AUTHOR_DECLARATIONS.md` (export to PDF if a file is required; otherwise paste the fields into the form) |
+| Declarations / author information | `03_declarations/AUTHOR_DECLARATIONS.md` (export to PDF if a file is required) |
 | Supplementary material | `04_supplementary/` as a single zip |
 
-`05_submission_checklist/` is for **you**, not for the journal — keep it.
+`05_submission_checklist/`, `MATH_REVIEW.md`, `REFERENCES_VERIFICATION.md`,
+`FINAL_REPORT.md` and `MANIFEST_SHA256.txt` are for the authors and the record,
+not for the journal upload.
 
 ## What is in each folder
 
-**01_manuscript/** — the complete, self-contained LaTeX source.
-`main.tex` (two-column journal layout) and `main_peerreview.tex` (single-column,
-double-spaced, what reviewers read) both `\input` the same `body.tex`, so the two
-PDFs can never differ in content. `references.bib` holds exactly the 31 cited
-references; `figures/` holds two vector PDF figures and one PNG workflow figure.
+**01_manuscript/** — complete, self-contained LaTeX source. `references.bib`
+holds exactly the 31 cited references; `figures/` holds two vector PDF figures
+and one PNG workflow figure. The final PDFs are built from these sources.
 
 **02_cover_letter/** — one-page cover letter: what the paper does, the main
-contributions, relation to the closest literature, suggested reviewers. `.md` for
-editing, `.txt` for pasting into the web form.
+contributions, relation to the closest literature, suggested reviewers. `.md`
+for editing, `.txt` for pasting into the web form.
 
-**03_declarations/** — everything a journal asks about besides the paper:
-originality and no concurrent submission, authorship and contributions,
-funding, competing interests, data availability, AI-tool disclosure (IEEE
-policy), ORCID, and the permissions/ethics statements.
+**03_declarations/** — originality and no concurrent submission, authorship
+and contributions, funding, competing interests, data availability, the IEEE
+AI-use disclosure, ORCID, and the permissions/ethics statements.
 
-**04_supplementary/** — the program and its output: the transfer-matrix
-enumerator, the complete verification script, the script that regenerates the
-tables, the saved verification log (`ALL CHECKS PASSED`), and the twelve CSV
-files behind Table I and the figures. Running `python3 code/checks.py`
-reproduces every number in the paper (≈30 s, no dependencies beyond the Python
-standard library).
+**04_supplementary/** — the transfer-matrix enumerator, the complete
+verification script, the table generator, the saved `ALL CHECKS PASSED` output,
+the external symbolic moment/covariance/complexity report and the twelve CSV
+files behind Table I and the figures. From the repository root, the exact
+isolated-mode command is:
 
-**05_submission_checklist/** — the automated compliance report (abstract length,
-index terms, references, floats, structure, page estimate) and the
-step-by-step checklist, including what to do if the Associate Editor asks for a
-shorter paper.
+```bash
+python3 -I 04_supplementary/code/checks.py
+python3 04_supplementary/code/generate_tables.py
+```
+
+The first command checks Levels A/B/C, 21 independent finite-field families and
+every printed number; the second regenerates all CSVs byte-for-byte. Shipped
+code is Python standard library only; SymPy is used only in the external
+verification report.
+
+**05_submission_checklist/** — the live IEEE compliance report, the
+step-by-step checklist and the compliance checker.
 
 ## Honest status of the package
 
-* Content, structure, abstract length (192 words, limit 200), index terms,
-  references (31, all cited), float conventions and section order were verified
-  by `05_submission_checklist/compliance_check.py` — all checks pass.
-* The two PDFs must be produced by you (Step 1); they are the only missing
-  artefacts, and they are required by every editorial system.
-* All numbers in the paper are reproduced by the supplied code; the saved log is
-  in `04_supplementary/code/checks_output.txt`.
+* Content, structure, abstract length (**191 words**, limit 200), index terms,
+  references (31, all cited), float conventions and section order were
+  re-checked by `05_submission_checklist/compliance_check.py` —
+  `ALL IEEE REGULAR-PAPER CHECKS PASSED`.
+* Both final PDFs are included and were rebuilt from the current sources.
+* The exact `python3 -I 04_supplementary/code/checks.py` ends in
+  `ALL CHECKS PASSED`; all tables regenerate byte-identically.
+* A full repository byte scan and PDF text extraction show no old fourth-author
+  name, affiliation or proprietary-computer-algebra-system reliance.
+* Bibliography DOI metadata, introduction attributions, the mathematics review,
+  the IEEE AI-use policy recheck and the remaining unresolved items are
+  disclosed in `REFERENCES_VERIFICATION.md`, `MATH_REVIEW.md` and
+  `FINAL_REPORT.md`.

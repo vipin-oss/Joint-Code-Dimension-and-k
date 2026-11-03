@@ -45,7 +45,8 @@ PASS C  F9-n6-k0-gen: 4 brute-force codes, N_F=1, W=6, orbits=[], incompatible_w
 PASS C  F9-n9-k1-l1: 10 brute-force codes, N_F=1, W=9, orbits=[(1, 1)], incompatible_weights=[]
 PASS C  F4xF16: 6561 brute-force codes, N_F=8, W=30, orbits=[(1, 1), (2, 2), (4, 2), (1, 2)], incompatible_weights=[]
 PASS C  F4xF4-inc: 81 brute-force codes, N_F=4, W=12, orbits=[(2, 1), (1, 1)], incompatible_weights=[3]
-PASS C  independent brute-force finite-field checks (20 families)
+PASS C  F64-over-F8: 27 brute-force codes, N_F=3, W=12, orbits=[(3, 2)], incompatible_weights=[]
+PASS C  independent brute-force finite-field checks (21 families)
 PASS Example 8.1 self-orthogonal count = 70639674082 (got 70639674082)
 PASS Example 8.1 W = 62, 124 (got 62, 124)
 PASS Example 8.1 conditional peaks ~0.281W, 0.302W (got 0.2805 at k=31, 0.3021 at k=62)

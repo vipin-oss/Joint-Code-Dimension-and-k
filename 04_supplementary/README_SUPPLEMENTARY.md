@@ -4,8 +4,10 @@ Manuscript: *Joint Code-Dimension and k-Galois-Hull Enumerators for Repeated-Roo
 Constacyclic Codes over Square-Free Affine Algebras*
 
 This folder contains the program and all generated data referred to in the
-paper. Every shipped `.py` file uses only the Python 3 standard library — no
-Magma, no Sage, no SymPy, no installation and no external packages.
+paper. Every shipped `.py` file uses only the Python 3 standard library: no
+proprietary computer algebra system, no external packages and no installation
+step. SymPy appears only in a scratch external verification report, not in any
+shipped `.py` file.
 
 ```
 code/
@@ -52,10 +54,11 @@ committed CSVs byte-for-byte.
   dimension as `dim C − rank(B sigma^k(B)^T)`, and matches the full joint
   histogram with the trace product (27, 27, 27, 2187, 64, 16 and 256 words).
 * **Level C (added for this submission):** brute-force verification over real
-  finite-field codes for 20 independent families: `F_2` and `F_4` with
+  finite-field codes for 21 independent families: `F_2` and `F_4` with
   `n = 4, 6, 12`, `F_3` with `n = 6, 9`, `F_5` with `n = 10`, `k = 0, 1`,
   `lambda_0 != 1` including incompatible twists, and product algebras
-  `F_4 x F_16` and `F_4 x F_4`. For every family it checks the compatibility
+  `F_4 x F_16`, `F_4 x F_4`, and an `F_64` component over the base field `F_8`
+  with an order-3 twist. For every family it checks the compatibility
   condition, the reciprocal permutation, the Gram-rank hull dimension, the
   min-edge formula, the whole joint histogram, `W`, `E[kappa]`, `Var(kappa)`,
   `Cov`, the LCD / self-orthogonal / self-dual counts, all conditional means and
@@ -85,4 +88,4 @@ symbolically with SymPy 1.14.0 in a scratch script outside the repository
 | LCD / SO / DC / SD counts | `enumerator.py`: `lcd_count`, `self_orthogonal_count`, `self_dual_count` |
 | Table I | `generate_tables.py` → `tables/summary_families.csv` |
 | Figures 2–3 | the data in `tables/joint_F8.csv`, `tables/joint_F32-M2.csv` |
-| Table II (verification) | `checks.py`: `check_B` and Level C |
+| Table II (verification) | `checks.py`: Levels A, B and C |

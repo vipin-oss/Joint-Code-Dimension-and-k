@@ -5,7 +5,7 @@ checks.py -- self-contained verification for the paper's statements.
 Run from the repository root:
     python3 -I 04_supplementary/code/checks.py
 (prints a pass/fail line per check and a summary; only the standard library is
-used, and no Magma/Sage or other CAS is required.)
+used, and no external computer algebra system is required.)
 
 Level A (combinatorial, no field arithmetic)
   A1  transfer-matrix trace  ==  brute-force word enumeration
@@ -27,9 +27,10 @@ Level B (finite-field linear algebra, small cases)
 Level C (independent brute-force verification, added for this submission)
   C1  direct Gram-matrix hull dimensions over real finite fields for F_2/F_4
       with n=4,6,12, F_3 with n=6,9, F_5 with n=10, k=0,1, lambda_0 != 1
-      (including incompatible twists), and product algebras F_4 x F_16 and
-      F_4 x F_4; every printed number is recomputed from the brute-force
-      histogram and compared with Family output.
+      (including incompatible twists), product algebras F_4 x F_16 and
+      F_4 x F_4, and an F_64 component over the base field F_8 with an
+      order-3 twist (21 families in total); every printed number is recomputed
+      from the brute-force histogram and compared with Family output.
   C2  all displayed example/table values, LCD/SO/SD counts, W, moments,
       covariance, conditional means and complexity-related counts.
 """
@@ -476,6 +477,10 @@ def _element(F, code):
             if all(F.pow(a, r) != F.one() for r in range(1, F.q - 1)):
                 return a
         raise ValueError("no generator found")
+    if code == "gen21":
+        # An order-3 element of F_64^* (generator to the 21st power).
+        g = _element(F, "gen")
+        return F.pow(g, 21)
     if isinstance(code, str) and code.startswith("int:"):
         return F.from_int(int(code[4:]))
     raise ValueError(code)
@@ -684,6 +689,12 @@ INDEPENDENT_FAMILIES = [
                       C(2, 4, [1, 1, 0, 0, 1], 2, 1, 5, 2, "int:1")]),
     ("F4xF4-inc",    [C(2, 2, [1, 1, 1], 2, 0, 3, 2, "int:1"),
                       C(2, 2, [1, 1, 1], 2, 0, 3, 2, "omega")]),
+    # F_64 as a degree-2 component over the base field F_8 (e=3, m=6).
+    # x^6+x+1 is primitive over F_2; lam0 has order 3.  Here
+    # 1+p^(d_s-k)=1+2^5=33 is divisible by 3 but 1+p^(e-k)=1+2^2=5 is not,
+    # so this family exercises the extension-field compatibility condition
+    # and the removal of gcd(ord(lambda_0),n')=1 (ord=3, n'=3).
+    ("F64-over-F8",  [C(2, 6, [1, 1, 0, 0, 0, 0, 1], 3, 1, 3, 2, "gen21")]),
 ]
 
 

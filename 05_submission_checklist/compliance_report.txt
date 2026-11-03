@@ -4,16 +4,16 @@ REGULAR PAPER - camera-ready layout (two column)   (main.tex)
   ok    R1  IEEEtran[journal] - regular paper, two-column=yes
   ok    R2  abstract 191 words (limit 200), no citations, no displays
   ok    R3  5 index terms, alphabetized: Constacyclic codes, Galois hulls, LCD codes, repeated-root codes, transfer matrices
-  ok    R4  author block complete (7 \thanks footnotes)
+  ok    R4  author block complete (6 \thanks footnotes)
   ok    R5  no Elsevier-only declarations, MSC codes or keywords line
   ok    R6  7 numbered sections; Conclusion, Acknowledgment and References in place; appendix=yes
   ok    R7  106 labels, all 73 reference targets defined, no duplicates
   ok    R8  31 references cited, all present in references.bib; none uncited
-  ok    R9  3 vector figures (captions below), 2 tables (captions above, booktabs rules)
+  ok    R9  3 figures (2 vector PDF, 1 PNG; captions below), 2 tables (captions above, booktabs rules)
   ----  quantities: 3 theorems, 12 lemmas, 15 propositions, 6 corollaries, 2 definitions, 8 examples, 8 remarks, 34 proofs
-  ----  quantities: 93 displayed equations, 7 sections, ~12925 words of text
-  ----  estimate: 15-19 two-column pages (8898 prose words, 93 displays, 3 figures, 2 tables, 31 references)
-  ----  estimate: 35-47 pages in the double-spaced peer-review format
+  ----  quantities: 114 displayed equations, 7 sections, ~13447 words of text
+  ----  estimate: 16-21 two-column pages (9240 prose words, 114 displays, 3 figures, 2 tables, 31 references)
+  ----  estimate: 38-50 pages in the double-spaced peer-review format
   RESULT: PASS
 
 ==============================================================================
@@ -22,16 +22,16 @@ REGULAR PAPER - submission copy (single column, double spaced)   (main_peerrevie
   ok    R1  IEEEtran[12pt,journal,draftclsnofoot,onecolumn] - peer-review, two-column=no
   ok    R2  abstract 191 words (limit 200), no citations, no displays
   ok    R3  5 index terms, alphabetized: Constacyclic codes, Galois hulls, LCD codes, repeated-root codes, transfer matrices
-  ok    R4  author block complete (7 \thanks footnotes)
+  ok    R4  author block complete (6 \thanks footnotes)
   ok    R5  no Elsevier-only declarations, MSC codes or keywords line
   ok    R6  7 numbered sections; Conclusion, Acknowledgment and References in place; appendix=yes
   ok    R7  106 labels, all 73 reference targets defined, no duplicates
   ok    R8  31 references cited, all present in references.bib; none uncited
-  ok    R9  3 vector figures (captions below), 2 tables (captions above, booktabs rules)
+  ok    R9  3 figures (2 vector PDF, 1 PNG; captions below), 2 tables (captions above, booktabs rules)
   ----  quantities: 3 theorems, 12 lemmas, 15 propositions, 6 corollaries, 2 definitions, 8 examples, 8 remarks, 34 proofs
-  ----  quantities: 93 displayed equations, 7 sections, ~12901 words of text
-  ----  estimate: 15-19 two-column pages (8877 prose words, 93 displays, 3 figures, 2 tables, 31 references)
-  ----  estimate: 35-47 pages in the double-spaced peer-review format
+  ----  quantities: 114 displayed equations, 7 sections, ~13436 words of text
+  ----  estimate: 16-21 two-column pages (9227 prose words, 114 displays, 3 figures, 2 tables, 31 references)
+  ----  estimate: 38-50 pages in the double-spaced peer-review format
   RESULT: PASS
 
 ALL IEEE REGULAR-PAPER CHECKS PASSED

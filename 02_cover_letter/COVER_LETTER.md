@@ -5,7 +5,7 @@
 
 ---
 
-[Date]
+3 November 2026
 
 Prof. [Name], Editor-in-Chief
 *IEEE Transactions on Information Theory*
@@ -18,6 +18,8 @@ Square-Free Affine Algebras", by Arun Kumar Yadav, Vipin Gupta and
 Manju Pruthi, for consideration for publication in the *IEEE Transactions on
 Information Theory*. It has not been published elsewhere and is not under
 consideration by any other journal; all authors have approved the submission.
+This is a full regular paper (a **42-page** double-spaced review manuscript),
+not a correspondence.
 
 **What the paper does.** For all $\mathcal A$-linear $\lambda$-constacyclic
 codes of a fixed repeated-root length over a square-free affine algebra over a
@@ -54,9 +56,11 @@ constacyclic codes over a field and over an affine algebra are known
 with its enumerative consequences, and we state explicitly where the paper
 agrees with, and where it goes beyond, that work.
 
-The supplementary material contains the complete implementation and the
-verification log; every table and every worked example in the paper is
-reproduced by it.
+The supplementary material contains the complete implementation, the
+verification log, the symbolic moment/covariance/complexity report and the
+regenerated CSV tables; every table and every worked example in the paper is
+reproduced by the exact root-level command recorded in the submission
+package.
 
 We suggest the following reviewers, none of whom is at our institutions:
 [Name, affiliation, e-mail], [Name, affiliation, e-mail],
@@ -74,11 +78,12 @@ arunyadav0307@gmail.com — ORCID 0009-0009-1169-3264
 
 ### Notes before sending
 
-* Replace the three reviewer suggestions with real names; IEEE requires that
-  suggested reviewers have no conflict of interest with any author.
-* Quote the page count of the compiled `main_peerreview.pdf` in the second
-  paragraph ("… a 4X-page double-spaced manuscript …") — see
-  `SUBMISSION_CHECKLIST.md`, §1.
+* Replace the editor name and the three reviewer suggestions with real names;
+  IEEE requires that suggested reviewers have no conflict of interest with any
+  author. The date and the 42-page count are already filled in.
+* The real page count of the compiled `main_peerreview.pdf` is **42** and is
+  already quoted in the cover letter; do not change it unless the PDF is
+  rebuilt with a different length.
 * In the relation-to-literature paragraph the bracketed keys refer to the
   numbered references of the paper; the journal's cover-letter field accepts
   plain text, so you may spell them out as "Debnath–Prakash–Islam (2023)",
