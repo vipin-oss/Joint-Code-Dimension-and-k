@@ -1,17 +1,15 @@
 %% ---------------------------------------------------------------------------
-%%  IEEE TRANSACTIONS ON INFORMATION THEORY -- journal (two-column) version
+%%  Finite Fields and Their Applications (Elsevier) -- submission manuscript
+%%  Class: elsarticle (preprint, single column, 12pt).
+%%  Manuscript body: body.tex.  References: references.bib (elsarticle-num).
 %%
-%%  Submission versions:
-%%     main.tex              this file: two-column, camera-ready style
-%%     main_peerreview.tex   single-column, double-spaced (peer review mode)
-%%  Shared manuscript body:  body.tex   (identical in both versions)
-%%
-%%  Build:  ./build.sh            (both versions)
-%%          pdflatex main && bibtex main && pdflatex main && pdflatex main
+%%  Build:  ./build.sh
+%%          (pdflatex main && bibtex main && pdflatex main && pdflatex main)
 %% ---------------------------------------------------------------------------
-\documentclass[journal]{IEEEtran}
+\documentclass[preprint,12pt]{elsarticle}
 %
 \usepackage[T1]{fontenc}
+\usepackage{lmodern}
 \usepackage{amsmath,amssymb,amsthm,mathtools}
 \usepackage{mathrsfs}
 \usepackage{graphicx}
@@ -23,9 +21,9 @@
 \graphicspath{{figures/}}
 %
 \interdisplaylinepenalty=2500
-\emergencystretch=2em
+\emergencystretch=6em
 %
-% --- macros (identical to the shared body conventions) ---------------------
+% --- macros (shared with body.tex) -----------------------------------------
 \newcommand{\F}{\mathbb F}
 \newcommand{\K}{\mathbb K}
 \newcommand{\A}{\mathcal A}
@@ -49,35 +47,32 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 %
+\journal{Finite Fields and Their Applications}
+\renewcommand{\today}{}
+
 \begin{document}
 
-%% IEEE regular-paper running head and copyright line.  For the final,
-%% accepted version the volume/number/year are supplied by the editorial
-%% office; for submission the running head below is enough.
-\markboth{IEEE TRANSACTIONS ON INFORMATION THEORY}%
-         {Yadav \textit{et al.}: JOINT CODE-DIMENSION AND $k$-GALOIS-HULL ENUMERATORS}
-% \IEEEpubid{0018-9448 \copyright\ 2026 IEEE.  Personal use is permitted, but
-% republication/redistribution requires IEEE permission.}
+\begin{frontmatter}
 
-\title{Joint Code-Dimension and \texorpdfstring{$k$}{k}-Galois-Hull Enumerators for
+\title{Joint Code-Dimension and $k$-Galois-Hull Enumerators for
 Repeated-Root Constacyclic Codes over Square-Free Affine Algebras}
 
-\author{Arun~Kumar~Yadav, Mohd~Vasiulla, and Vipin~Gupta%
-\thanks{This work received no external funding. (Corresponding author:
-Vipin Gupta.)}%
-\thanks{A. K. Yadav is with the School of Basic and Applied Sciences,
-K.R. Mangalam University, Sohna Road, Gurugram 122103, Haryana, India
-(e-mail: arunyadav0307@gmail.com; ORCID iD: 0009-0009-1169-3264).}
-\thanks{M. Vasiulla is with the Department of Mathematics, School of Computer
-Science \& Artificial Intelligence, SR University, Warangal, Telangana 506371,
-India (e-mail: mohd.vasiulla@sru.edu.in).}
-\thanks{V. Gupta is with the Department of Mathematics, Gurugram University,
-Gurugram 122505, Haryana, India (e-mail: vipin@gurugramuniversity.ac.in).}
-\thanks{Supplementary material: the Python implementation of the enumerator and
-the complete verification log described in Section~\ref{sec:verification} are
-included with the submission.}}
+\author[krmu]{Arun Kumar Yadav}
+\ead{arunyadav0307@gmail.com}
 
-\maketitle
+\author[sru]{Mohd Vasiulla}
+\ead{mohd.vasiulla@sru.edu.in}
+
+\author[gu]{Vipin Gupta\corref{cor1}}
+\ead{vipin@gurugramuniversity.ac.in}
+\cortext[cor1]{Corresponding author}
+
+\address[krmu]{School of Basic and Applied Sciences, K.R. Mangalam University,
+Sohna Road, Gurugram 122103, Haryana, India}
+\address[sru]{Department of Mathematics, School of Computer Science \&
+Artificial Intelligence, SR University, Warangal 506371, Telangana, India}
+\address[gu]{Department of Mathematics, Gurugram University, Gurugram 122505,
+Haryana, India}
 
 \begin{abstract}
 We determine the exact joint distribution of the code dimension and the
@@ -100,29 +95,56 @@ factors, checked against finite-field computations in characteristics
 $2$ and $3$.
 \end{abstract}
 
-\begin{IEEEkeywords}
-Constacyclic codes, Galois hulls, LCD codes, repeated-root codes, transfer
-matrices.
-\end{IEEEkeywords}
+\begin{keyword}
+constacyclic codes \sep Galois hull \sep LCD codes \sep repeated-root codes
+\sep transfer matrix \sep code enumeration
+\MSC[2020] 94B15 \sep 94B05 \sep 05A15
+\end{keyword}
+
+\end{frontmatter}
 
 \input{body}
 
-\section*{Acknowledgment}
-All symbolic and numerical checks reported in Section~\ref{sec:verification}
-were carried out with the two Python scripts \texttt{enumerator.py} and
-\texttt{checks.py} accompanying the manuscript; the saved output of the latter
-reproduces every table and every example of the paper.
-The authors used the AI-assisted writing tool Arena.ai Agent Mode at the level
-of literature organization in Section~I, language and structural editing
-throughout the article, development and checking of the supplementary Python
-code used in Section~VII, and assistance with the mathematical review and
-source-level checks reported in Section~VII and Appendices~A--B. The tool was
-not used to generate mathematical results, proofs, data, figures or tables
-independently, and it is not an author. All mathematical statements, proofs and
-computed data were reviewed and verified by the authors, who take full
-responsibility for the content of the article.
+\section*{CRediT authorship contribution statement}
+\textbf{Arun Kumar Yadav:} Conceptualization, Methodology, Formal analysis,
+Software, Validation, Data curation, Visualization, Writing -- original draft,
+Writing -- review \& editing.
+\textbf{Mohd Vasiulla:} Validation, Writing -- original draft, Writing --
+review \& editing.
+\textbf{Vipin Gupta:} Conceptualization, Methodology, Formal analysis,
+Software, Validation, Investigation, Writing -- original draft, Writing --
+review \& editing, Project administration.
 
-\bibliographystyle{IEEEtran}
+\section*{Declaration of competing interest}
+The authors declare that they have no known competing financial interests or
+personal relationships that could have appeared to influence the work reported
+in this paper.
+
+\section*{Funding}
+This research did not receive any specific grant from funding agencies in the
+public, commercial, or not-for-profit sectors.
+
+\section*{Declaration of generative AI and AI-assisted technologies in the
+writing process}
+During the preparation of this work the authors used Arena.ai Agent Mode for
+literature organization in the Introduction, for language and structural
+editing, for development and checking of the supplementary Python code used in
+Section~\ref{sec:examples}, and for assistance with the mathematical review and
+source-level checks reported in Section~\ref{sec:examples} and the appendices.
+The tool did not independently generate mathematical results, proofs, data,
+figures or tables and is not an author. After using this tool, the authors
+reviewed and edited the content as needed and take full responsibility for the
+content of the publication.
+
+\section*{Data availability}
+No external datasets were used. All computational data reported in this article
+are generated by the Python code supplied as supplementary material (the
+enumerator, the verification script with its saved output, the table
+generator, and the twelve CSV files behind Table~\ref{tab:summary} and the
+figures); it is also available at
+\url{https://github.com/vipin-oss/Joint-Code-Dimension-and-k}.
+
+\bibliographystyle{elsarticle-num}
 \bibliography{references}
 
 \end{document}

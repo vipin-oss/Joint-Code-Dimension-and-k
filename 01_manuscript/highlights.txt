@@ -1,0 +1,4 @@
+Exact joint law of code and Galois hull dimension for repeated-root codes
+Transfer-matrix traces give a closed enumerator for every length n=n'p^t
+Exact support, moments, LCD and self-dual counts follow from one polynomial
+Algorithm checked against direct finite-field linear algebra

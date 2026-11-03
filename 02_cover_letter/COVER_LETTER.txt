@@ -1,76 +1,61 @@
 COVER LETTER
 ============
 
-3 November 2026
+To the Editor,
+Finite Fields and Their Applications
 
-Prof. [Editor-in-Chief name]
-Editor-in-Chief
-IEEE Transactions on Information Theory
+Dear Editor,
 
-Dear Prof. [name],
-
-We submit the enclosed regular paper, "Joint Code-Dimension and k-Galois-Hull
+We submit the enclosed manuscript, "Joint Code-Dimension and k-Galois-Hull
 Enumerators for Repeated-Root Constacyclic Codes over Square-Free Affine
 Algebras", by Arun Kumar Yadav, Mohd Vasiulla and Vipin Gupta, for
-consideration for publication in the IEEE Transactions on Information Theory.
-It has not been published elsewhere and is not under consideration by any other
-journal; all authors have approved the submission. This is a full regular paper
-(a 40-page double-spaced review manuscript), not a correspondence.
+consideration as a research article in Finite Fields and Their Applications.
+The manuscript has not been published elsewhere and is not under consideration
+by any other journal; all authors have approved the submission.
 
-WHAT THE PAPER DOES. For all A-linear lambda-constacyclic codes of a fixed
+What the paper does. For all A-linear lambda-constacyclic codes of a fixed
 repeated-root length over a square-free affine algebra over a finite field, we
 determine the exact joint distribution of the code dimension and the k-Galois
 hull dimension. The Frobenius identity writes every component modulus as a
 p^t-th power of a square-free kernel, so a code is an exponent selection on the
-distinct kernel factors; the k-Galois dual then acts through a
-Frobenius-twisted reciprocal permutation of those factors, and on each of its
-orbits the hull dimension is a cyclic sum of pairwise minima of consecutive
-exponents. The bivariate law of one orbit is the trace of a power of an explicit
-weighted transfer matrix with p^t + 1 states, and multiplying over orbits - with
-a dimension-only factor for the components whose twist is incompatible - gives a
-bivariate enumerator whose coefficients are the exact multiplicities.
+distinct kernel factors. The k-Galois dual then acts through a
+Frobenius-twisted reciprocal permutation, and on each of its orbits the hull
+dimension is a cyclic sum of pairwise minima. The bivariate law of one orbit is
+the trace of a power of an explicit weighted transfer matrix; multiplying over
+orbits, with a dimension-only factor for components whose twist is
+incompatible, gives a bivariate enumerator whose coefficients are the exact
+multiplicities.
 
-MAIN CONTRIBUTIONS.
-(1) The exact joint enumerator, valid for every twist including incompatible
-    components, with the known per-code hull formula recovered as a special case.
-(2) The exact support of the attainable (code dimension, hull dimension) pairs
-    on one orbit: a trapezoid, including a lower bound that is invisible from
-    dimension considerations alone (Appendix A).
-(3) Closed means and variances, conditional laws, and the exact numbers of LCD,
-    self-orthogonal, dual-containing and self-dual codes; in the fully compatible
-    case the LCD count is independent of the multiplicity.
-(4) An algorithm polynomial in the length, the multiplicity and the number of
-    kernel factors, verified exhaustively against finite-field linear algebra in
-    characteristics 2 and 3, and evaluated for all 3^31 codes of length 62
-    over F_32.
+Main contributions.
+1. The exact joint enumerator, valid for every twist, including incompatible
+   components, with the per-code hull formula recovered as a special case.
+2. The exact support of attainable (code dimension, hull dimension) pairs on
+   one orbit, a trapezoid that includes a lower bound invisible from
+   dimensions alone.
+3. Closed means, variances and conditional laws, and the numbers of LCD,
+   self-orthogonal, dual-containing and self-dual codes; the LCD count is
+   independent of the multiplicity in the fully compatible case.
+4. An algorithm polynomial in the length, the multiplicity and the number of
+   kernel factors, verified against finite-field linear algebra in
+   characteristics 2 and 3 and evaluated for all 3^31 codes of length 62 over
+   F_32.
 
-RELATION TO THE LITERATURE. For a single code, the Galois hull dimension of
-constacyclic codes is known, over a field (Debnath, Prakash and Islam, 2023) and
-over an affine algebra (Debnath, Islam, Martinez-Moro and Prakash, 2026), and
-the average hull dimension has been computed (Debnath and Prakash, 2025). The
-contribution of this paper is the full joint law over a family of codes together
-with its enumerative consequences; the manuscript states explicitly where it
-agrees with that work and what it adds beyond it.
+Relation to the literature. For a single code, Galois hull dimensions of
+constacyclic codes over a field and over an affine algebra are known, and
+average hull dimensions have been computed. The contribution here is the full
+joint law over a family together with its enumerative consequences. The paper
+states explicitly where it agrees with, and where it goes beyond, that work.
 
-SUPPLEMENTARY MATERIAL. The complete implementation and the verification log are
-supplied. Every table and every worked example in the paper is reproduced by
-that code; the saved log records all checks passing.
+The supplementary material contains the complete Python implementation, the
+verification log, the symbolic moment/covariance/complexity report and the
+regenerated CSV tables. Every table and worked example in the paper is
+reproduced by this code. The manuscript includes the required declarations
+(CRediT statement, competing interests, funding, use of AI-assisted tools, data
+availability).
 
-SUGGESTED REVIEWERS. None of the following is at the authors' institutions and
-none has co-authored with any of the authors:
-  [Name], [affiliation], [e-mail]
-  [Name], [affiliation], [e-mail]
-  [Name], [affiliation], [e-mail]
-We request the exclusion of [names, if any].
-
-DECLARATIONS. The authors declare no competing interests and no funding. The
-AI-assisted writing tool Arena.ai Agent Mode was used at the level of
-literature organization in Section I, language/structural editing throughout,
-development and checking of the supplementary Python code used in Section VII,
-and assistance with the mathematical review and source-level checks; it
-generated no mathematical results, proofs, data, figures or tables
-independently and is not an author. All content was verified by the authors.
-The full declarations accompany the submission.
+We suggest the following reviewers, none of whom is at our institutions:
+[Name, affiliation, e-mail], [Name, affiliation, e-mail],
+[Name, affiliation, e-mail]. We request the exclusion of [name(s)], if any.
 
 Yours sincerely,
 

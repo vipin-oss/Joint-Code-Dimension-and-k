@@ -1,14 +1,10 @@
 #!/usr/bin/env bash
-# Build both IEEE versions.  Requires TeX Live with the IEEEtran class
+# Build the Finite Fields and Their Applications manuscript.
+# Requires TeX Live with the elsarticle class
 # (Debian/Ubuntu: sudo apt install texlive-publishers texlive-latex-extra).
 set -e
-build () {
-  name="$1"
-  pdflatex -interaction=nonstopmode -halt-on-error "$name"
-  bibtex "$name"
-  pdflatex -interaction=nonstopmode -halt-on-error "$name"
-  pdflatex -interaction=nonstopmode -halt-on-error "$name"
-  echo "built $name.pdf"
-}
-build main             # two-column journal version (camera-ready style)
-build main_peerreview  # single-column, double-spaced submission version
+pdflatex -interaction=nonstopmode -halt-on-error main
+bibtex main
+pdflatex -interaction=nonstopmode -halt-on-error main
+pdflatex -interaction=nonstopmode -halt-on-error main
+echo "built main.pdf"
