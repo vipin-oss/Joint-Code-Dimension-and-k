@@ -1025,7 +1025,7 @@ Let
 \mathcal{S}_k^{\mathrm{inc}}=\{1,\ldots,N\}\setminus
                                \mathcal{S}_k^{\mathrm{comp}} .
 \]
-\begin{theorem}{\label{thm:main}
+\begin{theorem}\label{thm:main}
 For every $n\geq1$, every $\lambda\in\A^\ast$, and every $0\leq k<e$,
 \begin{align}
 \Epoly^{(M)}(U,Z)
@@ -2154,7 +2154,7 @@ For each component:
   $\{w_f\}$ is retained;
 \item decompose $\tau_{s,k}$ into cycles and record $(a_O,w_O)$.
 \end{enumerate}
-Step 2 can be performed using a computer algebra system such as Magma. For the small fields listed in Table~\ref{tab:verification}, the verification procedure described in Section~\ref{sec:verification} independently factors the square-free polynomial by enumerating all monic irreducible polynomials of degree at most \(n'/2\) and successively dividing them out. Any remaining cofactor is then tested for irreducibility using Magma. Thus, the entire verification pipeline is self-contained and requires no orbit data as input.
+Step 2 can be carried out in any computer algebra system. For the small fields of Table~\ref{tab:verification}, the verification program of Section~\ref{sec:verification} is written in plain Python and does not use any external algebra package. It implements $K_s$ directly, lists the monic irreducible polynomials of degree at most $n'/2$ in increasing degree, and divides them out of $x^{n'}-\lambda_{s,0}$ successively. Because this polynomial is square-free, a cofactor of positive degree left after this step has no factor of degree at most $n'/2$ and is therefore irreducible. Thus the verification pipeline is self-contained and takes no orbit data as input.
 
 When $\lambda_{s,0}=1$ there is a root-exponent shortcut.  Let $\alpha$ be a
 primitive $n'$-th root of unity in an algebraic closure.  The irreducible
