@@ -17,7 +17,7 @@ Repeated-Root Constacyclic Codes over Square-Free Affine Algebras
    India.
 
 E-mail addresses: A. K. Yadav arunyadav0307@gmail.com (ORCID
-0009-0009-1169-3264); M. Kumari: to be added; M. Vasiulla mohd.vasiulla@sru.edu.in; V. Gupta
+0009-0009-1169-3264); M. Kumari Mina.yadav@krmangalam.edu.in; M. Vasiulla mohd.vasiulla@sru.edu.in; V. Gupta
 vipin@gurugramuniversity.ac.in.
 
 *Elsevier asks for the competing-interest declaration through its declarations
