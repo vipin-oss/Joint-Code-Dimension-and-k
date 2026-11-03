@@ -30,19 +30,19 @@ generator descriptions, Taki Eldin and Sol\'e \cite{eldinSole2026} obtain
 generator polynomial matrices for Galois hulls of multi-twisted codes over
 finite fields, and intersections of linear and multi-twisted codes are
 described in \cite{eldinLeroy2026}. A parallel line studies averages rather than full
-distributions: Skersys \cite{skersys2003} for cyclic codes over fields,
-Jitman and Sangwisut \cite{jitmanSangwisut2018} for Hermitian hulls, and
-Debnath and Prakash \cite{debnathAverage2025} for Galois hulls over finite
-fields and over a finite non-chain ring; the attainability of small Galois
+distributions. Skersys \cite{skersys2003} treats cyclic codes over fields,
+Jitman and Sangwisut \cite{jitmanSangwisut2018} treat Hermitian hulls, and
+Debnath and Prakash \cite{debnathAverage2025} treat Galois hulls over finite
+fields and over a finite non-chain ring. The attainability of small Galois
 hull dimensions is studied in \cite{debnathSmall2026}, and the sequence of
 numbers of linear codes with increasing hull dimension in
 \cite{bouyuklieva2026}. Closest to the
 algebraic setting of this paper, Debnath, Islam, Mart\'inez-Moro and Prakash
 \cite{debnathAffine2026} study $k$-Galois hulls of constacyclic codes over
-affine algebra rings: they describe dual and hull generators in idempotent
-form, derive a hull-dimension formula for an individual code under the
+affine algebra rings. They describe dual and hull generators in idempotent
+form. They also derive a hull-dimension formula for an individual code under the
 hypotheses $\gcd(\operatorname{ord}\lambda,n')=1$ and
-$\operatorname{ord}\lambda\mid 1+p^{e-k}$ and give an LCD criterion and
+$\operatorname{ord}\lambda\mid 1+p^{e-k}$, and give an LCD criterion and
 quantum-code applications. In the repeated-root regime $p\mid n$ the
 per-code hull-dimension formula is also known for constacyclic codes over a
 single field \cite{debnathConstacyclic2023}, and we use it as a check rather
@@ -54,10 +54,10 @@ The present paper is concerned with \emph{repeated-root} lengths, that is,
 with $p\mid n$ in characteristic $p$, where the modulus $x^n-\lambda$ is a
 perfect power rather than a square-free polynomial. Repeated-root cyclic
 codes were investigated in generality by Castagnoli, Massey, Schoeller and
-von Seemann \cite{castagnoli1991} and by van Lint \cite{vanLint1991}, who
-showed that such families are asymptotically bad; nevertheless their finite
-algebraic structure generators, duals and distances at specific
-lengths has been developed extensively, for example in
+von Seemann \cite{castagnoli1991} and by van Lint \cite{vanLint1991}. They
+showed that such families are asymptotically bad. Nevertheless, the finite
+algebraic structure of these codes (generators, duals and distances at
+specific lengths) has been developed extensively, for example in
 \cite{dinh2012}, in the study of constacyclic codes of prime-power length over
 rings \cite{dinhai2010}, and in the chain-ring theory of
 \cite{dinhLopezPermouth2004}; see also \cite{nortonSalagean2000}. Within the hull theme,
@@ -86,8 +86,8 @@ We keep the coefficient algebra square-free, so that
 $\A\cong\prod_s K_s$ with $K_s=\F_{p^{d_s}}$, and allow the length to be
 arbitrary. All $\A$-linear $\lambda$-constacyclic codes of length $n=n'p^t$
 are counted, as labeled submodules determined by the exponents of the
-distinct irreducible factors of the square-free kernel $x^{n'}-\lambda_0$, and
-all twists $\lambda\in\A^\ast$ are allowed: components whose twist is
+distinct irreducible factors of the square-free kernel $x^{n'}-\lambda_0$.
+All twists $\lambda\in\A^\ast$ are allowed: components whose twist is
 incompatible with the $k$-Galois dual contribute hull dimension $0$ and are
 included with an explicit dimension-only factor. The main result
 (Theorem~\ref{thm:main}) is the exact joint enumerator
@@ -109,15 +109,14 @@ where the $(M+1)\times(M+1)$ transfer matrix $T^{(M)}_w$ has entries
 $U^{w(M-\beta)}Z^{w\min\{\alpha,M-\beta\}}$. On the overlap with
 \cite{debnathAffine2026}, our hull-dimension formula agrees with theirs
 through the identity $M-\max\{u,v\}=\min\{M-u,M-v\}$
-(Remark~\ref{rem:debnath-agreement}); the contribution of the present paper
-is the joint distribution and its consequences marginals; the
+(Remark~\ref{rem:debnath-agreement}). The contribution of the present paper
+is the joint distribution and its consequences: the marginals; the
 multiplicity-independence of the LCD count in the fully compatible case;
 the exact support of attainable (code dimension, hull dimension) pairs;
-conditional laws and moments; extremal-class counts; and, given the orbit
-data, an exact algorithm polynomial in $n$, $M$ and the number of distinct
-factors together
-with the removal, in this enumerative setting, of the coprimality hypothesis
-$\gcd(\operatorname{ord}\lambda,n')=1$.
+conditional laws and moments; and extremal-class counts. Given the orbit
+data, we also give an exact algorithm polynomial in $n$, $M$ and the number of
+distinct factors. In this enumerative setting we remove the coprimality
+hypothesis $\gcd(\operatorname{ord}\lambda,n')=1$.
 
 
 The argument follows the short pipeline in Figure~\ref{fig:workflow}. The Frobenius identity reduces each
@@ -2020,14 +2019,15 @@ Python.
 
 \noindent\textbf{Level 1: internal combinatorics.}  The script
 \texttt{checks.py} compares the transfer-matrix trace with brute-force
-enumeration of all exponent words for every $(a,M,w)$ with $a\leq6$, $M\leq5$
-and $w\in\{1,2\}$ (60 cases); checks the closed forms of
-Proposition~\ref{prop:short-orbits}; verifies the complement--reversal symmetry,
-the checksum $\Epoly(1,1)=(M+1)^{N_F}$, the LCD count and the one-orbit
-trapezoid of Theorem~\ref{thm:support} for $M\leq5$, $a\leq6$; verifies the
-moment formulas of Proposition~\ref{prop:moments} for $M\leq7$ on a range of
-skeletons; and recomputes every row of Table~\ref{tab:summary}, the joint table
-of Example~\ref{ex:F4}, the conditional mean of Example~\ref{ex:F8} and the
+enumeration of all exponent words. This is done for every $(a,M,w)$ with
+$a\leq6$, $M\leq5$ and $w\in\{1,2\}$ (60 cases). The script checks the closed
+forms of Proposition~\ref{prop:short-orbits}. It verifies the
+complement--reversal symmetry, the checksum $\Epoly(1,1)=(M+1)^{N_F}$, the LCD
+count and the one-orbit trapezoid of Theorem~\ref{thm:support} for $M\leq5$,
+$a\leq6$. It also verifies the moment formulas of
+Proposition~\ref{prop:moments} for $M\leq7$ on a range of skeletons. Finally,
+it recomputes every row of Table~\ref{tab:summary}, the joint table of
+Example~\ref{ex:F4}, the conditional mean of Example~\ref{ex:F8} and the
 maximal conditional mean of Example~\ref{ex:F32} from the enumerator alone.
 The moment, covariance and complexity formulas are additionally re-derived
 symbolically in the external report \texttt{symbolic\_verification.txt}; no
@@ -2035,14 +2035,14 @@ shipped file imports a computer algebra system.
 
 \noindent\textbf{Level 2: direct finite-field linear algebra.}  For the families of
 Table~\ref{tab:verification} the script starts from the definitions, with no
-orbit input: it factors $x^{n'}-\lambda_{s,0}$ over $K_s$ into distinct
+orbit input. It factors $x^{n'}-\lambda_{s,0}$ over $K_s$ into distinct
 irreducible factors using the genuine irreducibility test of
-\ref{sec:orbit-data}, computes the reciprocal $f^{\#_{s,k}}$ from its definition
-\eqref{eq:reciprocal}, and reads off the orbit skeleton, which is found to agree
-with the skeletons used in Examples~\ref{ex:F4}--\ref{ex:char35}.  For
-\emph{every} exponent word it then builds $g_{\mathbf{e}}=\prod f^{e_f}$, forms
-the generator matrix $B$ from the $n-\deg g_{\mathbf{e}}$ non-wrapped shifts of
-$g_{\mathbf{e}}$, and computes
+\ref{sec:orbit-data}. It computes the reciprocal $f^{\#_{s,k}}$ from its
+definition \eqref{eq:reciprocal} and reads off the orbit skeleton, which is
+found to agree with the skeletons used in
+Examples~\ref{ex:F4}--\ref{ex:char35}. For \emph{every} exponent word it then
+builds $g_{\mathbf{e}}=\prod f^{e_f}$, forms the generator matrix $B$ from the
+$n-\deg g_{\mathbf{e}}$ non-wrapped shifts of $g_{\mathbf{e}}$, and computes
 \[
 \eta_k=\dim C-\rank\bigl(B\,\sigma_{s,k}(B)^{\mathsf T}\bigr)
 \]
